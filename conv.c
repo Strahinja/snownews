@@ -382,7 +382,7 @@ char* WrapText (const char* text, unsigned width)
 		continue;
 	    }
 
-	    if (strlen (line) + strlen (chunk) <= width) {
+	    if (utf8_length (line) + utf8_length (chunk) <= width) {
 		line = realloc (line, strlen (line) + strlen (chunk) + 2);
 		strcat (line, chunk);
 		strcat (line, " ");
