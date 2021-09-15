@@ -71,7 +71,7 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	    feed_title = "* " SNOWNEWS_NAME " " SNOWNEWS_VERSTRING;
 
 	// Convert feed title to current locale
-	char* dejunked_title = UIDejunk (feed_title);
+	char* dejunked_title = text_from_html (feed_title);
 	if (!dejunked_title)
 	    dejunked_title = strdup (feed_title);
 	char* converted_title = iconvert (dejunked_title);
@@ -100,7 +100,7 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	// Print item title
 	unsigned ydesc = 1, xdesc = 1;
 	if (current_item->data->title) {
-	    dejunked_title = UIDejunk (current_item->data->title);
+	    dejunked_title = text_from_html (current_item->data->title);
 	    if (!dejunked_title)
 		dejunked_title = strdup (current_item->data->title);
 	    converted_title = iconvert (dejunked_title);
@@ -130,7 +130,7 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 		char* converted = iconvert (current_item->data->description);
 		if (converted == NULL)
 		    converted = strdup (current_item->data->description);
-		char* newtext = UIDejunk (converted);
+		char* newtext = text_from_html (converted);
 		free (converted);
 		char* newtextwrapped = WrapText (newtext, COLS - 4);
 		free (newtext);
@@ -318,7 +318,7 @@ static int UIDisplayFeed (struct feed* current_feed)
 	    title = "Untitled";
 
 	// Convert title to current locale
-	char* dejunked_title = UIDejunk (title);
+	char* dejunked_title = text_from_html (title);
 	if (!dejunked_title)
 	    dejunked_title = strdup (title);
 	char* converted_title = iconvert (dejunked_title);
@@ -395,9 +395,9 @@ static int UIDisplayFeed (struct feed* current_feed)
 		if (current_feed->smartfeed == 1) {
 		    char tmpstr[512];
 		    snprintf (tmpstr, sizeof (tmpstr), "(%s) %s", item->data->parent->title, item->data->title);
-		    newtext = UIDejunk (tmpstr);
+		    newtext = text_from_html (tmpstr);
 		} else
-		    newtext = UIDejunk (item->data->title);
+		    newtext = text_from_html (item->data->title);
 
 		char* converted = iconvert (newtext);
 		if (converted == NULL)

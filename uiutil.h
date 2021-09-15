@@ -33,3 +33,5 @@ void add_utf8 (const char* s);
 void addn_utf8 (const char* s, unsigned n);
 void mvadd_utf8 (int y, int x, const char* s);
 void mvaddn_utf8 (int y, int x, const char* s, unsigned n);
+unsigned utf8_osize (wchar_t c);
+char* utf8_write (wchar_t c, char* o);

@@ -20,7 +20,7 @@
 #include "config.h"
 
 char* iconvert (const char* inbuf);
-char* UIDejunk (const char* feed_description);
+char* text_from_html (const char* html);
 char* WrapText (const char* text, unsigned width);
 void CleanupString (char* string, bool fullclean);
 char* Hashify (const char* url);

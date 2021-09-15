@@ -124,203 +124,67 @@ char* iconvert (const char* inbuf)
     return outbuf_first;
 }
 
-// UIDejunk: remove html tags from feed description and convert
-// html entities to something useful if we hit them.
-// This function took almost forever to get right, but at least I learned
-// that html entity &hellip; has nothing to do with Lucifer's ISP, but
-// instead means "..." (3 dots, "and so on...").
-char* UIDejunk (const char* feed_description)
+char* text_from_html (const char* html)
 {
-    // Gracefully handle passed NULL ptr.
-    if (feed_description == NULL)
-	return strdup ("(null)");
+    char* text = strdup (html);
+    char* o = text;
 
-    // Make a copy and point *start to it so we can free the stuff again!
-    char* text = strdup (feed_description);	// feed_description copy
-    char* start = text;		// Points to first char everytime. Need to free this.
+    unsigned nnl = 0;
+    bool intag = false;
 
-    // If text begins with a tag, discard all of them.
-    while (1) {
-	if (text[0] == '<') {
-	    strsep (&text, "<");
-	    strsep (&text, ">");
-	} else
-	    break;
-	if (text == NULL) {
-	    free (start);
-	    return strdup (_("No description available."));
-	}
-    }
-    char* newtext = malloc (1);	// Detag'ed *text.
-    newtext[0] = '\0';
-
-    while (1) {
-	// Strip tags... tagsoup mode.
-	// strsep puts everything before "<" into detagged.
-	const char* detagged = strsep (&text, "<");
-	if (detagged == NULL)
-	    break;
-
-	// Replace <p> and <br> (in all incarnations) with newlines, but only
-	// if there isn't already a following newline.
-	if (text != NULL) {
-	    if ((strncasecmp (text, "p", 1) == 0) || (strncasecmp (text, "br", 2) == 0)) {
-		if ((strncasecmp (text, "br>\n", 4) != 0) && (strncasecmp (text, "br/>\n", 5) != 0) && (strncasecmp (text, "br />\n", 6) != 0) && (strncasecmp (text, "p>\n", 3) != 0)) {
-		    newtext = realloc (newtext, strlen (newtext) + 2);
-		    strcat (newtext, "\n");
-		}
+    for (const char* i = html; *i; ++i) {
+	if (*i == '>')
+	    intag = false;
+	else if (*i == '<') {
+	    intag = true;
+	    if (i[1] == '!') {
+		// Check for uninterpreted content
+		if (0 == strncmp (i, "!--", strlen("!--"))) // Comment
+		    i = strstr (i+strlen("!--"), "-->");
+		else if (0 == strncmp (i, "![CDATA[", strlen("![CDATA["))) // CDATA
+		    i = strstr (i+strlen("![CDATA["), "]]>");
+		if (!i)
+		    break; // unclosed tag, error
+		i += 2;
+	    } else if (i[1] == 'p' || (i[1] == 'b' && i[2] == 'r')) {
+		// Paragraph markers and hard newlines
+		const char* tage = strchr (i, '>');
+		if (tage && tage[1] != '\n' && (!nnl || (i[1] == 'p' && nnl < 2)))
+		    *o++ = '\n';
 	    }
-	}
-	newtext = realloc (newtext, strlen (newtext) + strlen (detagged) + 1);
-
-	// Now append detagged to newtext.
-	strcat (newtext, detagged);
-
-	// Advance *text to next position after the closed tag.
-	const char* htmltag = strsep (&text, ">");
-	if (htmltag == NULL)
-	    break;
-
-	if (s_strcasestr (htmltag, "img src") != NULL) {
-#if 0
-	    attribute = s_strcasestr (htmltag, "alt=");
-	    if (attribute == NULL)
-		continue;
-	    size_t len = strlen (attribute);
-	    newtext = realloc (newtext, strlen (newtext) + 6 + len + 2);
-	    strcat (newtext, "[img: ");
-	    strncat (newtext, attribute + 5, len - 6);
-	    strcat (newtext, "]");
-#endif
-	    newtext = realloc (newtext, strlen (newtext) + 7);
-	    strcat (newtext, "[img] ");
-	}
-#if 0
-	else if (s_strcasestr (htmltag, "a href") != NULL) {
-	    newtext = realloc (newtext, strlen (newtext) + 8);
-	    strcat (newtext, "[link: ");
-	} else if (strcasecmp (htmltag, "/a") == 0) {
-	    newtext = realloc (newtext, strlen (newtext) + 2);
-	    strcat (newtext, "]");
-	}
-#endif
-    }
-    free (start);
-
-    CleanupString (newtext, false);
-
-    // See if there are any entities in the string at all.
-    if (strchr (newtext, '&') != NULL) {
-	text = strdup (newtext);
-	start = text;
-	free (newtext);
-
-	newtext = malloc (1);
-	newtext[0] = '\0';
-
-	while (1) {
-	    // Strip HTML entities.
-	    const char* detagged = strsep (&text, "&");
-	    if (detagged == NULL)
-		break;
-
-	    if (*detagged) {
-		newtext = realloc (newtext, strlen (newtext) + strlen (detagged) + 1);
-		strcat (newtext, detagged);
-	    }
-	    // Expand newtext by one char.
-	    newtext = realloc (newtext, strlen (newtext) + 2);
-	    // This might break if there is an & sign in the text.
-	    const char* entity = strsep (&text, ";");
-	    if (entity != NULL) {
-		// XML defined entities.
-		if (strcmp (entity, "amp") == 0) {
-		    strcat (newtext, "&");
-		    continue;
-		} else if (strcmp (entity, "lt") == 0) {
-		    strcat (newtext, "<");
-		    continue;
-		} else if (strcmp (entity, "gt") == 0) {
-		    strcat (newtext, ">");
-		    continue;
-		} else if (strcmp (entity, "quot") == 0) {
-		    strcat (newtext, "\"");
-		    continue;
-		} else if (strcmp (entity, "apos") == 0) {
-		    strcat (newtext, "'");
-		    continue;
-		}
-		// Decode user defined entities.
-		bool found = false;
-		for (const struct entity * cur_entity = _settings.html_entities; cur_entity; cur_entity = cur_entity->next) {
-		    if (strcmp (entity, cur_entity->entity) == 0) {
-			// We have found a matching entity.
-
-			// If entity_length is more than 1 char we need to realloc
-			// more space in newtext.
-			if (cur_entity->entity_length > 1)
-			    newtext = realloc (newtext, strlen (newtext) + cur_entity->entity_length + 1);
-
-			// Append new entity.
-			strcat (newtext, cur_entity->converted_entity);
-
-			// Set found flag.
-			found = true;
-
-			// We can now leave the for loop.
-			break;
-		    }
-		}
-
-		// Try to parse some standard entities.
-		if (!found) {
-		    wchar_t ch = 0;
-		    // See if it was a numeric entity.
-		    if (entity[0] == '#') {
-			if (entity[1] == 'x')
-			    ch = strtoul (entity + 2, NULL, 16);
+	} else if (!intag) {
+	    if (*i == '&') {
+		const char* ampe = strchr (i, ';');
+		if (ampe) {
+		    wchar_t ec = 0;
+		    if (i[1] == '#') {
+			if (i[2] == 'x')
+			    ec = strtoul (&i[3], NULL, 16);
 			else
-			    ch = atol (entity + 1);
+			    ec = strtoul (&i[2], NULL, 10);
 		    } else {
-			const htmlEntityDesc* ep = htmlEntityLookup ((xmlChar*) entity);
+			const htmlEntityDesc* ep = htmlEntityLookup ((const xmlChar*) &i[1]);
 			if (ep)
-			    ch = ep->value;
+			    ec = ep->value;
 		    }
-
-		    if (ch > 0) {
-#ifdef __STDC_ISO_10646__
-			// Convert to locale encoding and append.
-			size_t len = strlen (newtext);
-			newtext = realloc (newtext, len + MB_CUR_MAX + 1);
-			int mblen = wctomb (newtext + len, ch);
-			// Only set found flag if the conversion worked.
-			if (mblen > 0) {
-			    newtext[len + mblen] = '\0';
-			    found = true;
-			}
-#else
-			// Since we can't use wctomb(), just convert ASCII.
-			if (ch <= CHAR_MAX) {
-			    sprintf (newtext + strlen (newtext), "%c", (char) ch);
-			    found = true;
-			}
-#endif
+		    // Replace the entity with the unicode char if it is not a terminal control char
+		    if (ec >= ' ' && (ec <= '~' || ec >= 0xa0) && utf8_osize(ec) <= (unsigned)(ampe+1-i)) {
+			o = utf8_write (ec, o);
+			i = ampe;
+			continue;
 		    }
 		}
-		// If nothing matched so far, put text back in.
-		if (!found) {
-		    // Changed into &+entity to avoid stray semicolons
-		    // at the end of wrapped text if no entity matches.
-		    newtext = realloc (newtext, strlen (newtext) + strlen (entity) + 2);
-		    strcat (newtext, "&");
-		    strcat (newtext, entity);
-		}
-	    } else
-		break;
+	    }
+	    if (*i != '\n')
+		nnl = 0;
+	    else if (++nnl > 2)
+		continue; // avoid too many newlines
+	    *o++ = *i;
 	}
-	free (start);
     }
-    return newtext;
+    *o = 0;
+    CleanupString (text, false);
+    return text;
 }
 
 // 5th try at a wrap text functions.

@@ -323,3 +323,32 @@ void mvadd_utf8 (int y, int x, const char* s)
     move (y, x);
     add_utf8 (s);
 }
+
+unsigned utf8_osize (wchar_t c)
+{
+    if (c > 0x1fffff)
+	return 0;
+    else if (c > 0xffff)
+	return 4;
+    else if (c > 0x7ff)
+	return 3;
+    else if (c > 0x7f)
+	return 2;
+    return 1;
+}
+
+char* utf8_write (wchar_t c, char* o)
+{
+    unsigned n = utf8_osize (c);
+    if (!n)
+	return o;
+    if (n <= 1)
+	*o++ = c;
+    else {
+	unsigned btw = n * 6;
+	*o++ = ((c >> (btw -= 6)) & 0x3f) | (0xff << (8 - n));
+	while (btw)
+	    *o++ = ((c >> (btw -= 6)) & 0x3f) | 0x80;
+    }
+    return o;
+}
