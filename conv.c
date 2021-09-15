@@ -149,13 +149,16 @@ char* text_from_html (const char* html)
 	    } else if (i[1] == 'p' || (i[1] == 'b' && i[2] == 'r')) {
 		// Paragraph markers and hard newlines
 		const char* tage = strchr (i, '>');
-		if (tage && tage[1] != '\n' && (!nnl || (i[1] == 'p' && nnl < 2)))
+		if (tage && tage[1] != '\n' && (!nnl || (i[1] == 'p' && nnl < 2))) {
+		    ++nnl;
 		    *o++ = '\n';
+		}
 	    }
 	} else if (!intag) {
 	    if (*i == '&') {
 		const char* ampe = strchr (i, ';');
 		if (ampe) {
+		    unsigned enamelen = ampe-(i+1);
 		    wchar_t ec = 0;
 		    if (i[1] == '#') {
 			if (i[2] == 'x')
@@ -163,12 +166,17 @@ char* text_from_html (const char* html)
 			else
 			    ec = strtoul (&i[2], NULL, 10);
 		    } else {
-			const htmlEntityDesc* ep = htmlEntityLookup ((const xmlChar*) &i[1]);
+			xmlChar ebuf[8] = {};
+			const htmlEntityDesc* ep = NULL;
+			if (enamelen < sizeof(ebuf)) {
+			    strncpy ((char*) ebuf, &i[1], enamelen);
+			    ep = htmlEntityLookup (ebuf);
+			}
 			if (ep)
 			    ec = ep->value;
 		    }
 		    // Replace the entity with the unicode char if it is not a terminal control char
-		    if (ec >= ' ' && (ec <= '~' || ec >= 0xa0) && utf8_osize(ec) <= (unsigned)(ampe+1-i)) {
+		    if (ec >= ' ' && (ec <= '~' || ec >= 0xa0) && utf8_osize(ec) <= enamelen+strlen("&;")) {
 			o = utf8_write (ec, o);
 			i = ampe;
 			continue;

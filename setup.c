@@ -347,51 +347,6 @@ static void SetupColors (const char* filename)
 
 }
 
-// Load user customized entity conversion table.
-static void SetupEntities (const char* file)
-{
-    FILE* configfile = fopen (file, "r");
-    if (!configfile) {
-	configfile = fopen (file, "w");
-	enum {			// Non-ascii character codes that should not be in source code
-	    Umlauta = 0xe4, Umlauto = 0xf6, Umlautu = 0xfc,
-	    UmlautA = 0xc4, UmlautO = 0xd6, UmlautU = 0xdc,
-	    GermanB = 0xdf
-	};
-	fprintf (configfile,
-		 "# HTML entity conversion table\n" "#\n" "# Put all entities you want to have converted into this file.\n" "# File format: &entity;[converted string/char]\n" "# Example:     &mdash;--\n" "#\n"
-		 "# XML defined entities are converted by default. These are:\n" "# &amp;, &lt;, &gt;, &apos;, &quot;\n" "#\n" "&auml;%c\n" "&ouml;%c\n" "&uuml;%c\n" "&Auml;%c\n" "&Ouml;%c\n" "&Uuml;%c\n" "&szlig;%c\n" "&nbsp; \n" "&mdash;--\n"
-		 "&hellip;...\n" "&#8220;\"\n" "&#8221;\"\n" "&raquo;\"\n" "&laquo;\"\n", Umlauta, Umlauto, Umlautu, UmlautA, UmlautO, UmlautU, GermanB);
-	fclose (configfile);
-	configfile = fopen (file, "r");
-    }
-    while (!feof (configfile)) {
-	char linebuf[128];
-	if (!fgets (linebuf, sizeof (linebuf), configfile))
-	    break;
-	if (linebuf[0] != '&')
-	    continue;	       // Entities must start with '&'
-	linebuf[strlen (linebuf) - 1] = 0;	// chop newline
-
-	char* parse = &linebuf[1];	// Go past the '&'
-	const char* ename = strsep (&parse, ";");
-	const char* evalue = parse;
-
-	struct entity* entity = calloc (1, sizeof (struct entity));
-	entity->entity = strdup (ename);
-	entity->converted_entity = strdup (evalue);
-	entity->entity_length = strlen (entity->converted_entity);
-
-	// Add entity to linked list structure.
-	if (!_settings.html_entities)
-	    _settings.html_entities = entity;
-	else {
-	    entity->next = _settings.html_entities;
-	    _settings.html_entities = entity;
-	}
-    }
-}
-
 static unsigned ParseOldFeedListFile (char* flbuf)
 {
     unsigned numfeeds = 0;
@@ -509,9 +464,6 @@ unsigned Config (void)
 
     ConfigFilePath ("colors", filename, sizeof(filename));
     SetupColors (filename);
-
-    ConfigFilePath ("html_entities", filename, sizeof(filename));
-    SetupEntities (filename);
 
     ConfigFilePath ("urls.opml", filename, sizeof(filename));
     return SetupFeedList (filename);

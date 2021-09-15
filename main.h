@@ -106,13 +106,6 @@ struct color {
     bool feedtitlebold;
 };
 
-struct entity {
-    char* entity;
-    char* converted_entity;
-    int entity_length;
-    struct entity* next;
-};
-
 // A feeds categories
 struct feedcategories {
     char* name;			// Category name
@@ -129,7 +122,6 @@ struct categories {
 };
 
 struct settings {
-    struct entity* html_entities;
     struct categories* global_categories;
     const char* global_charset;
     char* browser;		// Browser command. lynx is standard.
