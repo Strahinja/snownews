@@ -161,12 +161,7 @@ variable "http_proxy". Snownews expects this variable to be in the format
 .B Plugins
 .P
 Snownews has a plugin architecture that allows to load feeds from external
-scripts or pipe downloaded contents through a filter. Such a filter could
-be an Atom to RSS converter for example. The snownews website has a section
-with publically available extensions. See
-.B http://snownews.kcore.de/snowscripts/.
-.P
-There are two types of filters:
+scripts or pipe downloaded contents through a filter. There are two types:
 .B execurls
 and
 .B filters.
@@ -174,16 +169,13 @@ and
 Execurls are scripts that produce a valid RSS file by themselves. You can add
 such extensions by subscribing to a feed "exec:/path/to/extension".
 .P
-Filters convert a downloaded resource on the fly. You usually subscribe to an
-URL that is a webpage or a non-RSS feed. If snownews asks you if you want
+Filters convert a downloaded resource on the fly used when you subscribe to
+a URL that is a webpage or a non-RSS feed. If snownews asks you if you want
 to use a filter, because it couldn't parse the resource, enter the location
 of your script. You can also add filters to exisiting subscriptions by
 highlighting the feed and pressing
 .B 'e'
 in the main menu.
-.P
-For further documentation about this feature, please visit the website
-.B http://snownews.kcore.de/snowscripts/.
 .P
 .B Snownews is released under the GNU General Public License version 3.
 .SH OPTIONS
