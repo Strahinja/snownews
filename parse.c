@@ -83,14 +83,22 @@ static bool node_ns_name_is (xmlNodePtr pn, const char* ns, const char* name)
 static void copy_node_text_to (xmlDocPtr doc, xmlNodePtr pn, char** pd, bool fullclean)
 {
     char* nt = (char*) xmlNodeListGetString (doc, pn->children, 1);
-    if (!nt)
-	return; // don't overwrite with empty
-    if (!nt[0])
-	return free (nt);
-    if (*pd)
-	free (*pd);
-    *pd = nt;
-    CleanupString (*pd, fullclean);
+    if (nt) {
+	if (!nt[0])
+	    return free (nt);
+	char* cnt = text_from_html (nt);
+	if (!cnt)
+	    return free (nt);
+	if (cnt[0]) {
+	    free (nt);
+	    nt = cnt;
+	} else
+	    free (cnt);
+	CleanupString (nt, fullclean);
+	if (*pd)
+	    free (*pd);
+	*pd = nt;
+    }
 }
 
 static long number_from_node_text (xmlDocPtr doc, xmlNodePtr pn)
