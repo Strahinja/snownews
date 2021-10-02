@@ -4,7 +4,7 @@
 ######################################################################
 
 pkg_name="snownews"
-pkg_verstr="v1.7"
+pkg_verstr="v1.9"
 pkg_bugreport="Mike Sharov <msharov@users.sourceforge.net>"
 
 # Files that get created by this script
@@ -37,7 +37,7 @@ progs="CC=gcc CC=clang CC=cc INSTALL=install MSGFMT=msgfmt"
 pkgs="libcurl libxml-2.0 libcrypto ncursesw"
 # Default pkg flags to substitute when pkg-config is not found
 pkg_libs="-lcurl -lxml2 -lcrypto -lncursesw"
-pkg_cflags="-I\/usr\/include\/libxml2"
+pkg_cflags="-I\/usr\/include\/libxml2 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600"
 pkg_ldflags=""
 
 # Automatic vars
