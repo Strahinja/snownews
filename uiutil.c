@@ -284,6 +284,14 @@ unsigned utf8_length (const char* s)
     return l;
 }
 
+unsigned utf8_range_length (const char* f, const char* l)
+{
+    unsigned rl = 0;
+    while (f < l && utf8_next (&f))
+	++rl;
+    return rl;
+}
+
 void addn_utf8 (const char* s, unsigned n)
 {
     #if NCURSES_WIDECHAR
@@ -351,4 +359,27 @@ char* utf8_write (wchar_t c, char* o)
 	    *o++ = ((c >> (btw -= 6)) & 0x3f) | 0x80;
     }
     return o;
+}
+
+void wrap_text (char* text, unsigned width)
+{
+    unsigned textlen = strlen (text);
+    char* t = text;
+    char* tend = t + textlen;
+    char* sp = NULL;
+    unsigned linelen = 0;
+    while (t < tend) {
+	char* pc = t;
+	wchar_t c = utf8_next ((const char**) &t);
+	if (c == '\n') {
+	    linelen = 0;
+	    sp = NULL;
+	    continue;
+	} else if (c == ' ')
+	    sp = pc;
+	if (++linelen >= width && sp) {
+	    *sp = '\n';
+	    linelen = pc - sp;
+	}
+    }
 }

@@ -20,7 +20,6 @@
 #include "config.h"
 
 char* text_from_html (const char* html);
-char* WrapText (const char* text, unsigned width);
 void CleanupString (char* string, bool fullclean);
 char* Hashify (const char* url);
 char* genItemHash (const char* const* hashitems, unsigned items);

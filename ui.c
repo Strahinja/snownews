@@ -32,15 +32,6 @@
 
 //----------------------------------------------------------------------
 
-// Scrollable feed->description.
-struct scrolltext {
-    char* line;
-    struct scrolltext* next;
-    struct scrolltext* prev;
-};
-
-//----------------------------------------------------------------------
-
 static bool resize_dirty = false;
 
 //----------------------------------------------------------------------
@@ -54,14 +45,11 @@ void sig_winch (int p __attribute__((unused)))
 // Speed of this code has been greatly increased in 1.2.1.
 static void UIDisplayItem (const struct newsitem* current_item, const struct feed* current_feed)
 {
-    struct scrolltext* first_line = NULL;	// Linked list of lines
-    unsigned linenumber = 0;	// First line on screen (scrolling). Ugly hack.
-    unsigned maxlines = 0;
-    const unsigned pagesz = LINES-4;
-    const unsigned ymax = LINES-1;
-    bool rewrap = true;
-
+    unsigned topline = 0;	// First line on screen
     while (1) {
+	const unsigned pagesz = LINES-4;
+	const unsigned pagew = COLS-2;
+
 	erase();
 
 	const char* feed_title = current_feed->description;
@@ -103,53 +91,29 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	}
 
 	// Print item text
+	unsigned desclines = 0; // and count lines
 	if (!current_item->data->description || !current_item->data->description[0])
 	    mvadd_utf8 (ydesc, xdesc, _("No description available."));
 	else {
-	    // Only generate a new scroll list if we need to rewrap everything.
-	    // Otherwise just typeaheadskip this block.
-	    if (rewrap) {
-		char* newtextwrapped = WrapText (current_item->data->description, COLS - 4);
-		char* freeme = newtextwrapped;	// Set ptr to str start so we can free later.
-
-		// Split newtextwrapped at \n and put into double linked list.
-		while (1) {
-		    char* textslice = strsep (&newtextwrapped, "\n");
-
-		    // Find out max number of lines text has.
-		    ++maxlines;
-
-		    if (textslice != NULL) {
-			struct scrolltext* textlist = malloc (sizeof (struct scrolltext));
-			textlist->line = strdup (textslice);
-
-			// Gen double list with new items at bottom.
-			textlist->next = NULL;
-			if (first_line == NULL) {
-			    textlist->prev = NULL;
-			    first_line = textlist;
-			} else {
-			    textlist->prev = first_line;
-			    while (textlist->prev->next != NULL)
-				textlist->prev = textlist->prev->next;
-			    textlist->prev->next = textlist;
-			}
-		    } else
-			break;
+	    char* wrapped_dtext = strdup (current_item->data->description);
+	    wrap_text (wrapped_dtext, pagew);
+	    const char* dtext = wrapped_dtext;
+	    const char* dtextend = dtext + strlen (dtext);
+	    unsigned y = ydesc;
+	    while (dtext < dtextend) {
+		const char* pnl = strchr (dtext, '\n');
+		if (!pnl)
+		    pnl = dtextend;
+		if (desclines >= topline && desclines < topline+pagesz) {
+		    unsigned linelen = utf8_range_length (dtext, pnl);
+		    if (linelen > pagew)
+			linelen = pagew;
+		    mvaddn_utf8 (y++, xdesc, dtext, linelen);
 		}
-		free (freeme);
-		rewrap = false;
+		++desclines;
+		dtext = pnl+strlen("\n");
 	    }
-	    // Skip to the first visible line
-	    unsigned ientry = 0;
-	    const struct scrolltext* l = first_line;
-	    while (ientry < linenumber && l) {
-		++ientry;
-		l = l->next;
-	    }
-	    // We sould now have the linked list setup'ed... hopefully.
-	    for (unsigned y = ydesc; y < ymax && l; ++ientry, ++y, l = l->next)
-		mvadd_utf8 (y, xdesc, l->line);
+	    free (wrapped_dtext);
 	}
 
 	char keyinfostr [256];
@@ -162,76 +126,42 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	int uiinput = getch();
 	if (uiinput == _settings.keybindings.help || uiinput == '?')
 	    UIDisplayItemHelp();
-	else if (uiinput == '\n' || uiinput == _settings.keybindings.prevmenu || uiinput == _settings.keybindings.enter) {
-	    // Free the wrapped text linked list.
-	    while (first_line) {
-		struct scrolltext* l = first_line;
-		first_line = first_line->next;
-		free (l->line);
-		free (l);
-	    }
+	else if (uiinput == '\n' || uiinput == _settings.keybindings.prevmenu || uiinput == _settings.keybindings.enter)
 	    return;
-	} else if (uiinput == _settings.keybindings.urljump)
+	else if (uiinput == _settings.keybindings.urljump)
 	    UISupportURLJump (current_item->data->link);
 	else if (uiinput == _settings.keybindings.next || uiinput == KEY_RIGHT) {
 	    if (current_item->next != NULL) {
 		current_item = current_item->next;
-		linenumber = 0;
-		rewrap = true;
-		maxlines = 0;
-	    } else {
-		// Setting rewrap to 1 to get the free block below executed.
-		rewrap = true;
+		topline = 0;
+	    } else
 		uiinput = ungetch (_settings.keybindings.prevmenu);
-	    }
 	} else if (uiinput == _settings.keybindings.prev || uiinput == KEY_LEFT) {
 	    if (current_item->prev != NULL) {
 		current_item = current_item->prev;
-		linenumber = 0;
-		rewrap = true;
-		maxlines = 0;
-	    } else {
-		// Setting rewrap to 1 to get the free block below executed.
-		rewrap = true;
+		topline = 0;
+	    } else
 		uiinput = ungetch (_settings.keybindings.prevmenu);
-	    }
 	} else if (uiinput == KEY_NPAGE || uiinput == ' ' || uiinput == _settings.keybindings.pdown) {
 	    // Scroll by one page.
 	    for (unsigned i = 0; i < pagesz; ++i)
-		if (linenumber + pagesz < maxlines)
-		    ++linenumber;
+		if (topline + pagesz < desclines)
+		    ++topline;
 	} else if (uiinput == KEY_PPAGE || uiinput == _settings.keybindings.pup) {
 	    for (unsigned i = 0; i < pagesz; ++i)
-		if (linenumber > 0)
-		    --linenumber;
-	} else if (uiinput == KEY_UP && linenumber > 0)
-	    --linenumber;
-	else if (uiinput == KEY_DOWN && linenumber + pagesz < maxlines)
-	    ++linenumber;
+		if (topline > 0)
+		    --topline;
+	} else if (uiinput == KEY_UP && topline > 0)
+	    --topline;
+	else if (uiinput == KEY_DOWN && topline + pagesz < desclines)
+	    ++topline;
 	else if (resize_dirty || uiinput == KEY_RESIZE) {
-	    rewrap = true;
-	    // Reset maxlines, otherwise the program will scroll to far down.
-	    maxlines = 0;
-
-	    endwin();
-	    refresh();
+	    clear();
 	    resize_dirty = false;
 	} else if (uiinput == _settings.keybindings.about)
 	    UIAbout();
-	// Redraw screen on ^L
-	else if (uiinput == 12)
+	else if (uiinput == 12) // Redraw screen on ^L
 	    clear();
-
-	// Free the linked list structure if we need to rewrap the text block.
-	if (rewrap) {
-	    // Free the wrapped text linked list.
-	    while (first_line) {
-		struct scrolltext* l = first_line;
-		first_line = first_line->next;
-		free (l->line);
-		free (l);
-	    }
-	}
     }
 }
 
