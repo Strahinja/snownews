@@ -451,15 +451,8 @@ int DeXML (struct feed* cur_ptr)
     if (cur_ptr->custom_title) {
 	free (cur_ptr->title);
 	cur_ptr->title = strdup (cur_ptr->custom_title);
-    } else {
-	if (!cur_ptr->title)
-	    cur_ptr->title = strdup ("Untitled");
-	char* converted = iconvert (cur_ptr->title);
-	if (converted) {
-	    free (cur_ptr->title);
-	    cur_ptr->title = converted;
-	}
-    }
+    } else if (!cur_ptr->title)
+	cur_ptr->title = strdup ("Untitled");
     if (cur_ptr->original)
 	free (cur_ptr->original);
     cur_ptr->original = strdup (cur_ptr->title);

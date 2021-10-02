@@ -70,14 +70,8 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	if (!feed_title)
 	    feed_title = "* " SNOWNEWS_NAME " " SNOWNEWS_VERSTRING;
 
-	// Convert feed title to current locale
-	char* converted_title = iconvert (feed_title);
-	if (!converted_title)
-	    converted_title = strdup (feed_title);
-
 	// Print feed title
-	UISupportDrawHeader (converted_title);
-	free (converted_title);
+	UISupportDrawHeader (feed_title);
 
 	// Print publishing date if we have one.
 	if (current_item->data->date) {
@@ -96,18 +90,14 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	// Print item title
 	unsigned ydesc = 1, xdesc = 1;
 	if (current_item->data->title) {
-	    converted_title = iconvert (current_item->data->title);
-	    if (!converted_title)
-		converted_title = strdup (current_item->data->title);
-	    unsigned titlelen = xmlStrlen ((xmlChar*) converted_title);
+	    unsigned titlelen = xmlStrlen ((xmlChar*) current_item->data->title);
 	    unsigned xtitle = xdesc;
 	    if (titlelen < COLS - xdesc*2)
 		xtitle = (COLS - titlelen) / 2u;
 	    move (ydesc, xtitle);
 	    attr_set (WA_BOLD, 2, NULL);
-	    add_utf8 (converted_title);
+	    add_utf8 (current_item->data->title);
 	    attr_set (WA_NORMAL, 0, NULL);
-	    free (converted_title);
 	    mvhline (++ydesc, 0, 0, COLS);
 	    ++ydesc;
 	}
@@ -119,11 +109,7 @@ static void UIDisplayItem (const struct newsitem* current_item, const struct fee
 	    // Only generate a new scroll list if we need to rewrap everything.
 	    // Otherwise just typeaheadskip this block.
 	    if (rewrap) {
-		char* nextext = iconvert (current_item->data->description);
-		if (nextext == NULL)
-		    nextext = strdup (current_item->data->description);
-		char* newtextwrapped = WrapText (nextext, COLS - 4);
-		free (nextext);
+		char* newtextwrapped = WrapText (current_item->data->description, COLS - 4);
 		char* freeme = newtextwrapped;	// Set ptr to str start so we can free later.
 
 		// Split newtextwrapped at \n and put into double linked list.
@@ -300,21 +286,13 @@ static int UIDisplayFeed (struct feed* current_feed)
     while (1) {
 	erase();
 
-	// Get a title or something
+	// Print a title or something
 	const char* title = current_feed->description;
 	if (!title)
 	    title = current_feed->title;
 	if (!title)
 	    title = "Untitled";
-
-	// Convert title to current locale
-	char* converted_title = iconvert (title);
-	if (!converted_title)
-	    converted_title = strdup (title);
-
-	// Print title
-	UISupportDrawHeader (converted_title);
-	free (converted_title);
+	UISupportDrawHeader (title);
 
 	// We start the item list below the header
 	unsigned ypos = 2, itemnum = 1;
@@ -377,22 +355,17 @@ static int UIDisplayFeed (struct feed* current_feed)
 	    }
 	    // Check for empty <title>
 	    if (item->data->title) {
-		char* converted;
+		const char* item_title = item->data->title;
+		char tmpstr[256];
 		if (current_feed->smartfeed == 1) {
-		    char tmpstr[512];
 		    snprintf (tmpstr, sizeof (tmpstr), "(%s) %s", item->data->parent->title, item->data->title);
-		    converted = iconvert (tmpstr);
-		} else
-		    converted = iconvert (item->data->title);
-		if (!converted)
-		    converted = strdup (item->data->title);
+		    item_title = tmpstr;
+		}
 
 		int columns = COLS - 6;	// Cut max item length.
-		mvaddn_utf8 (ypos, 1, converted, columns);
-		if (xmlStrlen ((xmlChar*) converted) > columns)
+		mvaddn_utf8 (ypos, 1, item_title, columns);
+		if (xmlStrlen ((xmlChar*) item_title) > columns)
 		    mvaddstr (ypos, columns + 1, "...");
-
-		free (converted);
 	    } else {
 		if (current_feed->smartfeed == 1) {
 		    char tmpstr[256];

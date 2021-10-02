@@ -78,9 +78,7 @@ case "$SYSNAME" in
 esac
 
 sub "s/^#undef \(OS\)/#define \1 \"$SYSNAME\"/"
-if [ "$SYSNAME" = "linux" ]; then
-    sub "s/ -liconv -lintl//"
-elif [ "$SYSNAME" = "sun" ]; then
+if [ "$SYSNAME" = "sun" ]; then
     sub "s/^#undef \(SUN\)/#define \1 1/"
 fi
 

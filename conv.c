@@ -20,7 +20,6 @@
 #include "conv.h"
 #include "uiutil.h"
 #include <ctype.h>
-#include <iconv.h>
 #include <libxml/HTMLparser.h>
 #include <langinfo.h>
 #include <openssl/evp.h>
@@ -93,36 +92,6 @@ const char* s_strcasestr (const char* a, const char* b)
 }
 
 //----------------------------------------------------------------------
-
-char* iconvert (const char* inbuf)
-{
-    iconv_t cd;			// Iconvs conversion descriptor.
-    if (_settings.global_charset)
-	cd = iconv_open (_settings.global_charset, "UTF-8");
-    else {
-	const char* langcset = nl_langinfo (CODESET);
-	if (strcasecmp (langcset, "UTF-8") == 0)
-	    return strdup (inbuf);	// Already in UTF-8
-	char target_charset[64];
-	snprintf (target_charset, sizeof (target_charset), "%s//TRANSLIT", langcset);
-	cd = iconv_open (target_charset, "UTF-8");
-    }
-    if (cd == (iconv_t) - 1)
-	return NULL;
-
-    size_t inbytesleft = strlen (inbuf), outbytesleft = inbytesleft;
-    // We need two pointers so we do not lose the string starting position.
-    char* outbuf = malloc (outbytesleft + 1), *outbuf_first = outbuf;
-
-    if (iconv (cd, (char **) &inbuf, &inbytesleft, &outbuf, &outbytesleft) == (size_t) -1) {
-	free (outbuf_first);
-	iconv_close (cd);
-	return NULL;
-    }
-    *outbuf = 0;
-    iconv_close (cd);
-    return outbuf_first;
-}
 
 char* text_from_html (const char* html)
 {

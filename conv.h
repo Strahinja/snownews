@@ -19,7 +19,6 @@
 #pragma once
 #include "config.h"
 
-char* iconvert (const char* inbuf);
 char* text_from_html (const char* html);
 char* WrapText (const char* text, unsigned width);
 void CleanupString (char* string, bool fullclean);
