@@ -123,7 +123,6 @@ struct categories {
 
 struct settings {
     struct categories* global_categories;
-    const char* global_charset;
     char* browser;		// Browser command. lynx is standard.
     char* proxyname;		// Hostname of proxyserver.
     unsigned short proxyport;	// Port on proxyserver to use.

@@ -110,7 +110,7 @@ static void modifyPIDFile (enum EPIDAction action)
     if (action == pid_file_create) {
 	FILE* file = fopen (pid_path, "w");
 	if (!file) {
-	    printf ("Unable to write PID file %s!", pid_path);
+	    printf (_("Unable to write PID file %s!"), pid_path);
 	    return;
 	}
 	fprintf (file, "%d", getpid());
@@ -133,12 +133,14 @@ static void checkPIDFile (void)
     pid_t pid = atoi (pidbuf);
 
     if (kill (pid, 0) == 0) {
-	printf ("Snownews seems to be already running with process ID %d.\n", pid);
-	printf ("A pid file exists at \"%s\".\n", pid_path);
+	printf (_("Snownews seems to be already running with process ID %d.\n"
+		"A pid file exists at \"%s\".\n"), pid, pid_path);
 	exit (2);
     } else {
-	printf ("A pid file exists at \"%s\",\nbut Snownews doesn't seem to be running. Delete that file and start it again.\n", pid_path);
-	printf ("Continue anyway? (y/n) ");
+	printf (_("A pid file exists at \"%s\",\n"
+		"but snownews doesn't seem to be running.\n"
+		"Delete that file and start it again.\n"
+		"Continue anyway? (y/n) "), pid_path);
 	char ybuf[2] = { };
 	fgets (ybuf, sizeof (ybuf), stdin);
 	if (ybuf[0] != 'y')
@@ -206,13 +208,11 @@ _Noreturn void MainQuit (const char* func, const char* error)
 	    printf ("Exiting via signal %d.\n", last_signal);
 	#endif
     }
-    printf (_("Aborting program execution!\nAn internal error occured. Snownews has quit, no changes has been saved!\n"));
-    printf (_("Please submit a bugreport at https://github.com/msharov/snownews/issues\n"));
+    printf (_("Aborting program execution!\n"
+	    "snownews quit without saving changes due to internal error!\n"
+	    "Please submit a bugreport at https://github.com/msharov/snownews/issues\n"));
     printf ("----\n");
-    // Please don't localize! I don't want to receive Japanese error messages.
-    // Thanks. :)
-    printf ("While executing: %s\n", func);
-    printf ("Error as reported by the system: %s\n\n", error);
+    printf (_("While executing: %s\nError: %s\n\n"), func, error);
     exit (EXIT_FAILURE);
 }
 
@@ -257,18 +257,12 @@ static void InstallSignalHandlers (void)
 
 static void printHelp (void)
 {
-    printf (_("Snownews %s\n\n"), SNOWNEWS_VERSTRING);
-    printf (_("usage: snownews [-huV] [--help|--update|--version]\n\n"));
-    printf (_("\t--charset|-l\tForce using this charset.\n"));
-    printf (_("\t--cursor-on|-c\tForce cursor always visible.\n"));
-    printf (_("\t--help|-h\tPrint this help message.\n"));
-    printf (_("\t--update|-u\tAutomatically update every feed.\n"));
-    printf (_("\t--version|-V\tPrint version number and exit.\n"));
-}
-
-static void badOption (const char* arg)
-{
-    printf (_("Option %s requires an argument.\n"), arg);
+    printf ("Snownews " SNOWNEWS_VERSTRING "\n\n");
+    printf (_("Usage: snownews [-chuV]\n\n"
+	"  -h, --help\t\tPrint this help message.\n"
+	"  -V, --version\t\tPrint version number and exit.\n"
+	"  -c, --cursor-on\tForce cursor always visible.\n"
+	"  -u, --update\t\tAutomatically update every feed.\n"));
 }
 
 //}}}-------------------------------------------------------------------
@@ -308,26 +302,18 @@ int main (int argc, char* argv[])
     bool autoupdate = false;	// Automatically update feeds on app start... or not if set to 0.
     for (int i = 1; i < argc; ++i) {
 	char* arg = argv[i];
-	if (strcmp (arg, "--version") == 0 || strcmp (arg, "-V") == 0) {
-	    printf (_("Snownews version %s\n\n"), SNOWNEWS_VERSION);
-	    return EXIT_SUCCESS;
-	} else if (strcmp (arg, "-u") == 0 || strcmp (arg, "--update") == 0) {
+	if (strcmp (arg, "-u") == 0 || strcmp (arg, "--update") == 0)
 	    autoupdate = true;
-	} else if (strcmp (arg, "-c") == 0 || strcmp (arg, "--cursor-on") == 0) {
+	else if (strcmp (arg, "-c") == 0 || strcmp (arg, "--cursor-on") == 0)
 	    _settings.cursor_always_visible = true;
-	} else if (strcmp (arg, "-l") == 0 || strcmp (arg, "--charset") == 0) {
-	    const char* chset = argv[i++];
-	    if (chset)
-		_settings.global_charset = chset;
-	    else {
-		badOption (arg);
-		return EXIT_FAILURE;
-	    }
+	else if (strcmp (arg, "--version") == 0 || strcmp (arg, "-V") == 0) {
+	    printf ("snownews " SNOWNEWS_VERSTRING "\n");
+	    return EXIT_SUCCESS;
 	} else if (strcmp (arg, "-h") == 0 || strcmp (arg, "--help") == 0) {
 	    printHelp();
 	    return EXIT_SUCCESS;
 	} else {
-	    printf ("Unkown option given: \"%s\".\n", arg);
+	    printf (_("Unknown option \"%s\"\n"), arg);
 	    printHelp();
 	    return EXIT_SUCCESS;
 	}

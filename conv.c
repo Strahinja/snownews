@@ -25,12 +25,6 @@
 #include <openssl/evp.h>
 #include <openssl/md5.h>
 
-//----------------------------------------------------------------------
-
-static int calcAgeInDays (const struct tm* t);
-
-//----------------------------------------------------------------------
-
 // This is a replacement for strsep which is not portable (missing on Solaris).
 //
 // http://www.winehq.com/hypermail/wine-patches/2001/11/0024.html
@@ -303,74 +297,6 @@ time_t pubDateToUnix (const char* pubDate)
 #endif
 }
 
-char* unixToPostDateString (time_t unixDate)
-{
-    int len = 64;
-    char* time_str = malloc (len);
-
-    int strfstr_len = 32;
-    char* time_strfstr = malloc (strfstr_len);
-
-    struct tm t;
-    gmtime_r (&unixDate, &t);
-
-    strftime (time_strfstr, strfstr_len, _(", %H:%M"), &t);
-    strcpy (time_str, _("Posted "));
-    len -= strlen (_("Posted "));
-    if (len <= 0)
-	return NULL;
-
-    int age = calcAgeInDays (&t);
-    if (age == 0) {
-	strncat (time_str, _("today"), len - 1);
-	len -= strlen (_("today"));
-	if (len <= 0)
-	    return NULL;
-	if (!(!t.tm_hour && !t.tm_min && !t.tm_sec))
-	    strncat (time_str, time_strfstr, len - 1);
-    } else if (age == 1) {
-	strncat (time_str, _("yesterday"), len - 1);
-	len -= strlen (_("yesterday"));
-	if (len <= 0)
-	    return NULL;
-	if (!(!t.tm_hour && !t.tm_min && !t.tm_sec))
-	    strncat (time_str, time_strfstr, len - 1);
-    } else if ((age > 1) && (age < 7)) {
-	char tmpstr[32];
-	snprintf (tmpstr, sizeof (tmpstr), _("%d days ago"), age);
-	strncat (time_str, tmpstr, len - 1);
-	len -= strlen (tmpstr);
-	if (len <= 0)
-	    return NULL;
-	if (!(!t.tm_hour && !t.tm_min && !t.tm_sec))
-	    strncat (time_str, time_strfstr, len - 1);
-    } else if (age == 7) {
-	strncat (time_str, _("a week ago"), len - 1);
-	len -= strlen (_("a week ago"));
-	if (len <= 0)
-	    return NULL;
-	if (!(!t.tm_hour && !t.tm_min && !t.tm_sec))
-	    strncat (time_str, time_strfstr, len - 1);
-    } else if (age < 0) {
-	strcpy (time_str, _("Not yet posted: "));
-	len = 64 - strlen (_("Not yet posted: "));
-	if (!t.tm_hour && !t.tm_min && !t.tm_sec)
-	    strftime (time_strfstr, strfstr_len, _("%x"), &t);
-	else
-	    strftime (time_strfstr, strfstr_len, _("%x, %H:%M"), &t);
-	strncat (time_str, time_strfstr, len - 1);
-    } else {
-	if (!t.tm_hour && !t.tm_min && !t.tm_sec)
-	    strftime (time_strfstr, strfstr_len, _("%x"), &t);
-	else
-	    strftime (time_strfstr, strfstr_len, _("%x, %H:%M"), &t);
-	strncat (time_str, time_strfstr, len - 1);
-    }
-    free (time_strfstr);
-
-    return time_str;
-}
-
 static int calcAgeInDays (const struct tm* t)
 {
     time_t unix_t = time (NULL);
@@ -379,4 +305,31 @@ static int calcAgeInDays (const struct tm* t)
 
     // (((current year - passed year) * 365) + current year day) - passed year day
     return (((current_t.tm_year - t->tm_year) * 365) + current_t.tm_yday) - t->tm_yday;
+}
+
+char* unixToPostDateString (time_t unixDate)
+{
+    struct tm t;
+    gmtime_r (&unixDate, &t);
+
+    int age = calcAgeInDays (&t);
+    char daystr[32];
+    if (age == 0)
+	snprintf (daystr, sizeof(daystr), _("today"));
+    else if (age == 1)
+	snprintf (daystr, sizeof(daystr), _("yesterday"));
+    else if (age < 7)
+	snprintf (daystr, sizeof(daystr), _("%d days ago"), age);
+    else if (age == 7)
+	snprintf (daystr, sizeof(daystr), _("a week ago"));
+    else
+	strftime (daystr, sizeof(daystr), _("on %x"), &t);
+
+    char timestr[32] = "";
+    if (!(!t.tm_hour && !t.tm_min && !t.tm_sec))
+	strftime (timestr, sizeof(timestr), ", %R", &t);
+
+    char rstr[96];
+    snprintf (rstr, sizeof(rstr), "%s%s%s", _("Posted "), daystr, timestr);
+    return strdup (rstr);
 }

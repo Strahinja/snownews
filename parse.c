@@ -198,7 +198,7 @@ static void parse_rdf10_item (struct feed* feed, xmlDocPtr doc, xmlNodePtr node)
 	item->data->hash = genItemHash (hashitems, 3);
     }
     if (!item->data->title)
-	item->data->title = strdup ("Untitled");
+	item->data->title = strdup (_("No title"));
     if (guid) {
 	xmlFree (guid);
 	guid = NULL;
@@ -310,7 +310,7 @@ static void parse_atom_entry (struct feed* feed, xmlDocPtr doc, xmlNodePtr node)
 	item->data->hash = genItemHash (hashitems, 3);
     }
     if (!item->data->title)
-	item->data->title = strdup ("Untitled");
+	item->data->title = strdup (_("No title"));
     if (guid) {
 	free (guid);
 	guid = NULL;
@@ -452,7 +452,7 @@ int DeXML (struct feed* cur_ptr)
 	free (cur_ptr->title);
 	cur_ptr->title = strdup (cur_ptr->custom_title);
     } else if (!cur_ptr->title)
-	cur_ptr->title = strdup ("Untitled");
+	cur_ptr->title = strdup (_("No title"));
     if (cur_ptr->original)
 	free (cur_ptr->original);
     cur_ptr->original = strdup (cur_ptr->title);

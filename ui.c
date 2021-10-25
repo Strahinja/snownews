@@ -221,7 +221,7 @@ static int UIDisplayFeed (struct feed* current_feed)
 	if (!title)
 	    title = current_feed->title;
 	if (!title)
-	    title = "Untitled";
+	    title = _("No title");
 	UISupportDrawHeader (title);
 
 	// We start the item list below the header
@@ -703,9 +703,9 @@ void UIMainInterface (void)
 
 	    int columns;
 	    if (cur_ptr->feedcategories != NULL)
-		columns = COLS - 26 - strlen (_("new"));
+		columns = COLS - 26 - strlen ("new");
 	    else
-		columns = COLS - 9 - strlen (_("new"));
+		columns = COLS - 9 - strlen ("new");
 
 	    mvaddn_utf8 (ypos, 1, cur_ptr->title, columns);
 	    if (xmlStrlen ((xmlChar*) cur_ptr->title) > columns)
@@ -719,11 +719,11 @@ void UIMainInterface (void)
 		const char* localized_msg = ngettext ("%3u new", "%3u new", newcount);
 		char msgbuf[16];
 		snprintf (msgbuf, sizeof (msgbuf), localized_msg, newcount);
-		mvadd_utf8 (ypos, COLS - 1 - strlen (localized_msg), msgbuf);
+		mvadd_utf8 (ypos, COLS - 1 - utf8_length (localized_msg), msgbuf);
 	    }
 
 	    if (cur_ptr->feedcategories != NULL)
-		mvaddn_utf8 (ypos, COLS - 21 - strlen (_("new")), cur_ptr->feedcategories->name, 15);
+		mvaddn_utf8 (ypos, COLS - 21 - strlen ("new"), cur_ptr->feedcategories->name, 15);
 
 	    ++ypos;
 

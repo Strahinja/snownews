@@ -1,6 +1,6 @@
 ################ Source files ##########################################
 
-po/srcs	:= $(filter-out po/messages.po,$(wildcard po/*.po))
+po/srcs	:= $(filter-out po/snownews.pot,$(wildcard po/*.po))
 po/objs	:= $(addprefix $O,$(po/srcs:.po=.mo))
 locales	:= $(notdir $(po/srcs:.po=))
 

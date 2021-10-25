@@ -381,7 +381,7 @@ void WriteCache (void)
 
     unsigned count = 1;
     int oldnumobjects = 0;
-    unsigned titlestrlen = strlen (_("Saving settings ["));
+    unsigned titlestrlen = utf8_length (_("Saving settings ["));
 
     for (const struct feed* cur_ptr = _feed_list; cur_ptr; cur_ptr = cur_ptr->next) {
 	// Progress bar

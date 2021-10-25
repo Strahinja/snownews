@@ -1,121 +1,132 @@
 # Norwegian translations for snownews package
 # Copyright (C) 2021 Johannes Hove-Henriksen <johs@t9.no>
 # This file is distributed under the same license as the PACKAGE package.
-
-
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-22 12:10+0200\n"
+"POT-Creation-Date: 2021-10-25 12:47-0400\n"
 "PO-Revision-Date: 2021-10-24 00:26+0200\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: no\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
 "X-Poedit-Bookmarks: -1,78,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
-#: about.c:254
+#: about.c:84
+#, c-format
+msgid "Move: cursor or %c/%c; shoot: space; quit: %c"
+msgstr ""
+
+#: about.c:94
+msgid "Santa Hunta!"
+msgstr ""
+
+#: about.c:97
+#, c-format
+msgid "Score: %d"
+msgstr ""
+
+#: about.c:101
+#, c-format
+msgid "Level: %d"
+msgstr ""
+
+#: about.c:243
+msgid "Final score:"
+msgstr ""
+
+#: about.c:346
 msgid "Need at least 80 COLS terminal, sorry!"
 msgstr "Trenger minst 80 COLS terminal, beklager!"
 
-#: about.c:306 about.c:328
+#: about.c:362
 #, c-format
 msgid "Version %s"
 msgstr "Version %s"
 
-#: about.c:307
-msgid "Merry Christmas from the Snownews developers."
-msgstr "God jul fra Snownews utviklerne."
-
-#: about.c:308 about.c:331
-msgid "Main code"
-msgstr "Hovedkoden"
-
-#: about.c:310 about.c:333
-msgid "Additional code"
-msgstr "Tilleggskode"
-
-#: about.c:312 about.c:335
-msgid "Translation team"
-msgstr "Oversettelses teamet"
-
-#: about.c:328
-msgid "Version"
-msgstr "Version"
-
-#: about.c:330
+#: about.c:365
 msgid "Brought to you by:"
 msgstr "Brakt til deg av:"
 
-#: conversions.c:129 interface.c:164 interface.c:167
-msgid "No description available."
-msgstr "Ingen beskrivelse tilgjengelig."
+#: about.c:366
+msgid "Main code"
+msgstr "Hovedkoden"
 
-#: conversions.c:443
+#: about.c:368
+msgid "Additional code"
+msgstr "Tilleggskode"
+
+#: about.c:370
+msgid "Translation team"
+msgstr "Oversettelses teamet"
+
+#: conv.c:318
 #, c-format
-msgid "ERROR: zlib_uncompress: %d %s\n"
-msgstr "ERROR: zlib_uncompress: %d %s\n"
+msgid "today"
+msgstr ""
 
-#: conversions.c:459
-msgid "ERROR: No output during decompression"
-msgstr "ERROR: Ingen output under dekomprimering"
-
-#: conversions.c:492
-msgid "ERROR: Invalid magic bytes for GZIP data"
-msgstr "ERROR: Ugyldige magiske byte for GZIP data"
-
-#: conversions.c:497
-msgid "ERROR: Compression method is not deflate"
-msgstr "ERROR: Komprimeringsmetoden tømmes ikke"
-
-#: conversions.c:502
+#: conv.c:320
 #, c-format
-msgid "ERROR: Unsupported flags %d\n"
-msgstr "ERROR: Ustøttet Flagg %d\n"
+msgid "yesterday"
+msgstr ""
 
-#: cookies.c:184
+#: conv.c:322
 #, c-format
-msgid "Cookie for %s has expired!"
-msgstr "Cookie for %s er utløpt!"
+msgid "%d days ago"
+msgstr ""
 
-#: dialog.c:84 dialog.c:86
+#: conv.c:324
+#, c-format
+msgid "a week ago"
+msgstr ""
+
+#: conv.c:326
+#, c-format
+msgid "on %x"
+msgstr ""
+
+#: conv.c:333
+msgid "Posted "
+msgstr ""
+
+#: dialog.c:57 dialog.c:59
 #, c-format
 msgid "Current setting: %s"
 msgstr "Nåværende innstillinger: %s"
 
-#: dialog.c:99 dialog.c:653 interface.c:1213 interface.c:1342
+#: dialog.c:71 dialog.c:511
 msgid "Aborted."
 msgstr "Abortert."
 
-#: dialog.c:106
+#: dialog.c:78
 #, c-format
 msgid "Only %s format strings allowed for default browser!"
 msgstr "Bare %s format strenger er tillatt for standard nettleser!"
 
-#: dialog.c:111 ui-support.c:244
+#: dialog.c:83 uiutil.c:156
 msgid ""
 "Unsafe browser string (contains quotes)! See snownews.kcore.de/faq#toc2.4"
 msgstr ""
 "Usikker nettleser streng (inneholder anførselstegn)! Se snownews.kcore.de/"
 "faq#toc2.4"
 
-#: dialog.c:131
+#: dialog.c:98
 msgid "Enter new name. Blank line to abort. '-' to reset."
 msgstr "Skriv inn nytt navn. Tom linje for å avbryte. '-' å tilbakestille."
 
-#: dialog.c:144
+#: dialog.c:110
 msgid "The new title must not contain a \"|\" character!"
 msgstr "Den nye tittelen må ikke inneholde en \"|\" karakter!"
 
-#: dialog.c:192
+#: dialog.c:150
 msgid "Enter URL of the feed you want to add. Blank line to abort."
 msgstr "Skriv inn URL til feeden du vil legge til. Tom linje for å avbryte."
 
-#: dialog.c:272
+#: dialog.c:198
 msgid ""
 "The feed could not be parsed. Do you need a filter script for this feed? (y/"
 "n)"
@@ -123,220 +134,207 @@ msgstr ""
 "Feeden kunne ikke analyseres. Trenger du et filter script for denne feeden? "
 "(y/n)"
 
-#: dialog.c:324
-#, c-format
-msgid "Last updated: %s"
-msgstr "Sist oppdatert: %s"
+#: dialog.c:238
+msgid "Last updated: "
+msgstr ""
 
-#: dialog.c:326
+#: dialog.c:241
 msgid "No modification date."
 msgstr "Ingen endringsdato."
 
-#: dialog.c:329
-#, c-format
-msgid "In disk cache: %lld bytes"
-msgstr "I disk cache: %lld byte"
-
-#: dialog.c:331
+#: dialog.c:253
 msgid "Not in disk cache."
 msgstr "Ikke i disk cache."
 
-#: dialog.c:334 dialog.c:336 dialog.c:339
+#: dialog.c:256
+#, c-format
+msgid "In disk cache: %jd bytes"
+msgstr ""
+
+#: dialog.c:261
 msgid "Categories:"
 msgstr "Kategorier:"
 
-#: dialog.c:336
+#: dialog.c:264
 msgid "none"
 msgstr "ingen"
 
-#: dialog.c:345
+#: dialog.c:274
+msgid "Download failed: "
+msgstr ""
+
+#: dialog.c:277
 msgid "Feed uses authentication."
 msgstr "Feed bruker autentisering."
 
-#: dialog.c:347
+#: dialog.c:279
 msgid "Feed does not use authentication."
 msgstr "Feed bruker ikke autentisering."
 
-#: dialog.c:353 dialog.c:354
-#, c-format
-msgid "Last webserver status: %d"
-msgstr "Siste webserverstatus: %d"
-
-#: dialog.c:381 dialog.c:382
+#: dialog.c:285
 msgid "Filtered through:"
 msgstr "Filtrert gjennom:"
 
-#: dialog.c:385
+#: dialog.c:291
 msgid "Displaying feed information."
 msgstr "Viser feedinformasjon."
 
-#: dialog.c:400
+#: dialog.c:302
 msgid "Are you sure you want to delete this feed?"
 msgstr "Er du sikker på at du vil slette denne feeden?"
 
-#: dialog.c:403
+#: dialog.c:305
 msgid "Type 'y' to delete, any other key to abort."
 msgstr ""
 "Skriv \"y\" for å slette, en hvilken som helst annen tast for å avbryte."
 
-#: dialog.c:440 dialog.c:496
+#: dialog.c:334 dialog.c:382
 msgid "tab:"
 msgstr "fane:"
 
-#: dialog.c:444
+#: dialog.c:338
 msgid "Add RSS feed..."
 msgstr "Legg til RSS-feed..."
 
-#: dialog.c:445
+#: dialog.c:339
 msgid "Delete highlighted RSS feed..."
 msgstr "Slett highlighted RSS -feed ..."
 
-#: dialog.c:446
+#: dialog.c:340
 msgid "Rename feed..."
 msgstr "Gi nytt navn til feed ..."
 
-#: dialog.c:447
+#: dialog.c:341
 msgid "Reload all feeds"
 msgstr "Last inn alle feeder på nytt"
 
-#: dialog.c:448 dialog.c:502
+#: dialog.c:342 dialog.c:388
 msgid "Reload this feed"
 msgstr "Last inn denne feeden på nytt"
 
-#: dialog.c:449 dialog.c:505
+#: dialog.c:343 dialog.c:392
 msgid "Mark all read"
 msgstr "Merk alt som lest"
 
-#: dialog.c:450
+#: dialog.c:344
 msgid "Change default browser..."
 msgstr "Endre standard nettleser..."
 
-#: dialog.c:451
+#: dialog.c:345
 msgid "Move item up, down"
 msgstr "Flytt elementet opp, ned"
 
-#: dialog.c:452
+#: dialog.c:346
 msgid "Sort feed list alphabetically"
 msgstr "Sorter feedlisten alfabetisk"
 
-#: dialog.c:453
+#: dialog.c:347
 msgid "Categorize feed..."
 msgstr "Kategoriser feed ..."
 
-#: dialog.c:454
+#: dialog.c:348
 msgid "Apply filter..."
 msgstr "Bruk filter ..."
 
-#: dialog.c:455
+#: dialog.c:349
 msgid "Only current category"
 msgstr "Bare nåværende kategori"
 
-#: dialog.c:456
+#: dialog.c:350
 msgid "Remove filter"
 msgstr "Fjern filteret"
 
-#: dialog.c:457
-msgid "Toggle AND/OR filtering"
-msgstr "Slå på OG/ELLER-filtrering"
-
-#: dialog.c:458
+#: dialog.c:351
 msgid "Show new headlines"
 msgstr "Vis nye overskrifter"
 
-#: dialog.c:459
+#: dialog.c:352
 msgid "Add conversion filter..."
 msgstr "Legg til konverteringsfilter..."
 
-#: dialog.c:460 dialog.c:508
+#: dialog.c:353 dialog.c:395
 #, fuzzy
 msgid "Type Ahead Find"
 msgstr "Type Ahead Find"
 
-#: dialog.c:461
+#: dialog.c:354
 msgid "About"
 msgstr "Om"
 
-#: dialog.c:462
+#: dialog.c:355
 msgid "Quit program"
 msgstr "Avslutt programmet"
 
-#: dialog.c:465 dialog.c:512 dialog.c:544
+#: dialog.c:358 dialog.c:399 dialog.c:423
 msgid "Press the any(tm) key to exit help screen."
 msgstr "Trykk på hvilken som helst (tm) taste for å gå ut av hjelpeskjermen."
 
-#: dialog.c:487
-#, c-format
-msgid "%c, up:"
-msgstr "%c, opp:"
+#: dialog.c:371
+msgid ", up:"
+msgstr ""
 
-#: dialog.c:488
-#, c-format
-msgid "%c, down:"
-msgstr "%c, ned:"
+#: dialog.c:373
+msgid ", down:"
+msgstr ""
 
-#: dialog.c:489
+#: dialog.c:374
 msgid "enter:"
 msgstr "enter:"
 
-#: dialog.c:499 dialog.c:538
+#: dialog.c:385 dialog.c:417
 msgid "Previous item"
 msgstr "Forrige element"
 
-#: dialog.c:500 dialog.c:539
+#: dialog.c:386 dialog.c:418
 msgid "Next item"
 msgstr "Neste element"
 
-#: dialog.c:501
+#: dialog.c:387
 msgid "View item"
 msgstr "Vis element"
 
-#: dialog.c:503
+#: dialog.c:389
+msgid "Force reload this feed"
+msgstr ""
+
+#: dialog.c:390
 msgid "Open homepage"
 msgstr "Åpne hjemmesiden"
 
-#: dialog.c:504 dialog.c:540
+#: dialog.c:391 dialog.c:419
 msgid "Open link"
 msgstr "Åpen lenke"
 
-#: dialog.c:506
-msgid "Mark item unread"
-msgstr "Merk elementet som ulest"
+#: dialog.c:393
+msgid "Toggle item read status"
+msgstr ""
 
-#: dialog.c:507
+#: dialog.c:394
 msgid "Show feed info..."
 msgstr "Vis feedinformasjon ..."
 
-#: dialog.c:509
+#: dialog.c:396
 msgid "Return to main menu"
 msgstr "Gå tilbake til hovedmenyen"
 
-#: dialog.c:531
-msgid "cursor:"
-msgstr "markør:"
+#: dialog.c:415
+msgid ", enter:"
+msgstr ""
 
-#: dialog.c:535
-#, c-format
-msgid "%c, enter:"
-msgstr "%c, enter:"
-
-#: dialog.c:537
-msgid "Scroll text"
-msgstr "Rull tekst"
-
-#: dialog.c:541
+#: dialog.c:420
 msgid "Return to overview"
 msgstr "Gå tilbake til oversikten"
 
-#: dialog.c:581 dialog.c:582
+#: dialog.c:450
 #, c-format
 msgid "Category configuration for %s"
 msgstr "Kategorikonfigurasjon for %s"
 
-#: dialog.c:589
+#: dialog.c:457
 msgid "No category defined. Select one or add a new category:"
 msgstr "Ingen kategori definert. Velg en eller legg til en ny kategori:"
 
-#: dialog.c:598 dialog.c:638
+#: dialog.c:464 dialog.c:498
 #, c-format
 msgid ""
 "Select category number to add, press 'A' to add a new category or '%c' to "
@@ -345,11 +343,11 @@ msgstr ""
 "Velg kategorinummer du vil legge til, trykk 'A' for å legge til en ny "
 "kategori eller '%c' for å avslutte."
 
-#: dialog.c:603
+#: dialog.c:468
 msgid "Categories defined for this feed:"
 msgstr "Kategorier definert for denne feeden:"
 
-#: dialog.c:612
+#: dialog.c:475
 #, c-format
 msgid ""
 "Select a category number to delete, press 'A' to add a new one or '%c' to "
@@ -358,51 +356,141 @@ msgstr ""
 "Velg et kategorinummer du vil slette, trykk 'A' for å legge til et nytt "
 "eller '%c' for å avslutte."
 
-#: dialog.c:629
+#: dialog.c:491
 msgid "Select a new category or add a new one:"
 msgstr "Velg en ny kategori eller legg til en ny:"
 
-#: dialog.c:650
+#: dialog.c:508
 msgid "Enter new category name."
 msgstr "Skriv inn nytt kategorinavn."
 
-#: dialog.c:658
+#: dialog.c:515
 msgid "Category already defined for this feed!"
 msgstr "Kategori som allerede er definert for denne feeden!"
 
-#: dialog.c:723
+#: dialog.c:555
 msgid "Select filter to apply"
 msgstr "Velg filter for å bruke"
 
-#: dialog.c:736
+#: dialog.c:566
 msgid "Select a category number or any other key to reset filters."
 msgstr ""
 "Velg et kategorinummer eller en annen nøkkel for å tilbakestille filtre."
 
-#: dialog.c:774
+#: dialog.c:594
 #, fuzzy
 msgid "Enter script to pipe feed through."
 msgstr "Skriv inn skript for gjennomføring av pipe."
 
-#: filters.c:52
+#: feedio.c:73
+msgid "Invalid XML! Cannot parse this feed!"
+msgstr "Ugyldig XML! Kan ikke analysere denne feeden!"
+
+#: feedio.c:110
+#, c-format
+msgid "Cache for %s is toast. Reloading from server..."
+msgstr "Cache for %s er toast. Laster inn på nytt fra serveren ..."
+
+#: feedio.c:147
+#, c-format
+msgid "Could not load %s!"
+msgstr "Kunne ikke laste inn %s!"
+
+#: feedio.c:162 feedio.c:163
+msgid "Loading cache ["
+msgstr "Laster inn cache ["
+
+#: feedio.c:373 feedio.c:384
+msgid "Saving settings ["
+msgstr "Lagrer innstillinger ["
+
+#: filters.c:36
 #, c-format
 msgid "Loading \"%s\""
 msgstr "Laster \"%s\""
 
-#: filters.c:109
+#: main.c:113
 #, c-format
-msgid "Could not write temp file for filter: %s"
-msgstr "Kunne ikke skrive midlertidig fil for filter: %s"
+msgid "Unable to write PID file %s!"
+msgstr ""
 
-#: interface.c:161 interface.c:577 interface.c:580
+#: main.c:136
+#, c-format
+msgid ""
+"Snownews seems to be already running with process ID %d.\n"
+"A pid file exists at \"%s\".\n"
+msgstr ""
+
+#: main.c:140
+#, c-format
+msgid ""
+"A pid file exists at \"%s\",\n"
+"but snownews doesn't seem to be running.\n"
+"Delete that file and start it again.\n"
+"Continue anyway? (y/n) "
+msgstr ""
+
+#: main.c:211
+#, c-format
+msgid ""
+"Aborting program execution!\n"
+"snownews quit without saving changes due to internal error!\n"
+"Please submit a bugreport at https://github.com/msharov/snownews/issues\n"
+msgstr ""
+
+#: main.c:215
+#, c-format
+msgid ""
+"While executing: %s\n"
+"Error: %s\n"
+"\n"
+msgstr ""
+
+#: main.c:261
+#, c-format
+msgid ""
+"Usage: snownews [-chuV]\n"
+"\n"
+"  -h, --help\t\tPrint this help message.\n"
+"  -V, --version\t\tPrint version number and exit.\n"
+"  -c, --cursor-on\tForce cursor always visible.\n"
+"  -u, --update\t\tAutomatically update every feed.\n"
+msgstr ""
+
+#: main.c:316
+#, c-format
+msgid "Unknown option \"%s\"\n"
+msgstr ""
+
+#: netio.c:121
+msgid "already up to date"
+msgstr ""
+
+#: parse.c:201 parse.c:313 parse.c:455 ui.c:224 ui.c:302 ui.c:305
 msgid "No title"
 msgstr "Ingen tittel"
 
-#: interface.c:241 interface.c:611
-msgid "-> No link"
-msgstr "-> Ingen link"
+#: setup.c:37
+msgid "configuration dir path is too long"
+msgstr ""
 
-#: interface.c:256
+#: setup.c:51
+msgid "cache dir path is too long"
+msgstr ""
+
+#: setup.c:98
+msgid "Save settings (browser)"
+msgstr "Lagre innstillinger (nettleser)"
+
+#: setup.c:456
+msgid "Reading configuration settings..."
+msgstr "Leser konfigurasjons innstillinger ..."
+
+#: ui.c:96
+msgid "No description available."
+msgstr "Ingen beskrivelse tilgjengelig."
+
+#: ui.c:123
 #, c-format
 msgid ""
 "Press '%c' or Enter to return to previous screen. Hit '%c' for help screen."
@@ -410,379 +498,373 @@ msgstr ""
 "Trykk '%c' eller Enter for å gå tilbake til forrige skjerm. Trykk '%c' for "
 "hjelpeskjerm."
 
-#: interface.c:627
+#: ui.c:332
 #, c-format
 msgid "Press '%c' to return to main menu, '%c' to show help."
-msgstr ""
-"Trykk på '%c' for å gå tilbake til hovedmenyen, '%c' for å vise hjelp."
+msgstr "Trykk på '%c' for å gå tilbake til hovedmenyen, '%c' for å vise hjelp."
 
-#: interface.c:734 interface.c:1184 interface.c:1194 interface.c:1204
-#: interface.c:1243 interface.c:1468 interface.c:1476 interface.c:1484
-#: interface.c:1493
+#: ui.c:412 ui.c:776 ui.c:787 ui.c:794 ui.c:824 ui.c:1013 ui.c:1021 ui.c:1028
+#: ui.c:1036
 msgid "Please deactivate the category filter before using this function."
 msgstr "Vennligst deaktiver kategorifilteret før du bruker denne funksjonen."
 
-#: interface.c:1115 interface.c:1117 interface.c:1134
-msgid "new"
-msgstr "ny"
-
-#: interface.c:1128
+#: ui.c:719
 #, c-format
-msgid "%3d new"
-msgstr "%3d ny"
+msgid "%3u new"
+msgid_plural "%3u new"
+msgstr[0] ""
+msgstr[1] ""
 
-#: interface.c:1150
+#: ui.c:744
 #, c-format
 msgid "Press '%c' for help window."
 msgstr "Trykk '%c' for hjelpevindu."
 
-#: interface.c:1210
+#: ui.c:746
+#, c-format
+msgid "Press '%c' for help window. (Press '%c' to play Santa Hunta!)"
+msgstr ""
+
+#: ui.c:798
 msgid "Successfully added new item..."
 msgstr "Lagt til nytt element ..."
 
-#: interface.c:1217
+#: ui.c:802
 msgid "Invalid URL! Please add http:// if you forgot this."
 msgstr "Ugyldig URL! Legg til http: // hvis du har glemt dette."
 
-#: interface.c:1221
+#: ui.c:805
 msgid "There was a problem adding the feed!"
 msgstr "Det oppsto et problem med å legge til feeden!"
 
-#: interface.c:1420 interface.c:1437
+#: ui.c:960 ui.c:977
 msgid "You cannot move items while a category filter is defined!"
 msgstr "Du kan ikke flytte elementer mens et kategorifilter er definert!"
 
-#: io-internal.c:53
-#, c-format
-msgid "Bad request"
-msgstr "Dårlig forespørsel"
-
-#: io-internal.c:56
-#, c-format
-msgid "Payment required"
-msgstr "Betaling kreves"
-
-#: io-internal.c:59
-#, c-format
-msgid "Access denied"
-msgstr "Ingen tilgang"
-
-#: io-internal.c:62
-#, c-format
-msgid "Internal server error"
-msgstr "Intern server feil"
-
-#: io-internal.c:65
-#, c-format
-msgid "Not implemented"
-msgstr "Ikke implementert"
-
-#: io-internal.c:69
-#, c-format
-msgid "Service unavailable"
-msgstr "Tjenesten er utilgjengelig"
-
-#: io-internal.c:88
-#, c-format
-msgid "%s: Invalid URL!"
-msgstr "%s: Ugyldig URL!"
-
-#: io-internal.c:91
-#, c-format
-msgid "%s: Couldn't create network socket!"
-msgstr "%s: Kunne ikke opprette nettverkskontakt!"
-
-#: io-internal.c:94
-#, c-format
-msgid "%s: Can't resolve host!"
-msgstr "%s: Kan ikke løse verten!"
-
-#: io-internal.c:97
-#, c-format
-msgid "%s: Connection refused!"
-msgstr "%s: Tilkobling nektet!"
-
-#: io-internal.c:100
-#, c-format
-msgid "%s: Couldn't connect to server: %s"
-msgstr "%s: Kunne ikke koble til serveren: %s"
-
-#: io-internal.c:105
-#, c-format
-msgid "%s: Connection timed out."
-msgstr "%s: Tilkoblingen ble tidsavbrutt."
-
-#: io-internal.c:110
-#, c-format
-msgid "%s: Too many HTTP redirects encountered! Giving up."
-msgstr "%s: Det oppstod for mange HTTP viderekoblinger! Gir opp."
-
-#: io-internal.c:113
-#, c-format
-msgid "%s: Server sent an invalid redirect!"
-msgstr "%s: Server sendte en ugyldig viderekobling!"
-
-#: io-internal.c:117
-#, c-format
-msgid "%s: This feed no longer exists. Please unsubscribe!"
-msgstr "%s: Denne feed finnes ikke lenger. Vennligst unsubscribe!"
-
-#: io-internal.c:121
-#, c-format
-msgid "%s: Could not download feed: %s"
-msgstr "%s: Kunne ikke laste ned feed: %s"
-
-#: io-internal.c:124
-#, c-format
-msgid "%s: Error in server reply."
-msgstr "%s: Feil i serversvar."
-
-#: io-internal.c:127
-#, c-format
-msgid "%s: Authentication failed!"
-msgstr "%s: Autentisering mislyktes!"
-
-#: io-internal.c:130
-#, c-format
-msgid "%s: URL does not contain authentication information!"
-msgstr "%s: URL inneholder ikke autentiseringsinformasjon!"
-
-#: io-internal.c:133
-#, c-format
-msgid "%s: Could not generate authentication information!"
-msgstr "%s: Kunne ikke generere autentiseringsinformasjon!"
-
-#: io-internal.c:136
-#, c-format
-msgid "%s: Unsupported authentication method requested by server!"
-msgstr "%s: Ustøttet autentiseringsmetode forespurt av server!"
-
-#: io-internal.c:139
-#, c-format
-msgid "%s: Error decompressing server reply!"
-msgstr "%s: Feil ved dekomprimering av serversvar!"
-
-#: io-internal.c:207
-msgid "Invalid XML! Cannot parse this feed!"
-msgstr "Ugyldig XML! Kan ikke analysere denne feeden!"
-
-#: io-internal.c:251
-#, c-format
-msgid "Cache for %s is toast. Reloading from server..."
-msgstr "Cache for %s er toast. Laster inn på nytt fra serveren ..."
-
-#: io-internal.c:286
-#, c-format
-msgid "Could not load %s!"
-msgstr "Kunne ikke laste inn %s!"
-
-#: io-internal.c:305 io-internal.c:306
-msgid "Loading cache ["
-msgstr "Laster inn cache ["
-
-#: io-internal.c:351 io-internal.c:352
-msgid "Saving settings ["
-msgstr "Lagrer innstillinger ["
-
-#: io-internal.c:357
-msgid "Save settings (browser)"
-msgstr "Lagre innstillinger (nettleser)"
-
-#: io-internal.c:374
-msgid "Save settings (urls)"
-msgstr "Lagre innstillinger (urls)"
-
-#: io-internal.c:430
-msgid "Writing cache file"
-msgstr "Skriver cache file"
-
-#: main.c:59
-#, c-format
-msgid ""
-"Bye.\n"
-"\n"
-msgstr "Ha det\n"
-
-#: main.c:68
-#, c-format
-msgid ""
-"Aborting program execution!\n"
-"An internal error occured. Snownews has quit, no changes has been saved!\n"
-msgstr ""
-"Avbryter kjøring av programmet!\n"
-"Det oppstod en intern feil. Snownews har sluttet, ingen endringer er "
-"lagret!\n"
-
-#: main.c:69
-#, c-format
-msgid ""
-"This shouldn't happen, please submit a bugreport to kiza@kcore.de, tell me "
-"what you where doing and include the output below in your mail.\n"
-msgstr ""
-"Dette burde ikke skje, vennligst send inn en feilrapport til kiza@kcore.de, "
-"fortell meg hva du gjør og ta med output nedenfor i e-posten din.\n"
-
-#: main.c:72
-#, fuzzy, c-format
-msgid "While executing: %s\n"
-msgstr "Under kjøring: %s\n"
-
-#: main.c:73
-#, c-format
-msgid ""
-"Error as reported by the system: %s\n"
-"\n"
-msgstr "Feil som rapportert av systemet: %s\n"
-
-#: main.c:124 main.c:135
-#, c-format
-msgid ""
-"Snownews version %s\n"
-"\n"
-msgstr "Snownews versjon %s\n"
-
-#: main.c:130
-#, c-format
-msgid "The option \"--disable-versioncheck\" has been obsoleted.\n"
-msgstr "Valget \"--disable-versioncheck\" er utdatert.\n"
-
-#: main.c:131
-#, c-format
-msgid "Please see the manpage for details.\n"
-msgstr "Se mannssiden for detaljer.\n"
-
-#: main.c:132
-#, c-format
-msgid "(To deactivate check, put -1 into ~/.snownews/updatecheck)\n"
-msgstr "(For å deaktivere check, legg inn -1 i ~/.snownews/updatecheck)\n"
-
-#: main.c:136
-#, c-format
-msgid ""
-"usage: snownews [-huV] [--help|--update|--version]\n"
-"\n"
-msgstr "bruk: snownews [-huV] [--help|--update|--versjon]\n"
-
-#: main.c:137
-#, c-format
-msgid "\t--update|-u\tAutomatically update every feed.\n"
-msgstr "--update|-u Oppdater hver feed automatisk.\n"
-
-#: main.c:138
-#, c-format
-msgid "\t--help|-h\tPrint this help message.\n"
-msgstr "--help | -h Skriv ut denne hjelpemeldingen.\n"
-
-#: main.c:139
-#, c-format
-msgid "\t--version|-V\tPrint version number and exit.\n"
-msgstr "--versjon | -V Skriv ut versjonsnummer og avslutt.\n"
-
-#: main.c:140
-#, c-format
-msgid "\t--disable-versioncheck (obsoleted)\n"
-msgstr "\t--disable-versioncheck (utdatert)\n"
-
-#: netio.c:149 netio.c:151 netio.c:311
-#, c-format
-msgid "Downloading \"%s\""
-msgstr "Laster ned \"%s\""
-
-#: netio.c:309
-#, c-format
-msgid "Downloading \"http://%s%s\""
-msgstr "Laster ned \"http: //%s%s\""
-
-#: netio.c:503 netio.c:504
-#, fuzzy
-msgid "URL points to permanent redirect, updating with new location..."
-msgstr ""
-"URL peker til permanent omdirigering, oppdatering med ny plassering..."
-
-#: os-support.c:90
-msgid "Allocating memory"
-msgstr "Tildeling av minne"
-
-#: setup.c:64
-msgid "Creating new config \"browser\"..."
-msgstr "Oppretter ny konfigurasjon \"nettleser\"..."
-
-#: setup.c:67
-msgid "Create initial configfile \"config\""
-msgstr "Opprett innledende konfigfil \"config\""
-
-#: setup.c:557 setup.c:561
-msgid "Creating config directory ~/.snownews/"
-msgstr "Opprette konfigurasjons mappe ~/.snownews/"
-
-#: setup.c:562
-msgid "A file with the name \"~/.snownews/\" exists!"
-msgstr "En file med navnet \"~/.snownews/\" finnes!"
-
-#: setup.c:570 setup.c:573
-msgid "Creating config directory ~/.snownews/cache/"
-msgstr "Opprette konfigurasjons mappe ~/.snownews/cache/"
-
-#: setup.c:574
-msgid "A file with the name \"~/.snownews/cache/\" exists!"
-msgstr "Det file med navnet \"~/.snownews/cache/\" finnes!"
-
-#: setup.c:584
-msgid "Reading configuration settings..."
-msgstr "Leser konfigurasjons innstillinger ..."
-
-#: setup.c:596
-msgid "Creating new configfile."
-msgstr "Oppretter ny konfigfil."
-
-#: setup.c:599
-msgid "Create initial configfile \"urls\""
-msgstr "Opprett innledende konfigfil \"urls\""
-
-#: ui-support.c:179
+#: uiutil.c:91
 msgid "Sorting, please wait..."
 msgstr "Sorterer, vennligst vent ..."
 
-#: ui-support.c:256
+#: uiutil.c:160
 msgid "Invalid URL passed. Possible shell exploit attempted!"
 msgstr "Ugyldig URL sendt. Mulig shell utnyttelse forsøkt!"
 
-#: ui-support.c:261 ui-support.c:263
+#: uiutil.c:169
 #, c-format
 msgid "Executing %s"
 msgstr "Utfører %s"
 
-#: ui-support.c:341
+#: uiutil.c:220
 msgid "(New headlines)"
 msgstr "(Nye overskrifter)"
 
-#: updatecheck.c:96
-#, c-format
-msgid "A new version %s of Snownews is available.\n"
-msgstr "En ny versjon %s av Snownews er tilgjengelig.\n"
+#~ msgid "Merry Christmas from the Snownews developers."
+#~ msgstr "God jul fra Snownews utviklerne."
 
-#: updatecheck.c:97
-#, c-format
-msgid ""
-"If you want to download it, go to http://snownews.kcore.de/downloading/\n"
-"\n"
-msgstr ""
-"Hvis du vil laste den ned, gå til http://snownews.kcore.de/downloading/\n"
-"\n"
+#~ msgid "Version"
+#~ msgstr "Version"
 
-#: updatecheck.c:98
 #, c-format
-msgid ""
-"To disable the auto version check see the manpage.\n"
-"\n"
-msgstr "For å deaktivere den automatiske versjonskontrollen, se mansiden.\n"
+#~ msgid "ERROR: zlib_uncompress: %d %s\n"
+#~ msgstr "ERROR: zlib_uncompress: %d %s\n"
 
-#: updatecheck.c:99
-#, c-format
-msgid "http://snownews.kcore.de/download/snownews-%s.tar.gz (.sign)\n"
-msgstr "http://snownews.kcore.de/download/snownews-%s.tar.gz (.sign)\n"
+#~ msgid "ERROR: No output during decompression"
+#~ msgstr "ERROR: Ingen output under dekomprimering"
 
-#: updatecheck.c:100
+#~ msgid "ERROR: Invalid magic bytes for GZIP data"
+#~ msgstr "ERROR: Ugyldige magiske byte for GZIP data"
+
+#~ msgid "ERROR: Compression method is not deflate"
+#~ msgstr "ERROR: Komprimeringsmetoden tømmes ikke"
+
 #, c-format
-msgid "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"
-msgstr "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"
+#~ msgid "ERROR: Unsupported flags %d\n"
+#~ msgstr "ERROR: Ustøttet Flagg %d\n"
+
+#, c-format
+#~ msgid "Cookie for %s has expired!"
+#~ msgstr "Cookie for %s er utløpt!"
+
+#, c-format
+#~ msgid "Last updated: %s"
+#~ msgstr "Sist oppdatert: %s"
+
+#, c-format
+#~ msgid "In disk cache: %lld bytes"
+#~ msgstr "I disk cache: %lld byte"
+
+#, c-format
+#~ msgid "Last webserver status: %d"
+#~ msgstr "Siste webserverstatus: %d"
+
+#~ msgid "Toggle AND/OR filtering"
+#~ msgstr "Slå på OG/ELLER-filtrering"
+
+#, c-format
+#~ msgid "%c, up:"
+#~ msgstr "%c, opp:"
+
+#, c-format
+#~ msgid "%c, down:"
+#~ msgstr "%c, ned:"
+
+#~ msgid "Mark item unread"
+#~ msgstr "Merk elementet som ulest"
+
+#~ msgid "cursor:"
+#~ msgstr "markør:"
+
+#, c-format
+#~ msgid "%c, enter:"
+#~ msgstr "%c, enter:"
+
+#~ msgid "Scroll text"
+#~ msgstr "Rull tekst"
+
+#, c-format
+#~ msgid "Could not write temp file for filter: %s"
+#~ msgstr "Kunne ikke skrive midlertidig fil for filter: %s"
+
+#~ msgid "-> No link"
+#~ msgstr "-> Ingen link"
+
+#~ msgid "new"
+#~ msgstr "ny"
+
+#, c-format
+#~ msgid "%3d new"
+#~ msgstr "%3d ny"
+
+#, c-format
+#~ msgid "Bad request"
+#~ msgstr "Dårlig forespørsel"
+
+#, c-format
+#~ msgid "Payment required"
+#~ msgstr "Betaling kreves"
+
+#, c-format
+#~ msgid "Access denied"
+#~ msgstr "Ingen tilgang"
+
+#, c-format
+#~ msgid "Internal server error"
+#~ msgstr "Intern server feil"
+
+#, c-format
+#~ msgid "Not implemented"
+#~ msgstr "Ikke implementert"
+
+#, c-format
+#~ msgid "Service unavailable"
+#~ msgstr "Tjenesten er utilgjengelig"
+
+#, c-format
+#~ msgid "%s: Invalid URL!"
+#~ msgstr "%s: Ugyldig URL!"
+
+#, c-format
+#~ msgid "%s: Couldn't create network socket!"
+#~ msgstr "%s: Kunne ikke opprette nettverkskontakt!"
+
+#, c-format
+#~ msgid "%s: Can't resolve host!"
+#~ msgstr "%s: Kan ikke løse verten!"
+
+#, c-format
+#~ msgid "%s: Connection refused!"
+#~ msgstr "%s: Tilkobling nektet!"
+
+#, c-format
+#~ msgid "%s: Couldn't connect to server: %s"
+#~ msgstr "%s: Kunne ikke koble til serveren: %s"
+
+#, c-format
+#~ msgid "%s: Connection timed out."
+#~ msgstr "%s: Tilkoblingen ble tidsavbrutt."
+
+#, c-format
+#~ msgid "%s: Too many HTTP redirects encountered! Giving up."
+#~ msgstr "%s: Det oppstod for mange HTTP viderekoblinger! Gir opp."
+
+#, c-format
+#~ msgid "%s: Server sent an invalid redirect!"
+#~ msgstr "%s: Server sendte en ugyldig viderekobling!"
+
+#, c-format
+#~ msgid "%s: This feed no longer exists. Please unsubscribe!"
+#~ msgstr "%s: Denne feed finnes ikke lenger. Vennligst unsubscribe!"
+
+#, c-format
+#~ msgid "%s: Could not download feed: %s"
+#~ msgstr "%s: Kunne ikke laste ned feed: %s"
+
+#, c-format
+#~ msgid "%s: Error in server reply."
+#~ msgstr "%s: Feil i serversvar."
+
+#, c-format
+#~ msgid "%s: Authentication failed!"
+#~ msgstr "%s: Autentisering mislyktes!"
+
+#, c-format
+#~ msgid "%s: URL does not contain authentication information!"
+#~ msgstr "%s: URL inneholder ikke autentiseringsinformasjon!"
+
+#, c-format
+#~ msgid "%s: Could not generate authentication information!"
+#~ msgstr "%s: Kunne ikke generere autentiseringsinformasjon!"
+
+#, c-format
+#~ msgid "%s: Unsupported authentication method requested by server!"
+#~ msgstr "%s: Ustøttet autentiseringsmetode forespurt av server!"
+
+#, c-format
+#~ msgid "%s: Error decompressing server reply!"
+#~ msgstr "%s: Feil ved dekomprimering av serversvar!"
+
+#~ msgid "Save settings (urls)"
+#~ msgstr "Lagre innstillinger (urls)"
+
+#~ msgid "Writing cache file"
+#~ msgstr "Skriver cache file"
+
+#, c-format
+#~ msgid ""
+#~ "Bye.\n"
+#~ "\n"
+#~ msgstr "Ha det\n"
+
+#, c-format
+#~ msgid ""
+#~ "Aborting program execution!\n"
+#~ "An internal error occured. Snownews has quit, no changes has been saved!\n"
+#~ msgstr ""
+#~ "Avbryter kjøring av programmet!\n"
+#~ "Det oppstod en intern feil. Snownews har sluttet, ingen endringer er "
+#~ "lagret!\n"
+
+#, c-format
+#~ msgid ""
+#~ "This shouldn't happen, please submit a bugreport to kiza@kcore.de, tell "
+#~ "me what you where doing and include the output below in your mail.\n"
+#~ msgstr ""
+#~ "Dette burde ikke skje, vennligst send inn en feilrapport til kiza@kcore."
+#~ "de, fortell meg hva du gjør og ta med output nedenfor i e-posten din.\n"
+
+#, fuzzy, c-format
+#~ msgid "While executing: %s\n"
+#~ msgstr "Under kjøring: %s\n"
+
+#, c-format
+#~ msgid ""
+#~ "Error as reported by the system: %s\n"
+#~ "\n"
+#~ msgstr "Feil som rapportert av systemet: %s\n"
+
+#, c-format
+#~ msgid ""
+#~ "Snownews version %s\n"
+#~ "\n"
+#~ msgstr "Snownews versjon %s\n"
+
+#, c-format
+#~ msgid "The option \"--disable-versioncheck\" has been obsoleted.\n"
+#~ msgstr "Valget \"--disable-versioncheck\" er utdatert.\n"
+
+#, c-format
+#~ msgid "Please see the manpage for details.\n"
+#~ msgstr "Se mannssiden for detaljer.\n"
+
+#, c-format
+#~ msgid "(To deactivate check, put -1 into ~/.snownews/updatecheck)\n"
+#~ msgstr "(For å deaktivere check, legg inn -1 i ~/.snownews/updatecheck)\n"
+
+#, c-format
+#~ msgid ""
+#~ "usage: snownews [-huV] [--help|--update|--version]\n"
+#~ "\n"
+#~ msgstr "bruk: snownews [-huV] [--help|--update|--versjon]\n"
+
+#, c-format
+#~ msgid "\t--update|-u\tAutomatically update every feed.\n"
+#~ msgstr "--update|-u Oppdater hver feed automatisk.\n"
+
+#, c-format
+#~ msgid "\t--help|-h\tPrint this help message.\n"
+#~ msgstr "--help | -h Skriv ut denne hjelpemeldingen.\n"
+
+#, c-format
+#~ msgid "\t--version|-V\tPrint version number and exit.\n"
+#~ msgstr "--versjon | -V Skriv ut versjonsnummer og avslutt.\n"
+
+#, c-format
+#~ msgid "\t--disable-versioncheck (obsoleted)\n"
+#~ msgstr "\t--disable-versioncheck (utdatert)\n"
+
+#, c-format
+#~ msgid "Downloading \"%s\""
+#~ msgstr "Laster ned \"%s\""
+
+#, c-format
+#~ msgid "Downloading \"http://%s%s\""
+#~ msgstr "Laster ned \"http: //%s%s\""
+
+#, fuzzy
+#~ msgid "URL points to permanent redirect, updating with new location..."
+#~ msgstr ""
+#~ "URL peker til permanent omdirigering, oppdatering med ny plassering..."
+
+#~ msgid "Allocating memory"
+#~ msgstr "Tildeling av minne"
+
+#~ msgid "Creating new config \"browser\"..."
+#~ msgstr "Oppretter ny konfigurasjon \"nettleser\"..."
+
+#~ msgid "Create initial configfile \"config\""
+#~ msgstr "Opprett innledende konfigfil \"config\""
+
+#~ msgid "Creating config directory ~/.snownews/"
+#~ msgstr "Opprette konfigurasjons mappe ~/.snownews/"
+
+#~ msgid "A file with the name \"~/.snownews/\" exists!"
+#~ msgstr "En file med navnet \"~/.snownews/\" finnes!"
+
+#~ msgid "Creating config directory ~/.snownews/cache/"
+#~ msgstr "Opprette konfigurasjons mappe ~/.snownews/cache/"
+
+#~ msgid "A file with the name \"~/.snownews/cache/\" exists!"
+#~ msgstr "Det file med navnet \"~/.snownews/cache/\" finnes!"
+
+#~ msgid "Creating new configfile."
+#~ msgstr "Oppretter ny konfigfil."
+
+#~ msgid "Create initial configfile \"urls\""
+#~ msgstr "Opprett innledende konfigfil \"urls\""
+
+#, c-format
+#~ msgid "A new version %s of Snownews is available.\n"
+#~ msgstr "En ny versjon %s av Snownews er tilgjengelig.\n"
+
+#, c-format
+#~ msgid ""
+#~ "If you want to download it, go to http://snownews.kcore.de/downloading/\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Hvis du vil laste den ned, gå til http://snownews.kcore.de/downloading/\n"
+#~ "\n"
+
+#, c-format
+#~ msgid ""
+#~ "To disable the auto version check see the manpage.\n"
+#~ "\n"
+#~ msgstr "For å deaktivere den automatiske versjonskontrollen, se mansiden.\n"
+
+#, c-format
+#~ msgid "http://snownews.kcore.de/download/snownews-%s.tar.gz (.sign)\n"
+#~ msgstr "http://snownews.kcore.de/download/snownews-%s.tar.gz (.sign)\n"
+
+#, c-format
+#~ msgid "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"
+#~ msgstr ""
+#~ "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"

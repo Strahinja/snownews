@@ -34,7 +34,7 @@ void ConfigFilePath (const char* filename, char* path, size_t pathsz)
     else
 	pathlen = snprintf (path, pathsz, "%s/.config/" SNOWNEWS_NAME "/%s", getenv("HOME"), filename);
     if (pathlen >= pathsz)
-	MainQuit ("ConfigFilePath", "configuration dir path is too long");
+	MainQuit ("ConfigFilePath", _("configuration dir path is too long"));
     if (path[pathlen-1] == '/')
 	path[pathlen-1] = 0;
 }
@@ -48,7 +48,7 @@ void CacheFilePath (const char* filename, char* path, size_t pathsz)
     else
 	pathlen = snprintf (path, pathsz, "%s/.local/share/" SNOWNEWS_NAME "/%s", getenv("HOME"), filename);
     if (pathlen >= pathsz)
-	MainQuit ("CacheFilePath", "cache dir path is too long");
+	MainQuit ("CacheFilePath", _("cache dir path is too long"));
     if (path[pathlen-1] == '/')
 	path[pathlen-1] = 0;
 }

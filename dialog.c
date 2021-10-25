@@ -28,8 +28,6 @@
 
 char* UIOneLineEntryField (int x, int y)
 {
-    char* text = malloc (512);
-
     // UIStatus switches off attron!
     attron (WA_REVERSE);
     echo();
@@ -39,7 +37,8 @@ char* UIOneLineEntryField (int x, int y)
     // Beware of hardcoded textlength size!
     // getnstr size does NOT include \0. This is really stupid and causes
     // 1-byte overflows. Always size=len-1!
-    getnstr (text, 511);
+    char text [512] = {0};
+    getnstr (text, sizeof(text)-1);
 
     noecho();
     if (!_settings.cursor_always_visible)
@@ -47,7 +46,7 @@ char* UIOneLineEntryField (int x, int y)
     attroff (WA_REVERSE);
 
     // This memory needs to be freed in the calling function!
-    return text;
+    return strdup (text);
 }
 
 void UIChangeBrowser (void)
@@ -221,13 +220,14 @@ void FeedInfo (const struct feed* current_feed)
     if (pauthinfo)
 	memmove (strstr (url, "://") + 3, pauthinfo + 1, strlen (pauthinfo));
 
-    UISupportDrawBox (5, 4, COLS - 6, 13);
+    unsigned boxw = COLS - 6, centerx = COLS / 2u, leftx = centerx - boxw/2 + 4;
 
-    unsigned centerx = COLS / 2u;
+    UISupportDrawBox (5, 4, boxw, 13);
+
     attron (WA_REVERSE);
-    mvaddstr (5, centerx - ((strlen (current_feed->title)) / 2), current_feed->title);
-    mvaddnstr (7, centerx - (COLS / 2 - 7), url, COLS - 14);
-    move (8, centerx - (COLS / 2 - 7));
+    mvaddn_utf8 (5, centerx - utf8_length(current_feed->title), current_feed->title, boxw-8);
+    mvaddn_utf8 (7, leftx, url, boxw-8);
+    move (8, leftx);
     if (current_feed->lastmodified) {
 	char timebuf [32] = "";
 	ctime_r (&current_feed->lastmodified, timebuf);
@@ -235,9 +235,10 @@ void FeedInfo (const struct feed* current_feed)
 	    if (timebuf[i] == '\n')
 		timebuf[i] = 0;
 	timebuf[sizeof(timebuf)-1] = 0;
-	printw (_("Last updated: %s"), timebuf);
+	add_utf8 (_("Last updated: "));
+	addstr (timebuf);
     } else
-	addstr (_("No modification date."));
+	add_utf8 (_("No modification date."));
     free (url);
     url = NULL;
 
@@ -247,14 +248,17 @@ void FeedInfo (const struct feed* current_feed)
     free (hashme);
 
     struct stat cachestat;
-    move (9, centerx - (COLS / 2 - 7));
+    move (9, leftx);
     if (stat (cachefile, &cachestat) < 0)
-	addstr (_("Not in disk cache."));
-    else
-	printw (_("In disk cache: %jd bytes"), cachestat.st_size);
+	add_utf8 (_("Not in disk cache."));
+    else {
+	char cacheszbuf [64];
+	snprintf (cacheszbuf, sizeof(cacheszbuf), _("In disk cache: %jd bytes"), cachestat.st_size);
+	add_utf8 (cacheszbuf);
+    }
 
     // Print category info
-    mvaddstr (10, centerx - (COLS / 2 - 7), _("Categories:"));
+    mvadd_utf8 (10, leftx, _("Categories:"));
     addstr (" ");
     if (current_feed->feedcategories == NULL)
 	addstr (_("none"));
@@ -265,21 +269,23 @@ void FeedInfo (const struct feed* current_feed)
     }
 
     // Tell user if feed uses auth, but don't display the string.
-    move (11, centerx - (COLS / 2 - 7));
+    move (11, leftx);
     if (current_feed->lasterror) {
-	addstr (_("Download failed: "));
-	addstr (current_feed->lasterror);
+	add_utf8 (_("Download failed: "));
+	add_utf8 (current_feed->lasterror);
     } else if (pauthinfo)
-	addstr (_("Feed uses authentication."));
+	add_utf8 (_("Feed uses authentication."));
     else
-	addstr (_("Feed does not use authentication."));
+	add_utf8 (_("Feed does not use authentication."));
 
     // Display filter script if any.
     if (current_feed->perfeedfilter != NULL) {
-	UISupportDrawBox (5, 13, COLS - 6, 14);
+	UISupportDrawBox (5, 13, boxw, 14);
 	attron (WA_REVERSE);
-	mvaddstr (13, 7, _("Filtered through:"));
-	mvaddnstr (13, 7 + strlen (_("Filtered through:")) + 1, current_feed->perfeedfilter, COLS - 14 - strlen (_("Filtered through:")));
+	const char* filteredmsg = _("Filtered through:");
+	mvadd_utf8 (13, leftx, filteredmsg);
+	addstr (" ");
+	addn_utf8 (current_feed->perfeedfilter, boxw-8-utf8_length(filteredmsg));
     }
 
     UIStatus (_("Displaying feed information."), 0, 0);
@@ -293,7 +299,7 @@ bool UIDeleteFeed (const char* feedname)
     UISupportDrawBox (3, 5, COLS - 3, 8);
 
     attron (WA_REVERSE);
-    mvaddstr (6, COLS / 2 - 21, _("Are you sure you want to delete this feed?"));
+    mvadd_utf8 (6, COLS / 2 - 21, _("Are you sure you want to delete this feed?"));
     mvprintw (7, 5, "%s", feedname);
 
     UIStatus (_("Type 'y' to delete, any other key to abort."), 0, 0);
@@ -325,28 +331,28 @@ void UIHelpScreen (void)
     mvprintw (centery + 3, centerx - offset, "%c:", _settings.keybindings.nofilter);
     mvprintw (centery + 4, centerx - offset, "%c:", _settings.keybindings.newheadlines);
     mvprintw (centery + 5, centerx - offset, "%c:", _settings.keybindings.perfeedfilter);
-    mvaddstr (centery + 6, centerx - offset, _("tab:"));
+    mvadd_utf8 (centery + 6, centerx - offset, _("tab:"));
     mvprintw (centery + 7, centerx - offset, "%c:", _settings.keybindings.about);
     mvprintw (centery + 8, centerx - offset, "%c:", _settings.keybindings.quit);
     // Descriptions
-    mvaddstr (centery - 9, centerx - offsetstr, _("Add RSS feed..."));
-    mvaddstr (centery - 8, centerx - offsetstr, _("Delete highlighted RSS feed..."));
-    mvaddstr (centery - 7, centerx - offsetstr, _("Rename feed..."));
-    mvaddstr (centery - 6, centerx - offsetstr, _("Reload all feeds"));
-    mvaddstr (centery - 5, centerx - offsetstr, _("Reload this feed"));
-    mvaddstr (centery - 4, centerx - offsetstr, _("Mark all read"));
-    mvaddstr (centery - 3, centerx - offsetstr, _("Change default browser..."));
-    mvaddstr (centery - 2, centerx - offsetstr, _("Move item up, down"));
-    mvaddstr (centery - 1, centerx - offsetstr, _("Sort feed list alphabetically"));
-    mvaddstr (centery, centerx - offsetstr, _("Categorize feed..."));
-    mvaddstr (centery + 1, centerx - offsetstr, _("Apply filter..."));
-    mvaddstr (centery + 2, centerx - offsetstr, _("Only current category"));
-    mvaddstr (centery + 3, centerx - offsetstr, _("Remove filter"));
-    mvaddstr (centery + 4, centerx - offsetstr, _("Show new headlines"));
-    mvaddstr (centery + 5, centerx - offsetstr, _("Add conversion filter..."));
-    mvaddstr (centery + 6, centerx - offsetstr, _("Type Ahead Find"));
-    mvaddstr (centery + 7, centerx - offsetstr, _("About"));
-    mvaddstr (centery + 8, centerx - offsetstr, _("Quit program"));
+    mvadd_utf8 (centery - 9, centerx - offsetstr, _("Add RSS feed..."));
+    mvadd_utf8 (centery - 8, centerx - offsetstr, _("Delete highlighted RSS feed..."));
+    mvadd_utf8 (centery - 7, centerx - offsetstr, _("Rename feed..."));
+    mvadd_utf8 (centery - 6, centerx - offsetstr, _("Reload all feeds"));
+    mvadd_utf8 (centery - 5, centerx - offsetstr, _("Reload this feed"));
+    mvadd_utf8 (centery - 4, centerx - offsetstr, _("Mark all read"));
+    mvadd_utf8 (centery - 3, centerx - offsetstr, _("Change default browser..."));
+    mvadd_utf8 (centery - 2, centerx - offsetstr, _("Move item up, down"));
+    mvadd_utf8 (centery - 1, centerx - offsetstr, _("Sort feed list alphabetically"));
+    mvadd_utf8 (centery, centerx - offsetstr, _("Categorize feed..."));
+    mvadd_utf8 (centery + 1, centerx - offsetstr, _("Apply filter..."));
+    mvadd_utf8 (centery + 2, centerx - offsetstr, _("Only current category"));
+    mvadd_utf8 (centery + 3, centerx - offsetstr, _("Remove filter"));
+    mvadd_utf8 (centery + 4, centerx - offsetstr, _("Show new headlines"));
+    mvadd_utf8 (centery + 5, centerx - offsetstr, _("Add conversion filter..."));
+    mvadd_utf8 (centery + 6, centerx - offsetstr, _("Type Ahead Find"));
+    mvadd_utf8 (centery + 7, centerx - offsetstr, _("About"));
+    mvadd_utf8 (centery + 8, centerx - offsetstr, _("Quit program"));
     attroff (WA_REVERSE);
 
     UIStatus (_("Press the any(tm) key to exit help screen."), 0, 0);
@@ -361,9 +367,11 @@ void UIDisplayFeedHelp (void)
     attron (WA_REVERSE);
     // Keys
     const int offset = 18, offsetstr = 7;
-    mvprintw (centery - 5, centerx - offset, _("%c, up:"), _settings.keybindings.prev);
-    mvprintw (centery - 4, centerx - offset, _("%c, down:"), _settings.keybindings.next);
-    mvaddstr (centery - 3, centerx - offset, _("enter:"));
+    mvprintw (centery - 5, centerx - offset, "%c", _settings.keybindings.prev);
+    add_utf8 (_(", up:"));
+    mvprintw (centery - 4, centerx - offset, "%c", _settings.keybindings.next);
+    add_utf8 (_(", down:"));
+    mvadd_utf8 (centery - 3, centerx - offset, _("enter:"));
     mvprintw (centery - 2, centerx - offset, "%c:", _settings.keybindings.reload);
     mvprintw (centery - 1, centerx - offset, "%c:", _settings.keybindings.forcereload);
     mvprintw (centery, centerx - offset, "%c:", _settings.keybindings.urljump);
@@ -371,21 +379,21 @@ void UIDisplayFeedHelp (void)
     mvprintw (centery + 2, centerx - offset, "%c:", _settings.keybindings.markread);
     mvprintw (centery + 3, centerx - offset, "%c:", _settings.keybindings.markunread);
     mvprintw (centery + 4, centerx - offset, "%c:", _settings.keybindings.feedinfo);
-    mvaddstr (centery + 5, centerx - offset, _("tab:"));
+    mvadd_utf8 (centery + 5, centerx - offset, _("tab:"));
     mvprintw (centery + 6, centerx - offset, "%c:", _settings.keybindings.prevmenu);
     // Descriptions
-    mvprintw (centery - 5, centerx - offsetstr, _("Previous item"));
-    mvprintw (centery - 4, centerx - offsetstr, _("Next item"));
-    mvaddstr (centery - 3, centerx - offsetstr, _("View item"));
-    mvprintw (centery - 2, centerx - offsetstr, _("Reload this feed"));
-    mvprintw (centery - 1, centerx - offsetstr, _("Force reload this feed"));
-    mvprintw (centery, centerx - offsetstr, _("Open homepage"));
-    mvprintw (centery + 1, centerx - offsetstr, _("Open link"));
-    mvprintw (centery + 2, centerx - offsetstr, _("Mark all read"));
-    mvprintw (centery + 3, centerx - offsetstr, _("Toggle item read status"));
-    mvprintw (centery + 4, centerx - offsetstr, _("Show feed info..."));
-    mvaddstr (centery + 5, centerx - offsetstr, _("Type Ahead Find"));
-    mvprintw (centery + 6, centerx - offsetstr, _("Return to main menu"));
+    mvadd_utf8 (centery - 5, centerx - offsetstr, _("Previous item"));
+    mvadd_utf8 (centery - 4, centerx - offsetstr, _("Next item"));
+    mvadd_utf8 (centery - 3, centerx - offsetstr, _("View item"));
+    mvadd_utf8 (centery - 2, centerx - offsetstr, _("Reload this feed"));
+    mvadd_utf8 (centery - 1, centerx - offsetstr, _("Force reload this feed"));
+    mvadd_utf8 (centery, centerx - offsetstr, _("Open homepage"));
+    mvadd_utf8 (centery + 1, centerx - offsetstr, _("Open link"));
+    mvadd_utf8 (centery + 2, centerx - offsetstr, _("Mark all read"));
+    mvadd_utf8 (centery + 3, centerx - offsetstr, _("Toggle item read status"));
+    mvadd_utf8 (centery + 4, centerx - offsetstr, _("Show feed info..."));
+    mvadd_utf8 (centery + 5, centerx - offsetstr, _("Type Ahead Find"));
+    mvadd_utf8 (centery + 6, centerx - offsetstr, _("Return to main menu"));
     attroff (WA_REVERSE);
 
     UIStatus (_("Press the any(tm) key to exit help screen."), 0, 0);
@@ -394,7 +402,6 @@ void UIDisplayFeedHelp (void)
 
 void UIDisplayItemHelp (void)
 {
-
     unsigned centerx = COLS / 2u, centery = LINES / 2u;
     UISupportDrawBox (centerx - 18, centery - 2, centerx + 18, centery + 3);
 
@@ -404,12 +411,13 @@ void UIDisplayItemHelp (void)
     mvprintw (centery - 1, centerx - offset, "%c, <-:", _settings.keybindings.prev);
     mvprintw (centery, centerx - offset, "%c, ->:", _settings.keybindings.next);
     mvprintw (centery + 1, centerx - offset, "%c:", _settings.keybindings.urljump);
-    mvprintw (centery + 2, centerx - offset, _("%c, enter:"), _settings.keybindings.prevmenu);
+    mvprintw (centery + 2, centerx - offset, "%c", _settings.keybindings.prevmenu);
+    add_utf8 (_(", enter:"));
     // Descriptions
-    mvaddstr (centery - 1, centerx - offsetstr, _("Previous item"));
-    mvaddstr (centery, centerx - offsetstr, _("Next item"));
-    mvaddstr (centery + 1, centerx - offsetstr, _("Open link"));
-    mvaddstr (centery + 2, centerx - offsetstr, _("Return to overview"));
+    mvadd_utf8 (centery - 1, centerx - offsetstr, _("Previous item"));
+    mvadd_utf8 (centery, centerx - offsetstr, _("Next item"));
+    mvadd_utf8 (centery + 1, centerx - offsetstr, _("Open link"));
+    mvadd_utf8 (centery + 2, centerx - offsetstr, _("Return to overview"));
     attroff (WA_REVERSE);
 
     UIStatus (_("Press the any(tm) key to exit help screen."), 0, 0);
@@ -438,13 +446,15 @@ void CategorizeFeed (struct feed* current_feed)
 	UISupportDrawBox ((COLS / 2) - 37, 2, (COLS / 2) + 37, 1 + 4 + nfeedcat + 1);
 
 	attron (WA_REVERSE);
-	mvprintw (3, (COLS / 2) - ((strlen (_("Category configuration for %s")) + strlen (current_feed->title)) / 2), _("Category configuration for %s"), current_feed->title);
+	char titlebuf [256];
+	snprintf (titlebuf, sizeof(titlebuf), _("Category configuration for %s"), current_feed->title);
+	mvadd_utf8 (3, (COLS - utf8_length(titlebuf))/2u, titlebuf);
 
 	char catletter = '1';
 	// No category defined yet
 	if (current_feed->feedcategories == NULL) {
 	    unsigned y = 5;
-	    mvaddstr (y, (COLS / 2) - 33, _("No category defined. Select one or add a new category:"));
+	    mvadd_utf8 (y, (COLS / 2) - 33, _("No category defined. Select one or add a new category:"));
 	    for (const struct categories * c = _settings.global_categories; c; ++y, c = c->next) {
 		mvprintw (y + 1, COLS / 2 - 33, "%c. %s", catletter, c->name);
 		if (++catletter == '9' + 1)
@@ -455,7 +465,7 @@ void CategorizeFeed (struct feed* current_feed)
 	    UIStatus (tmp, 0, 0);
 	} else {
 	    unsigned y = 5;
-	    mvaddstr (y, (COLS / 2) - 33, _("Categories defined for this feed:"));
+	    mvadd_utf8 (y, (COLS / 2) - 33, _("Categories defined for this feed:"));
 	    for (const struct feedcategories * c = current_feed->feedcategories; c; ++y, c = c->next) {
 		mvprintw (y + 1, COLS / 2 - 33, "%c. %s", catletter, c->name);
 		if (++catletter == '9' + 1)
@@ -478,7 +488,7 @@ void CategorizeFeed (struct feed* current_feed)
 		attron (WA_REVERSE);
 		catletter = '1';
 		unsigned y = 5;
-		mvaddstr (y, (COLS / 2) - 33, _("Select a new category or add a new one:"));
+		mvadd_utf8 (y, (COLS / 2) - 33, _("Select a new category or add a new one:"));
 		for (const struct categories * c = _settings.global_categories; c; ++y, c = c->next) {
 		    mvprintw (y + 1, COLS / 2 - 33, "%c. %s", catletter, c->name);
 		    if (++catletter == '9' + 1)
@@ -542,7 +552,8 @@ char* DialogGetCategoryFilter (void)
     UISupportDrawBox ((COLS / 2) - 35, 2, (COLS / 2) + 35, nglobalcat + 4);
 
     attron (WA_REVERSE);
-    mvaddstr (3, (COLS / 2) - (strlen (_("Select filter to apply")) / 2), _("Select filter to apply"));
+    const char* title = _("Select filter to apply");
+    mvaddstr (3, (COLS - utf8_length(title)) / 2u, title);
 
     char catletter = '1';
     unsigned y = 3;

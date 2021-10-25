@@ -17,6 +17,7 @@
 
 #include "main.h"
 #include "about.h"
+#include "uiutil.h"
 #include <ncurses.h>
 #include <sys/time.h>
 
@@ -55,6 +56,11 @@ static unsigned nrand (unsigned r)
     return rand() % r;
 }
 
+static void mvadd_center_utf8 (unsigned line, const char* text)
+{
+    mvadd_utf8 (line, (COLS - utf8_length (text)) / 2u, text);
+}
+
 //----------------------------------------------------------------------
 // Santa Hunta
 
@@ -74,7 +80,9 @@ static void SHDrawGun (unsigned gun_pos)
 static void SHDrawStatus (void)
 {
     attron (WA_BOLD);
-    mvprintw (LINES - 1, 1, _("Move: cursor or %c/%c; shoot: space; quit: %c"), _settings.keybindings.prev, _settings.keybindings.next, _settings.keybindings.quit);
+    char helpstr[128];
+    snprintf (helpstr, sizeof (helpstr), _("Move: cursor or %c/%c; shoot: space; quit: %c"), _settings.keybindings.prev, _settings.keybindings.next, _settings.keybindings.quit);
+    mvadd_utf8 (LINES - 1, 1, helpstr);
     move (LINES - 1, COLS - 1);
     attroff (WA_BOLD);
 }
@@ -83,15 +91,15 @@ static void SHDrawScore (int score, int level)
 {
     attron (WA_REVERSE);
     mvhline (0, 0, ' ', COLS);
-    mvaddstr (0, 1, "Santa Hunta!");
+    mvadd_utf8 (0, 1, _("Santa Hunta!"));
 
     char scorestr[16];
     snprintf (scorestr, sizeof (scorestr), _("Score: %d"), score);
-    mvaddstr (0, COLS - strlen (scorestr) - 1, scorestr);
+    mvadd_utf8 (0, COLS - utf8_length (scorestr) - 1, scorestr);
 
     char levelstr[16];
     snprintf (levelstr, sizeof (levelstr), _("Level: %d"), level);
-    mvaddstr (0, (COLS - strlen (levelstr)) / 2u, levelstr);
+    mvadd_center_utf8 (0, levelstr);
 
     attroff (WA_REVERSE);
 }
@@ -232,7 +240,7 @@ static void printFinalScore (unsigned score)
 static void SHFinalScore (int score)
 {
     attron (WA_BOLD);
-    mvaddstr ((LINES - 5) / 2u - 2, (COLS - strlen ("Final score:")) / 2u, "Final score:");
+    mvadd_center_utf8 ((LINES - 5) / 2u - 2, _("Final score:"));
     for (int k; (k = getch()) < ' ' || k > '~';) {
 	unsigned rand_color = 10 + nrand (6);
 	attron (COLOR_PAIR (rand_color));
@@ -333,10 +341,9 @@ static void santaHunta (void)
 
 void UIAbout (void)
 {
-
     if (COLS < 80) {
 	erase();
-	mvprintw (0, 0, _("Need at least 80 COLS terminal, sorry!"));
+	mvadd_utf8 (0, 0, _("Need at least 80 COLS terminal, sorry!"));
 	getch();
 	return;
     }
@@ -351,18 +358,20 @@ void UIAbout (void)
 	mvaddstr (5, xpos, " /       \\  /   |   \\\\  \\/  / \\  |   /  /   |   \\\\  ___\\    \\  |   /  /       \\");
 	mvaddstr (6, xpos, "/______  / / ___|___/ \\____/  /__|__/  / ___|___/ \\____ \\   /__|__/  /______  /");
 	mvaddstr (7, xpos, "       \\/  \\/                          \\/              \\/                   \\/");
-	mvprintw (9, (COLS - strlen ("Version " SNOWNEWS_VERSTRING)) / 2u, "Version %s", SNOWNEWS_VERSTRING);
+	char verstrbuf [128];
+	snprintf (verstrbuf, sizeof(verstrbuf), _("Version %s"), SNOWNEWS_VERSTRING);
+	mvadd_center_utf8 (9, verstrbuf);
 
-	mvaddstr (11, COLS / 2 - (strlen (_("Brought to you by:"))) / 2, _("Brought to you by:"));
-	mvaddstr (13, COLS / 2 - (strlen (_("Main code"))) / 2, _("Main code"));
-	mvaddstr (14, COLS / 2 - 6, "Oliver Feiler");
-	mvaddstr (16, COLS / 2 - (strlen (_("Additional code"))) / 2, _("Additional code"));
-	mvaddstr (17, COLS / 2 - 4, "Rene Puls");
-	mvaddstr (19, COLS / 2 - (strlen (_("Translation team"))) / 2, _("Translation team"));
-	mvaddstr (20, COLS / 2 - 31, "Oliver Feiler, Frank van der Loo, Pascal Varet, Simon Isakovic,");
-	mvaddstr (21, COLS / 2 - 32, "Fernando J. Pereda, Marco Cova, Cheng-Lung Sung, Dmitry Petukhov");
-	mvaddstr (22, COLS / 2 - 26, "Douglas Campos, Ray Iwata, Piotr Ozarowski, Yang Huan");
-	mvaddstr (23, COLS / 2 - 15, "Ihar Hrachyshka, Mats Berglund");
+	mvadd_center_utf8 (11, _("Brought to you by:"));
+	mvadd_center_utf8 (13, _("Main code"));
+	mvadd_center_utf8 (14, "Oliver Feiler");
+	mvadd_center_utf8 (16, _("Additional code"));
+	mvadd_center_utf8 (17, "Mike Sharov, Rene Puls");
+	mvadd_center_utf8 (19, _("Translation team"));
+	mvadd_center_utf8 (20, "Frank van der Loo, Pascal Varet, Simon Isakovic, Страхиња Радић");
+	mvadd_center_utf8 (21, "Fernando J. Pereda, Marco Cova, Cheng-Lung Sung, Dmitry Petukhov");
+	mvadd_center_utf8 (22, "Douglas Campos, Ray Iwata, Piotr Ozarowski, Yang Huan");
+	mvadd_center_utf8 (23, "Ihar Hrachyshka, Mats Berglund, Johannes Hove-Henriksen");
 
 	key = getch();
     }

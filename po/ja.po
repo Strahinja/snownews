@@ -1,703 +1,781 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is part of Snownews - A lightweight console RSS newsreader
 #
+# Copyright (c) 2003-2009 Oliver Feiler <kiza@kcore.de>
+# Copyright (c) 2003-2009 Rene Puls <rpuls@gmx.net>
+# Copyright (c) 2021 Mike Sharov <msharov@users.sourceforge.net>
+#
+# Snownews is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3
+# as published by the Free Software Foundation.
+#
+# Snownews is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty
+# of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Snownews. If not, see http://www.gnu.org/licenses/.
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: snownews-1.5.6.1\n"
-"POT-Creation-Date: 2005-04-25 19:56+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-25 12:47-0400\n"
 "PO-Revision-Date: 2005-04-25 23:08+0900\n"
 "Last-Translator: Ray Iwata <iwata@quasiquote.org>\n"
 "Language-Team: Japanese <iwata@quasiquote.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=EUC-JP\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: about.c:314
-msgid "Merry Christmas from the Snownews developers."
-msgstr "Snownews ³«È¯¼Ô¤è¤ê¥á¥ê¡¼¥¯¥ê¥¹¥Ş¥¹¡£"
-
-#: about.c:315 about.c:685
-msgid "Main code"
-msgstr "¥á¥¤¥ó¥³¡¼¥É"
-
-#: about.c:317 about.c:687
-msgid "Additional code"
-msgstr "ÄÉ²Ã¥³¡¼¥É"
-
-#: about.c:319 about.c:689
-msgid "Translation team"
-msgstr "ËİÌõ¥Á¡¼¥à"
-
-#: about.c:346
-#, c-format, fuzzy
+#: about.c:84
+#, fuzzy, c-format
 msgid "Move: cursor or %c/%c; shoot: space; quit: %c"
-msgstr "°ÜÆ°: ¥«¡¼¥½¥ë¡¢¤Ş¤¿¤Ï %c/%c; ·â¤Ä: space; ½ªÎ»: %c"
+msgstr "ç§»å‹•: ã‚«ãƒ¼ã‚½ãƒ«ã€ã¾ãŸã¯ %c/%c; æ’ƒã¤: space; çµ‚äº†: %c"
 
-#: about.c:363
+#: about.c:94
+msgid "Santa Hunta!"
+msgstr ""
+
+#: about.c:97
 #, c-format
 msgid "Score: %d"
-msgstr "¥¹¥³¥¢: %d"
+msgstr "ã‚¹ã‚³ã‚¢: %d"
 
-#: about.c:367
+#: about.c:101
 #, c-format
 msgid "Level: %d"
-msgstr "¥ì¥Ù¥ë: %d"
+msgstr "ãƒ¬ãƒ™ãƒ«: %d"
 
-#: about.c:666
-msgid "Need at least 80 COLS terminal, sorry!"
-msgstr "ºÇÄã¤Ç¤â²£ 80 Ê¸»ú¤¬É½¼¨¤Ç¤­¤ëÃ¼Ëö¤¬É¬Í×¤Ç¤¹¡£¤´¤á¤ó¤Ê¤µ¤¤¡ª"
-
-#: about.c:684
-msgid "Brought to you by:"
-msgstr "¼¡¤Î¿ÍÃ£¤¬¹×¸¥¤·¤Ş¤·¤¿:"
-
-#: conversions.c:155 interface.c:184 interface.c:187
-msgid "No description available."
-msgstr "³µÍ×¤¬¤¢¤ê¤Ş¤»¤ó"
-
-#: conversions.c:708
-msgid ", %H:%M"
+#: about.c:243
+msgid "Final score:"
 msgstr ""
 
-#: conversions.c:709 conversions.c:710
-msgid "Posted "
-msgstr "Åê¹ÆÆü»ş "
+#: about.c:346
+msgid "Need at least 80 COLS terminal, sorry!"
+msgstr "æœ€ä½ã§ã‚‚æ¨ª 80 æ–‡å­—ãŒè¡¨ç¤ºã§ãã‚‹ç«¯æœ«ãŒå¿…è¦ã§ã™ã€‚ã”ã‚ã‚“ãªã•ã„ï¼"
 
-#: conversions.c:715 conversions.c:716
+#: about.c:362
+#, c-format
+msgid "Version %s"
+msgstr ""
+
+#: about.c:365
+msgid "Brought to you by:"
+msgstr "æ¬¡ã®äººé”ãŒè²¢çŒ®ã—ã¾ã—ãŸ:"
+
+#: about.c:366
+msgid "Main code"
+msgstr "ãƒ¡ã‚¤ãƒ³ã‚³ãƒ¼ãƒ‰"
+
+#: about.c:368
+msgid "Additional code"
+msgstr "è¿½åŠ ã‚³ãƒ¼ãƒ‰"
+
+#: about.c:370
+msgid "Translation team"
+msgstr "ç¿»è¨³ãƒãƒ¼ãƒ "
+
+#: conv.c:318
+#, c-format
 msgid "today"
-msgstr "º£Æü"
+msgstr "ä»Šæ—¥"
 
-#: conversions.c:722 conversions.c:723
+#: conv.c:320
+#, c-format
 msgid "yesterday"
-msgstr "ºòÆü"
+msgstr "æ˜¨æ—¥"
 
-#: conversions.c:729
+#: conv.c:322
 #, c-format
 msgid "%d days ago"
-msgstr "%d ÆüÁ°"
+msgstr "%d æ—¥å‰"
 
-#: conversions.c:737 conversions.c:738
+#: conv.c:324
+#, c-format
 msgid "a week ago"
-msgstr "°ì½µ´ÖÁ°"
+msgstr "ä¸€é€±é–“å‰"
 
-#: conversions.c:744 conversions.c:745
-msgid "Not yet posted: "
-msgstr "¤Ş¤ÀÅê¹Æ¤µ¤ì¤Æ¤¤¤Ş¤»¤ó: "
-
-#: conversions.c:747 conversions.c:753
+#: conv.c:326
 #, c-format
-msgid "%x"
+msgid "on %x"
 msgstr ""
 
-#: conversions.c:749 conversions.c:755
-msgid "%x, %H:%M"
-msgstr ""
+#: conv.c:333
+msgid "Posted "
+msgstr "æŠ•ç¨¿æ—¥æ™‚ "
 
-#: cookies.c:185
-#, c-format
-msgid "Cookie for %s has expired!"
-msgstr "¥¯¥Ã¥­¡¼ %s ¤ÏÍ­¸ú´ü¸Â¤¬½ªÎ»¤·¤Æ¤¤¤Ş¤¹¡ª"
-
-#: dialog.c:85 dialog.c:87
+#: dialog.c:57 dialog.c:59
 #, c-format
 msgid "Current setting: %s"
-msgstr "¸½ºß¤ÎÀßÄê: %s"
+msgstr "ç¾åœ¨ã®è¨­å®š: %s"
 
-#: dialog.c:100 dialog.c:641
+#: dialog.c:71 dialog.c:511
 msgid "Aborted."
-msgstr "Ãæ»ß¤·¤Ş¤·¤¿¡£"
+msgstr "ä¸­æ­¢ã—ã¾ã—ãŸã€‚"
 
-#: dialog.c:107
+#: dialog.c:78
 #, c-format
 msgid "Only %s format strings allowed for default browser!"
-msgstr "¥Õ¥©¡¼¥Ş¥Ã¥ÈÊ¸»úÎó %s ¤Ï¥Ç¥Õ¥©¥ë¥È¥Ö¥é¥¦¥¶¤Î¤¿¤á¤À¤±¤Ë»ÈÍÑ²ÄÇ½¤Ç¤¹¡ª"
+msgstr "ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ— %s ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ–ãƒ©ã‚¦ã‚¶ã®ãŸã‚ã ã‘ã«ä½¿ç”¨å¯èƒ½ã§ã™ï¼"
 
-#: dialog.c:112 ui-support.c:242
+#: dialog.c:83 uiutil.c:156
 msgid ""
 "Unsafe browser string (contains quotes)! See snownews.kcore.de/faq#toc2.4"
-msgstr "°ÂÁ´¤Ç¤Ê¤¤¥Ö¥é¥¦¥¶Ì¾¤Ç¤¹(¥¯¥ª¡¼¥È¤ò´Ş¤ó¤Ç¤¤¤Ş¤¹)¡ªsnownews.kcore.de/faq#toc2.4 ¤òÆÉ¤ó¤Ç¤¯¤À¤µ¤¤¡£"
+msgstr ""
+"å®‰å…¨ã§ãªã„ãƒ–ãƒ©ã‚¦ã‚¶åã§ã™(ã‚¯ã‚ªãƒ¼ãƒˆã‚’å«ã‚“ã§ã„ã¾ã™)ï¼snownews.kcore.de/"
+"faq#toc2.4 ã‚’èª­ã‚“ã§ãã ã•ã„ã€‚"
 
-#: dialog.c:132
+#: dialog.c:98
 msgid "Enter new name. Blank line to abort. '-' to reset."
-msgstr "¿·¤·¤¤Ì¾Á°¤òÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£'-' ¤Ç¥ê¥»¥Ã¥È¤·¤Ş¤¹¡£"
+msgstr "æ–°ã—ã„åå‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚'-' ã§ãƒªã‚»ãƒƒãƒˆã—ã¾ã™ã€‚"
 
-#: dialog.c:145
+#: dialog.c:110
 msgid "The new title must not contain a \"|\" character!"
-msgstr "¿·¤·¤¤¥¿¥¤¥È¥ëÊ¸»úÎó¤Ë \"|\" ¤ò´Ş¤Ş¤»¤ë¤³¤È¤Ï¤Ç¤­¤Ş¤»¤ó¡ª"
+msgstr "æ–°ã—ã„ã‚¿ã‚¤ãƒˆãƒ«æ–‡å­—åˆ—ã« \"|\" ã‚’å«ã¾ã›ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ï¼"
 
-#: dialog.c:193
+#: dialog.c:150
 msgid "Enter URL of the feed you want to add. Blank line to abort."
-msgstr "ÄÉ²Ã¤·¤¿¤¤¥Õ¥£¡¼¥É¤Î URL ¤òÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£¶õ¹Ô¤ÇÃæ»ß¤·¤Ş¤¹¡£"
+msgstr "è¿½åŠ ã—ãŸã„ãƒ•ã‚£ãƒ¼ãƒ‰ã® URL ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ç©ºè¡Œã§ä¸­æ­¢ã—ã¾ã™ã€‚"
 
-#: dialog.c:254
+#: dialog.c:198
 msgid ""
 "The feed could not be parsed. Do you need a filter script for this feed? (y/"
 "n)"
-msgstr "¥Õ¥£¡¼¥É¤¬¥Ñ¡¼¥¹¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿¡£¤³¤Î¥Õ¥£¡¼¥É¤ËÂĞ¤·¤Æ¥Õ¥£¥ë¥¿¥¹¥¯¥ê¥×¥È¤ÏÉ¬Í×¤Ç¤¹¤«¡© (y/n)"
+msgstr ""
+"ãƒ•ã‚£ãƒ¼ãƒ‰ãŒãƒ‘ãƒ¼ã‚¹ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã«å¯¾ã—ã¦ãƒ•ã‚£ãƒ«ã‚¿ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯å¿…"
+"è¦ã§ã™ã‹ï¼Ÿ (y/n)"
 
-#: dialog.c:306
-#, c-format
-msgid "Last updated: %s"
-msgstr "ºÇ½ª¹¹¿·: %s"
+#: dialog.c:238
+msgid "Last updated: "
+msgstr ""
 
-#: dialog.c:308
+#: dialog.c:241
 msgid "No modification date."
-msgstr "ÆüÉÕ¤Î½¤Àµ¤Ï¤¢¤ê¤Ş¤»¤ó¡£"
+msgstr "æ—¥ä»˜ã®ä¿®æ­£ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
-#: dialog.c:311
-#, c-format
-msgid "In disk cache: %lld bytes"
-msgstr "¥Ç¥£¥¹¥¯¥­¥ã¥Ã¥·¥å: %lld ¥Ğ¥¤¥È"
-
-#: dialog.c:313
+#: dialog.c:253
 msgid "Not in disk cache."
-msgstr "¥Ç¥£¥¹¥¯¥­¥ã¥Ã¥·¥å¤Ë¤¢¤ê¤Ş¤»¤ó¡£"
+msgstr "ãƒ‡ã‚£ã‚¹ã‚¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
-#: dialog.c:316 dialog.c:318 dialog.c:321
+#: dialog.c:256
+#, c-format
+msgid "In disk cache: %jd bytes"
+msgstr ""
+
+#: dialog.c:261
 msgid "Categories:"
-msgstr "¥«¥Æ¥´¥ê:"
+msgstr "ã‚«ãƒ†ã‚´ãƒª:"
 
-#: dialog.c:318
+#: dialog.c:264
 msgid "none"
-msgstr "¤Ê¤·"
+msgstr "ãªã—"
 
-#: dialog.c:327
+#: dialog.c:274
+msgid "Download failed: "
+msgstr ""
+
+#: dialog.c:277
 msgid "Feed uses authentication."
-msgstr "¥Õ¥£¡¼¥É¤ÏÇ§¾Ú¤ò»ÈÍÑ¤·¤Æ¤¤¤Ş¤¹¡£"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã¯èªè¨¼ã‚’ä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚"
 
-#: dialog.c:329
+#: dialog.c:279
 msgid "Feed does not use authentication."
-msgstr "¥Õ¥£¡¼¥É¤ÏÇ§¾Ú¤ò»ÈÍÑ¤·¤Æ¤¤¤Ş¤»¤ó¡£"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã¯èªè¨¼ã‚’ä½¿ç”¨ã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
-#: dialog.c:336 dialog.c:337
-#, c-format
-msgid "Last webserver status: %d"
-msgstr "ºÇ¸å¤Ë³ÎÇ§¤·¤¿»ş¤Î¥¦¥§¥Ö¥µ¡¼¥Ğ¤Î¾õÂÖ: %d"
-
-#: dialog.c:339 dialog.c:340
-#, c-format
-msgid "Last webserver status: (%s) %d"
-msgstr "ºÇ¸å¤Ë³ÎÇ§¤·¤¿»ş¤Î¥¦¥§¥Ö¥µ¡¼¥Ğ¤Î¾õÂÖ: (%s) %d"
-
-#: dialog.c:369 dialog.c:370
+#: dialog.c:285
 msgid "Filtered through:"
-msgstr "¥Õ¥£¥ë¥¿Å¬ÍÑ:"
+msgstr "ãƒ•ã‚£ãƒ«ã‚¿é©ç”¨:"
 
-#: dialog.c:373
+#: dialog.c:291
 msgid "Displaying feed information."
-msgstr "¥Õ¥£¡¼¥É¾ğÊó¤òÉ½¼¨¤·¤Ş¤¹¡£"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰æƒ…å ±ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚"
 
-#: dialog.c:388
+#: dialog.c:302
 msgid "Are you sure you want to delete this feed?"
-msgstr "¤³¤Î¥Õ¥£¡¼¥É¤òËÜÅö¤Ëºï½ü¤·¤Ş¤¹¡£¤è¤í¤·¤¤¤Ç¤¹¤«¡©"
+msgstr "ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’æœ¬å½“ã«å‰Šé™¤ã—ã¾ã™ã€‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ"
 
-#: dialog.c:391
+#: dialog.c:305
 msgid "Type 'y' to delete, any other key to abort."
-msgstr "'y' ¤ò²¡¤»¤Ğºï½ü¤·¤Ş¤¹¡£¤½¤ÎÂ¾¤Î¥­¡¼¤ÇÃæ»ß¤·¤Ş¤¹¡£"
+msgstr "'y' ã‚’æŠ¼ã›ã°å‰Šé™¤ã—ã¾ã™ã€‚ãã®ä»–ã®ã‚­ãƒ¼ã§ä¸­æ­¢ã—ã¾ã™ã€‚"
 
-#: dialog.c:428 dialog.c:484
+#: dialog.c:334 dialog.c:382
 msgid "tab:"
 msgstr ""
 
-#: dialog.c:432
+#: dialog.c:338
 msgid "Add RSS feed..."
-msgstr "RSS ¥Õ¥£¡¼¥É¤òÄÉ²Ã¤·¤Ş¤¹..."
+msgstr "RSS ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¾ã™..."
 
-#: dialog.c:433
+#: dialog.c:339
 msgid "Delete highlighted RSS feed..."
-msgstr "RSS ¥Õ¥£¡¼¥É¤òºï½ü¤·¤Ş¤¹..."
+msgstr "RSS ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã—ã¾ã™..."
 
-#: dialog.c:434
+#: dialog.c:340
 msgid "Rename feed..."
-msgstr "¥Õ¥£¡¼¥É¤ÎÌ¾Á°¤òÊÑ¹¹¤·¤Ş¤¹..."
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã®åå‰ã‚’å¤‰æ›´ã—ã¾ã™..."
 
-#: dialog.c:435
+#: dialog.c:341
 msgid "Reload all feeds"
-msgstr "¤¹¤Ù¤Æ¤Î¥Õ¥£¡¼¥É¤òºÆÆÉ¤ß¹ş¤ß¤·¤Ş¤¹"
+msgstr "ã™ã¹ã¦ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’å†èª­ã¿è¾¼ã¿ã—ã¾ã™"
 
-#: dialog.c:436 dialog.c:490
+#: dialog.c:342 dialog.c:388
 msgid "Reload this feed"
-msgstr "¤³¤Î¥Õ¥£¡¼¥É¤òºÆÆÉ¤ß¹ş¤ß¤·¤Ş¤¹"
+msgstr "ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’å†èª­ã¿è¾¼ã¿ã—ã¾ã™"
 
-#: dialog.c:437 dialog.c:493
+#: dialog.c:343 dialog.c:392
 msgid "Mark all read"
-msgstr "¤¹¤Ù¤Æ¤ò´ûÆÉ¤Ë¥Ş¡¼¥¯¤·¤Ş¤¹"
+msgstr "ã™ã¹ã¦ã‚’æ—¢èª­ã«ãƒãƒ¼ã‚¯ã—ã¾ã™"
 
-#: dialog.c:438
+#: dialog.c:344
 msgid "Change default browser..."
-msgstr "¥Ç¥Õ¥©¥ë¥È¥Ö¥é¥¦¥¶¤òÊÑ¹¹¤·¤Ş¤¹..."
+msgstr "ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ–ãƒ©ã‚¦ã‚¶ã‚’å¤‰æ›´ã—ã¾ã™..."
 
-#: dialog.c:439
+#: dialog.c:345
 msgid "Move item up, down"
-msgstr "¥¢¥¤¥Æ¥à¤ò¾å²¼¤Ë°ÜÆ°¤·¤Ş¤¹"
+msgstr "ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä¸Šä¸‹ã«ç§»å‹•ã—ã¾ã™"
 
-#: dialog.c:440
+#: dialog.c:346
 msgid "Sort feed list alphabetically"
-msgstr "¥¢¥ë¥Õ¥¡¥Ù¥Ã¥È½ç¤ËÊÂ¤Ó´¹¤¨¤Ş¤¹"
+msgstr "ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆé †ã«ä¸¦ã³æ›ãˆã¾ã™"
 
-#: dialog.c:441
+#: dialog.c:347
 msgid "Categorize feed..."
-msgstr "¥Õ¥£¡¼¥É¤Î¥«¥Æ¥´¥ê¤òÀßÄê¤·¤Ş¤¹..."
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã®ã‚«ãƒ†ã‚´ãƒªã‚’è¨­å®šã—ã¾ã™..."
 
-#: dialog.c:442
+#: dialog.c:348
 msgid "Apply filter..."
-msgstr "¥Õ¥£¥ë¥¿¤òÅ¬ÍÑ¤·¤Ş¤¹..."
+msgstr "ãƒ•ã‚£ãƒ«ã‚¿ã‚’é©ç”¨ã—ã¾ã™..."
 
-#: dialog.c:443
+#: dialog.c:349
 msgid "Only current category"
-msgstr "¤³¤Î¥«¥Æ¥´¥ê¤Î¤ß¤òÉ½¼¨¤·¤Ş¤¹"
+msgstr "ã“ã®ã‚«ãƒ†ã‚´ãƒªã®ã¿ã‚’è¡¨ç¤ºã—ã¾ã™"
 
-#: dialog.c:444
+#: dialog.c:350
 msgid "Remove filter"
-msgstr "¥Õ¥£¥ë¥¿¤ò¼è¤ê½ü¤­¤Ş¤¹"
+msgstr "ãƒ•ã‚£ãƒ«ã‚¿ã‚’å–ã‚Šé™¤ãã¾ã™"
 
-#: dialog.c:445
-msgid "Toggle AND/OR filtering"
-msgstr "AND/OR ¥Õ¥£¥ë¥¿¤ò¥È¥°¥ë¤·¤Ş¤¹"
-
-#: dialog.c:446
+#: dialog.c:351
 msgid "Show new headlines"
-msgstr "¿·µ¬¥Õ¥£¡¼¥É¤òÉ½¼¨¤·¤Ş¤¹"
+msgstr "æ–°è¦ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’è¡¨ç¤ºã—ã¾ã™"
 
-#: dialog.c:447
+#: dialog.c:352
 msgid "Add conversion filter..."
-msgstr "¥³¥ó¥Ğ¡¼¥¸¥ç¥ó¥Õ¥£¥ë¥¿¤òÄÉ²Ã¤·¤Ş¤¹"
+msgstr "ã‚³ãƒ³ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãƒ•ã‚£ãƒ«ã‚¿ã‚’è¿½åŠ ã—ã¾ã™"
 
-#: dialog.c:448 dialog.c:496
+#: dialog.c:353 dialog.c:395
 msgid "Type Ahead Find"
-msgstr "Type Ahead ¤Ç¸¡º÷¤·¤Ş¤¹"
+msgstr "Type Ahead ã§æ¤œç´¢ã—ã¾ã™"
 
-#: dialog.c:449
+#: dialog.c:354
 msgid "About"
 msgstr ""
 
-#: dialog.c:450
+#: dialog.c:355
 msgid "Quit program"
-msgstr "¥×¥í¥°¥é¥à¤ò½ªÎ»¤·¤Ş¤¹"
+msgstr "ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™"
 
-#: dialog.c:453 dialog.c:500 dialog.c:532
+#: dialog.c:358 dialog.c:399 dialog.c:423
 msgid "Press the any(tm) key to exit help screen."
-msgstr "¤Ê¤Ë¤«¥­¡¼¤ò²¡¤¹¤È¥Ø¥ë¥×²èÌÌ¤ò½ªÎ»¤·¤Ş¤¹¡£"
+msgstr "ãªã«ã‹ã‚­ãƒ¼ã‚’æŠ¼ã™ã¨ãƒ˜ãƒ«ãƒ—ç”»é¢ã‚’çµ‚äº†ã—ã¾ã™ã€‚"
 
-#: dialog.c:475
-#, c-format
-msgid "%c, up:"
+#: dialog.c:371
+msgid ", up:"
 msgstr ""
 
-#: dialog.c:476
-#, c-format
-msgid "%c, down:"
+#: dialog.c:373
+msgid ", down:"
 msgstr ""
 
-#: dialog.c:477
+#: dialog.c:374
 msgid "enter:"
 msgstr ""
 
-#: dialog.c:487 dialog.c:526
+#: dialog.c:385 dialog.c:417
 msgid "Previous item"
-msgstr "Á°¤Î¥¢¥¤¥Æ¥à¤Ë°ÜÆ°¤·¤Ş¤¹"
+msgstr "å‰ã®ã‚¢ã‚¤ãƒ†ãƒ ã«ç§»å‹•ã—ã¾ã™"
 
-#: dialog.c:488 dialog.c:527
+#: dialog.c:386 dialog.c:418
 msgid "Next item"
-msgstr "¼¡¤Î¥¢¥¤¥Æ¥à¤Ë°ÜÆ°¤·¤Ş¤¹"
+msgstr "æ¬¡ã®ã‚¢ã‚¤ãƒ†ãƒ ã«ç§»å‹•ã—ã¾ã™"
 
-#: dialog.c:489
+#: dialog.c:387
 msgid "View item"
-msgstr "¥¢¥¤¥Æ¥à¤òÉ½¼¨¤·¤Ş¤¹"
+msgstr "ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¡¨ç¤ºã—ã¾ã™"
 
-#: dialog.c:491
+#: dialog.c:389
+msgid "Force reload this feed"
+msgstr ""
+
+#: dialog.c:390
 msgid "Open homepage"
-msgstr "¥Û¡¼¥à¥Ú¡¼¥¸¤ò³«¤­¤Ş¤¹"
+msgstr "ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã‚’é–‹ãã¾ã™"
 
-#: dialog.c:492 dialog.c:528
+#: dialog.c:391 dialog.c:419
 msgid "Open link"
-msgstr "¥ê¥ó¥¯¤ò³«¤­¤Ş¤¹"
+msgstr "ãƒªãƒ³ã‚¯ã‚’é–‹ãã¾ã™"
 
-#: dialog.c:494
-msgid "Mark item unread"
-msgstr "¥Ş¡¼¥¯¤·¤¿¥¢¥¤¥Æ¥à¤òÌ¤ÆÉ¤Ë¤·¤Ş¤¹"
+#: dialog.c:393
+msgid "Toggle item read status"
+msgstr ""
 
-#: dialog.c:495
+#: dialog.c:394
 msgid "Show feed info..."
-msgstr "¥Õ¥£¡¼¥É¤Î¾ğÊó¤òÉ½¼¨¤·¤Ş¤¹..."
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã®æƒ…å ±ã‚’è¡¨ç¤ºã—ã¾ã™..."
 
-#: dialog.c:497
+#: dialog.c:396
 msgid "Return to main menu"
-msgstr "¥á¥¤¥ó¥á¥Ë¥å¡¼¤ËÌá¤ê¤Ş¤¹"
+msgstr "ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚Šã¾ã™"
 
-#: dialog.c:519
-msgid "cursor:"
+#: dialog.c:415
+msgid ", enter:"
 msgstr ""
 
-#: dialog.c:523
-#, c-format
-msgid "%c, enter:"
-msgstr ""
-
-#: dialog.c:525
-msgid "Scroll text"
-msgstr "¥Æ¥­¥¹¥È¤ò¥¹¥¯¥í¡¼¥ë¤·¤Ş¤¹"
-
-#: dialog.c:529
+#: dialog.c:420
 msgid "Return to overview"
-msgstr "³µÀâ¤ËÌá¤ê¤Ş¤¹"
+msgstr "æ¦‚èª¬ã«æˆ»ã‚Šã¾ã™"
 
-#: dialog.c:569 dialog.c:570
+#: dialog.c:450
 #, c-format
 msgid "Category configuration for %s"
-msgstr "%s ¤Î¥«¥Æ¥´¥ê¤òÀßÄê¤·¤Ş¤¹"
+msgstr "%s ã®ã‚«ãƒ†ã‚´ãƒªã‚’è¨­å®šã—ã¾ã™"
 
-#: dialog.c:577
+#: dialog.c:457
 msgid "No category defined. Select one or add a new category:"
-msgstr "¥«¥Æ¥´¥ê¤¬ÄêµÁ¤µ¤ì¤Æ¤¤¤Ş¤»¤ó¡£¤É¤ì¤«¤Ò¤È¤Ä¤òÁªÂò¤¹¤ë¤«¿·¤·¤¤¥«¥Æ¥´¥ê¤òÄÉ²Ã¤·¤Æ¤¯¤À¤µ¤¤:"
+msgstr ""
+"ã‚«ãƒ†ã‚´ãƒªãŒå®šç¾©ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚ã©ã‚Œã‹ã²ã¨ã¤ã‚’é¸æŠã™ã‚‹ã‹æ–°ã—ã„ã‚«ãƒ†ã‚´ãƒªã‚’è¿½åŠ ã—"
+"ã¦ãã ã•ã„:"
 
-#: dialog.c:586 dialog.c:626
+#: dialog.c:464 dialog.c:498
 #, c-format
 msgid ""
 "Select category number to add, press 'A' to add a new category or '%c' to "
 "quit."
-msgstr "ÄÉ²Ã¤·¤¿¤¤¥«¥Æ¥´¥êÈÖ¹æ¤òÁªÂò¤·¡¢'A' ¤Ç¿·¤·¤¤¥«¥Æ¥´¥ê¤òÄÉ²Ã¤¹¤ë¤« '%c' ¤Ç½ªÎ»¤·¤Æ¤¯¤À¤µ¤¤¡£"
+msgstr ""
+"è¿½åŠ ã—ãŸã„ã‚«ãƒ†ã‚´ãƒªç•ªå·ã‚’é¸æŠã—ã€'A' ã§æ–°ã—ã„ã‚«ãƒ†ã‚´ãƒªã‚’è¿½åŠ ã™ã‚‹ã‹ '%c' ã§çµ‚äº†"
+"ã—ã¦ãã ã•ã„ã€‚"
 
-#: dialog.c:591
+#: dialog.c:468
 msgid "Categories defined for this feed:"
-msgstr "¤³¤Î¥Õ¥£¡¼¥É¤Î¥«¥Æ¥´¥ê¤òÄêµÁ¤·¤Ş¤·¤¿:"
+msgstr "ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã—ã¾ã—ãŸ:"
 
-#: dialog.c:600
+#: dialog.c:475
 #, c-format
 msgid ""
 "Select a category number to delete, press 'A' to add a new one or '%c' to "
 "quit."
-msgstr "ºï½ü¤·¤¿¤¤¥«¥Æ¥´¥êÈÖ¹æ¤òÁªÂò¤·¡¢'A' ¤Ç¿·¤·¤¤¥«¥Æ¥´¥ê¤òÄÉ²Ã¤¹¤ë¤« '%c' ¤Ç½ªÎ»¤·¤Æ¤¯¤À¤µ¤¤¡£"
+msgstr ""
+"å‰Šé™¤ã—ãŸã„ã‚«ãƒ†ã‚´ãƒªç•ªå·ã‚’é¸æŠã—ã€'A' ã§æ–°ã—ã„ã‚«ãƒ†ã‚´ãƒªã‚’è¿½åŠ ã™ã‚‹ã‹ '%c' ã§çµ‚äº†"
+"ã—ã¦ãã ã•ã„ã€‚"
 
-#: dialog.c:617
+#: dialog.c:491
 msgid "Select a new category or add a new one:"
-msgstr "¿·¤·¤¤¥«¥Æ¥´¥ê¤òÁªÂò¤¹¤ë¤«¿·¤¿¤Ê¥«¥Æ¥´¥ê¤òºî¤Ã¤Æ¤¯¤À¤µ¤¤:"
+msgstr "æ–°ã—ã„ã‚«ãƒ†ã‚´ãƒªã‚’é¸æŠã™ã‚‹ã‹æ–°ãŸãªã‚«ãƒ†ã‚´ãƒªã‚’ä½œã£ã¦ãã ã•ã„:"
 
-#: dialog.c:638
+#: dialog.c:508
 msgid "Enter new category name."
-msgstr "¿·¤·¤¤¥«¥Æ¥´¥êÌ¾¤òÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£"
+msgstr "æ–°ã—ã„ã‚«ãƒ†ã‚´ãƒªåã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"
 
-#: dialog.c:646
+#: dialog.c:515
 msgid "Category already defined for this feed!"
-msgstr "¤³¤Î¥Õ¥£¡¼¥É¤Î¤¿¤á¤Î¥«¥Æ¥´¥ê¤Ï¤¹¤Ç¤ËÄêµÁ¤µ¤ì¤Æ¤¤¤Ş¤¹¡ª"
+msgstr "ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã®ãŸã‚ã®ã‚«ãƒ†ã‚´ãƒªã¯ã™ã§ã«å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ï¼"
 
-#: dialog.c:711
+#: dialog.c:555
 msgid "Select filter to apply"
-msgstr "Å¬ÍÑ¤¹¤ë¥Õ¥£¥ë¥¿¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤"
+msgstr "é©ç”¨ã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã‚’é¸æŠã—ã¦ãã ã•ã„"
 
-#: dialog.c:724
+#: dialog.c:566
 msgid "Select a category number or any other key to reset filters."
-msgstr "¥«¥Æ¥´¥êÈÖ¹æ¤«¥Õ¥£¥ë¥¿¤ò¥ê¥»¥Ã¥È¤¹¤ë¤¿¤á¤Î¥­¡¼¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£"
+msgstr "ã‚«ãƒ†ã‚´ãƒªç•ªå·ã‹ãƒ•ã‚£ãƒ«ã‚¿ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ãŸã‚ã®ã‚­ãƒ¼ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚"
 
-#: dialog.c:762
+#: dialog.c:594
 msgid "Enter script to pipe feed through."
-msgstr "¥Õ¥£¡¼¥É¤ò¥Ñ¥¤¥×¤¹¤ë¥¹¥¯¥ê¥×¥È¤òÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’ãƒ‘ã‚¤ãƒ—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"
 
-#: filters.c:59
+#: feedio.c:73
+msgid "Invalid XML! Cannot parse this feed!"
+msgstr "ç„¡åŠ¹ãª XML ã§ã™ï¼ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’è§£æã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ï¼"
+
+#: feedio.c:110
+#, c-format
+msgid "Cache for %s is toast. Reloading from server..."
+msgstr "ã‚­ãƒ£ãƒƒã‚·ãƒ¥ %s ã¯å£Šã‚Œã¦ã„ã¾ã™ã€‚ã‚µãƒ¼ãƒã‹ã‚‰å†èª­ã¿è¾¼ã¿ã—ã¦ã„ã¾ã™..."
+
+#: feedio.c:147
+#, c-format
+msgid "Could not load %s!"
+msgstr "%s ã‚’èª­ã¿è¾¼ã¿ã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
+
+#: feedio.c:162 feedio.c:163
+msgid "Loading cache ["
+msgstr "ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™ ["
+
+#: feedio.c:373 feedio.c:384
+msgid "Saving settings ["
+msgstr "è¨­å®šã‚’ä¿å­˜ã—ã¦ã„ã¾ã™ ["
+
+#: filters.c:36
 #, c-format
 msgid "Loading \"%s\""
-msgstr "\"%s\" ¤òÆÉ¤ß¹ş¤ó¤Ç¤¤¤Ş¤¹"
+msgstr "\"%s\" ã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™"
 
-#: filters.c:123
+#: main.c:113
 #, c-format
-msgid "Could not write temp file for filter: %s"
-msgstr "¥Õ¥£¥ë¥¿¤Î¤¿¤á¤Î°ì»ş¥Õ¥¡¥¤¥ë¤Ë½ñ¤­¹ş¤ß¤Ç¤­¤Ş¤»¤ó: %s"
+msgid "Unable to write PID file %s!"
+msgstr ""
 
-#: interface.c:181 interface.c:597 interface.c:600
+#: main.c:136
+#, c-format
+msgid ""
+"Snownews seems to be already running with process ID %d.\n"
+"A pid file exists at \"%s\".\n"
+msgstr ""
+
+#: main.c:140
+#, c-format
+msgid ""
+"A pid file exists at \"%s\",\n"
+"but snownews doesn't seem to be running.\n"
+"Delete that file and start it again.\n"
+"Continue anyway? (y/n) "
+msgstr ""
+
+#: main.c:211
+#, c-format
+msgid ""
+"Aborting program execution!\n"
+"snownews quit without saving changes due to internal error!\n"
+"Please submit a bugreport at https://github.com/msharov/snownews/issues\n"
+msgstr ""
+
+#: main.c:215
+#, c-format
+msgid ""
+"While executing: %s\n"
+"Error: %s\n"
+"\n"
+msgstr ""
+
+#: main.c:261
+#, c-format
+msgid ""
+"Usage: snownews [-chuV]\n"
+"\n"
+"  -h, --help\t\tPrint this help message.\n"
+"  -V, --version\t\tPrint version number and exit.\n"
+"  -c, --cursor-on\tForce cursor always visible.\n"
+"  -u, --update\t\tAutomatically update every feed.\n"
+msgstr ""
+
+#: main.c:316
+#, c-format
+msgid "Unknown option \"%s\"\n"
+msgstr ""
+
+#: netio.c:121
+msgid "already up to date"
+msgstr ""
+
+#: parse.c:201 parse.c:313 parse.c:455 ui.c:224 ui.c:302 ui.c:305
 msgid "No title"
-msgstr "¥¿¥¤¥È¥ë¤¬¤¢¤ê¤Ş¤»¤ó"
+msgstr "ã‚¿ã‚¤ãƒˆãƒ«ãŒã‚ã‚Šã¾ã›ã‚“"
 
-#: interface.c:261 interface.c:631
-msgid "-> No link"
-msgstr "-> ¥ê¥ó¥¯¤¬¤¢¤ê¤Ş¤»¤ó"
+#: setup.c:37
+msgid "configuration dir path is too long"
+msgstr ""
 
-#: interface.c:276
+#: setup.c:51
+msgid "cache dir path is too long"
+msgstr ""
+
+#: setup.c:98
+msgid "Save settings (browser)"
+msgstr "è¨­å®š (browser) ã‚’ä¿å­˜ã—ã¾ã™"
+
+#: setup.c:456
+msgid "Reading configuration settings..."
+msgstr "åˆæœŸè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™..."
+
+#: ui.c:96
+msgid "No description available."
+msgstr "æ¦‚è¦ãŒã‚ã‚Šã¾ã›ã‚“"
+
+#: ui.c:123
 #, c-format
 msgid ""
 "Press '%c' or Enter to return to previous screen. Hit '%c' for help screen."
-msgstr "'%c' ¤«¥¨¥ó¥¿¡¼¥­¡¼¤ÇÁ°¤Î²èÌÌ¤ËÌá¤ê¤Ş¤¹¡£'%c' ¤Ç¥Ø¥ë¥×²èÌÌ¤òÉ½¼¨¤·¤Ş¤¹¡£"
+msgstr ""
+"'%c' ã‹ã‚¨ãƒ³ã‚¿ãƒ¼ã‚­ãƒ¼ã§å‰ã®ç”»é¢ã«æˆ»ã‚Šã¾ã™ã€‚'%c' ã§ãƒ˜ãƒ«ãƒ—ç”»é¢ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚"
 
-#: interface.c:647
+#: ui.c:332
 #, c-format
 msgid "Press '%c' to return to main menu, '%c' to show help."
-msgstr "'%c' ¤Ç¥á¥¤¥ó¥á¥Ë¥å¡¼¤ËÌá¤ê¤Ş¤¹¡£'%c' ¤Ç¥Ø¥ë¥×²èÌÌ¤òÉ½¼¨¤·¤Ş¤¹¡£"
+msgstr "'%c' ã§ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚Šã¾ã™ã€‚'%c' ã§ãƒ˜ãƒ«ãƒ—ç”»é¢ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚"
 
-#: interface.c:754 interface.c:1208 interface.c:1218 interface.c:1228
-#: interface.c:1263 interface.c:1482 interface.c:1490 interface.c:1498
-#: interface.c:1507
+#: ui.c:412 ui.c:776 ui.c:787 ui.c:794 ui.c:824 ui.c:1013 ui.c:1021 ui.c:1028
+#: ui.c:1036
 msgid "Please deactivate the category filter before using this function."
-msgstr "¤³¤Îµ¡Ç½¤ò»ÈÍÑ¤¹¤ëÁ°¤Ë¥«¥Æ¥´¥ê¥Õ¥£¥ë¥¿¤òÄä»ß¤µ¤»¤Æ¤¯¤À¤µ¤¤"
+msgstr "ã“ã®æ©Ÿèƒ½ã‚’ä½¿ç”¨ã™ã‚‹å‰ã«ã‚«ãƒ†ã‚´ãƒªãƒ•ã‚£ãƒ«ã‚¿ã‚’åœæ­¢ã•ã›ã¦ãã ã•ã„"
 
-#: interface.c:1135 interface.c:1137 interface.c:1154
-msgid "new"
-msgstr "Ì¤ÆÉ"
-
-#: interface.c:1148
+#: ui.c:719
 #, c-format
-msgid "%3d new"
-msgid_plural "%3d new"
-msgstr[0] "%3d Ì¤ÆÉ"
-msgstr[1] "%3d Ì¤ÆÉ"
+msgid "%3u new"
+msgid_plural "%3u new"
+msgstr[0] ""
+msgstr[1] ""
 
-#: interface.c:1170
+#: ui.c:744
 #, c-format
 msgid "Press '%c' for help window."
-msgstr "'%c' ¤Ç¥Ø¥ë¥×¥¦¥£¥ó¥É¥¦¤¬³«¤­¤Ş¤¹¡£"
+msgstr "'%c' ã§ãƒ˜ãƒ«ãƒ—ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒé–‹ãã¾ã™ã€‚"
 
-#: interface.c:1172
+#: ui.c:746
 #, c-format
 msgid "Press '%c' for help window. (Press '%c' to play Santa Hunta!)"
-msgstr "'%c' ¤Ç¥Ø¥ë¥×¥¦¥£¥ó¥É¥¦¤¬³«¤­¤Ş¤¹¡£('%c' ¤Ç Santa Hunta ¤òºÆÀ¸¤·¤Ş¤¹¡ª)"
+msgstr ""
+"'%c' ã§ãƒ˜ãƒ«ãƒ—ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒé–‹ãã¾ã™ã€‚('%c' ã§ Santa Hunta ã‚’å†ç”Ÿã—ã¾ã™ï¼)"
 
-#: interface.c:1234
+#: ui.c:798
 msgid "Successfully added new item..."
-msgstr "¿·¤·¤¤¥¢¥¤¥Æ¥à¤ÎÄÉ²Ã¤ËÀ®¸ù¤·¤Ş¤·¤¿..."
+msgstr "æ–°ã—ã„ã‚¢ã‚¤ãƒ†ãƒ ã®è¿½åŠ ã«æˆåŠŸã—ã¾ã—ãŸ..."
 
-#: interface.c:1237
+#: ui.c:802
 msgid "Invalid URL! Please add http:// if you forgot this."
-msgstr "Ìµ¸ú¤Ê URL ¤Ç¤¹¡ªhttp:// ¤òËº¤ì¤Æ¤¤¤¿¤Ê¤éÄÉ²Ã¤·¤Æ¤¯¤À¤µ¤¤¡£"
+msgstr "ç„¡åŠ¹ãª URL ã§ã™ï¼http:// ã‚’å¿˜ã‚Œã¦ã„ãŸãªã‚‰è¿½åŠ ã—ã¦ãã ã•ã„ã€‚"
 
-#: interface.c:1241
+#: ui.c:805
 msgid "There was a problem adding the feed!"
-msgstr "¥Õ¥£¡¼¥É¤ÎÄÉ²Ã¤ËÌäÂê¤¬¤¢¤ê¤Ş¤·¤¿¡ª"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ã®è¿½åŠ ã«å•é¡ŒãŒã‚ã‚Šã¾ã—ãŸï¼"
 
-#: interface.c:1434 interface.c:1451
+#: ui.c:960 ui.c:977
 msgid "You cannot move items while a category filter is defined!"
-msgstr "¥«¥Æ¥´¥ê¥Õ¥£¥ë¥¿¤¬ÄêµÁ¤µ¤ì¤Æ¤¤¤ë¤¿¤á¥¢¥¤¥Æ¥à¤Î°ÜÆ°¤Ï¤Ç¤­¤Ş¤»¤ó¡ª"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ•ã‚£ãƒ«ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ãŸã‚ã‚¢ã‚¤ãƒ†ãƒ ã®ç§»å‹•ã¯ã§ãã¾ã›ã‚“ï¼"
 
-#: io-internal.c:120
-#, c-format
-msgid "%s: Invalid URL!"
-msgstr "%s: Ìµ¸ú¤Ê URL ¤Ç¤¹¡ª"
-
-#: io-internal.c:123
-#, c-format
-msgid "%s: Couldn't create network socket!"
-msgstr "%s: ¥Í¥Ã¥È¥ï¡¼¥¯¥½¥±¥Ã¥È¤òºîÀ®¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿¡ª"
-
-#: io-internal.c:126
-#, c-format
-msgid "%s: Can't resolve host!"
-msgstr "%s: ¥Û¥¹¥È¤ÎÌ¾Á°²ò·è¤¬¤Ç¤­¤Ş¤»¤ó¡ª"
-
-#: io-internal.c:129
-#, c-format
-msgid "%s: Connection refused!"
-msgstr "%s: ÀÜÂ³¤¬µñÈİ¤µ¤ì¤Ş¤·¤¿¡ª"
-
-#: io-internal.c:132
-#, c-format
-msgid "%s: Couldn't connect to server: %s"
-msgstr "%s: ¥µ¡¼¥Ğ¤ËÀÜÂ³¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿: %s"
-
-#: io-internal.c:137
-#, c-format
-msgid "%s: Connection timed out."
-msgstr "%s: ÀÜÂ³¤¬¥¿¥¤¥à¥¢¥¦¥È¤·¤Ş¤·¤¿¡£"
-
-#: io-internal.c:142
-#, c-format
-msgid "%s: Too many HTTP redirects encountered! Giving up."
-msgstr "%s: HTTP ¥ê¥À¥¤¥ì¥¯¥È²ó¿ô¤¬¸Â³¦¤Ç¤¹¡£¤¢¤­¤é¤á¤Ş¤¹¡£"
-
-#: io-internal.c:145
-#, c-format
-msgid "%s: Server sent an invalid redirect!"
-msgstr "%s: ¥µ¡¼¥Ğ¤ÏÌµ¸ú¤Ê¥ê¥À¥¤¥ì¥¯¥È¤òÁ÷¤Ã¤Æ¤­¤Ş¤·¤¿¡ª"
-
-#: io-internal.c:149
-#, c-format
-msgid "%s: This feed no longer exists. Please unsubscribe!"
-msgstr "%s: ¤³¤Î¥Õ¥£¡¼¥É¤Ï¤â¤Ï¤äÂ¸ºß¤·¤Ş¤»¤ó¡£¹ÖÆÉ¤ò¤ä¤á¤Æ¤¯¤À¤µ¤¤¡ª"
-
-#: io-internal.c:153
-#, c-format
-msgid "%s: Could not download feed: %s"
-msgstr "%s: ¥Õ¥£¡¼¥É¤ò¥À¥¦¥ó¥í¡¼¥É¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿: %s"
-
-#: io-internal.c:156
-#, c-format
-msgid "%s: Error in server reply."
-msgstr "%s: ¥µ¡¼¥Ğ¤Ï¥¨¥é¡¼¤òÊÖ¤·¤Ş¤·¤¿¡£"
-
-#: io-internal.c:159
-#, c-format
-msgid "%s: Authentication failed!"
-msgstr "%s: Ç§¾Ú¤Ë¼ºÇÔ¤·¤Ş¤·¤¿¡ª"
-
-#: io-internal.c:162
-#, c-format
-msgid "%s: URL does not contain authentication information!"
-msgstr "%s: URL ¤ÏÇ§¾Ú¤Ë´Ø¤¹¤ë¾ğÊó¤ò´Ş¤ó¤Ç¤¤¤Ş¤»¤ó¡ª"
-
-#: io-internal.c:165
-#, c-format
-msgid "%s: Could not generate authentication information!"
-msgstr "%s: Ç§¾Ú¤Ë´Ø¤¹¤ë¾ğÊó¤òºîÀ®¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿¡ª"
-
-#: io-internal.c:168
-#, c-format
-msgid "%s: Unsupported authentication method requested by server!"
-msgstr "%s: ¥µ¥İ¡¼¥È¤·¤Æ¤¤¤Ê¤¤Ç§¾ÚÊıË¡¤ò¥µ¡¼¥Ğ¤«¤éÍ×µá¤µ¤ì¤Ş¤·¤¿¡ª"
-
-#: io-internal.c:171
-#, c-format
-msgid "%s: Error decompressing server reply!"
-msgstr "%s: ¥µ¡¼¥Ğ¤«¤é¤ÎÊÖ¤Ã¤Æ¤­¤¿¥Ç¡¼¥¿¤òÅ¸³«¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤»¤ó¡ª"
-
-#: io-internal.c:239
-msgid "Invalid XML! Cannot parse this feed!"
-msgstr "Ìµ¸ú¤Ê XML ¤Ç¤¹¡ª¤³¤Î¥Õ¥£¡¼¥É¤ò²òÀÏ¤¹¤ë¤³¤È¤Ï¤Ç¤­¤Ş¤»¤ó¡ª"
-
-#: io-internal.c:283
-#, c-format
-msgid "Cache for %s is toast. Reloading from server..."
-msgstr "¥­¥ã¥Ã¥·¥å %s ¤Ï²õ¤ì¤Æ¤¤¤Ş¤¹¡£¥µ¡¼¥Ğ¤«¤éºÆÆÉ¤ß¹ş¤ß¤·¤Æ¤¤¤Ş¤¹..."
-
-#: io-internal.c:318
-#, c-format
-msgid "Could not load %s!"
-msgstr "%s ¤òÆÉ¤ß¹ş¤ß¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿¡ª"
-
-#: io-internal.c:337 io-internal.c:338
-msgid "Loading cache ["
-msgstr "¥­¥ã¥Ã¥·¥å¤òÆÉ¤ß¹ş¤ó¤Ç¤¤¤Ş¤¹ ["
-
-#: io-internal.c:384 io-internal.c:385
-msgid "Saving settings ["
-msgstr "ÀßÄê¤òÊİÂ¸¤·¤Æ¤¤¤Ş¤¹ ["
-
-#: io-internal.c:390
-msgid "Save settings (browser)"
-msgstr "ÀßÄê (browser) ¤òÊİÂ¸¤·¤Ş¤¹"
-
-#: io-internal.c:407
-msgid "Save settings (urls)"
-msgstr "ÀßÄê (urls) ¤òÊİÂ¸¤·¤Ş¤¹"
-
-#: io-internal.c:463
-msgid "Writing cache file"
-msgstr "¥­¥ã¥Ã¥·¥å¥Õ¥¡¥¤¥ë¤ò½ñ¤­¹ş¤ó¤Ç¤¤¤Ş¤¹"
-
-#: main.c:88
-msgid ""
-"Bye.\n"
-"\n"
-msgstr "¤µ¤è¤¦¤Ê¤é¡£\n\n"
-
-#: main.c:97
-msgid ""
-"Aborting program execution!\n"
-"An internal error occured. Snownews has quit, no changes has been saved!\n"
-msgstr ""
-"¥×¥í¥°¥é¥à¤Î¼Â¹Ô¤òÃæ»ß¤·¤Ş¤·¤¿¡ª\n"
-"ÆâÉô¥¨¥é¡¼¤¬È¯À¸¤·¤Ş¤·¤¿¡£Snownews ¤Ï½ªÎ»¤·¤Ş¤·¤¿¡£ÊÑ¹¹ÅÀ¤Ï¥»¡¼¥Ö¤µ¤ì¤Ş¤»¤ó¤Ç¤·¤¿¡ª\n"
-
-#: main.c:98
-msgid ""
-"This shouldn't happen, please submit a bugreport to kiza@kcore.de, tell me "
-"what you where doing and include the output below in your mail.\n"
-msgstr "¤³¤ì¤Ïµ¯¤³¤Ã¤Æ¤Ï¤¤¤±¤Ê¤¤¤³¤È¤Ç¤¹¡£¥Ğ¥°¥ì¥İ¡¼¥È¤ò kiza@kcore.de ¤Ş¤ÇÁ÷¤Ã¤Æ¤¯¤À¤µ¤¤¡£¤É¤Î¤è¤¦¤ÊÁàºî¤ò¤·¤¿¤«¡¢¤½¤Î¤È¤­¤Î½ĞÎÏ¤ò´Ş¤á¤Æ¥á¡¼¥ë¤Ç¶µ¤¨¤Æ¤¯¤À¤µ¤¤¡£\n"
-
-#: main.c:148 main.c:159
-#, c-format
-msgid ""
-"Snownews version %s\n"
-"\n"
-msgstr "Snownews ¥Ğ¡¼¥¸¥ç¥ó %s\n\n"
-
-#: main.c:160
-msgid ""
-"usage: snownews [-huV] [--help|--update|--version]\n"
-"\n"
-msgstr ""
-
-#: main.c:161
-msgid "\t--update|-u\tAutomatically update every feed.\n"
-msgstr "\t--update|-u\t¥Õ¥£¡¼¥É¤´¤È¤Ë¼«Æ°Åª¤Ë¥¢¥Ã¥×¥Ç¡¼¥È¤·¤Ş¤¹¡£\n"
-
-#: main.c:162
-msgid "\t--help|-h\tPrint this help message.\n"
-msgstr "\t--help|-h\t¤³¤Î¥Ø¥ë¥×¥á¥Ã¥»¡¼¥¸¤òÉ½¼¨¤·¤Ş¤¹¡£\n"
-
-#: main.c:163
-msgid "\t--version|-V\tPrint version number and exit.\n"
-msgstr "\t--version|-V\t¥Ğ¡¼¥¸¥ç¥ó¥Ê¥ó¥Ğ¡¼¤òÉ½¼¨¤·¤Æ½ªÎ»¤·¤Ş¤¹¡£\n"
-
-#: main.c:164
-msgid "\t--disable-versioncheck (obsoleted)\n"
-msgstr "\t--disable-versioncheck (¥á¥ó¥Æ¥Ê¥ó¥¹¤µ¤ì¤Æ¤¤¤Ş¤»¤ó)\n"
-
-#: netio.c:150 netio.c:152 netio.c:306
-#, c-format
-msgid "Downloading \"%s\""
-msgstr "\"%s\" ¤ò¥À¥¦¥ó¥í¡¼¥É¤·¤Æ¤¤¤Ş¤¹"
-
-#: netio.c:304
-#, c-format
-msgid "Downloading \"http://%s%s\""
-msgstr "\"http://%s%s\" ¤ò¥À¥¦¥ó¥í¡¼¥É¤·¤Æ¤¤¤Ş¤¹"
-
-#: netio.c:529 netio.c:530
-msgid "URL points to permanent redirect, updating with new location..."
-msgstr "URL ¤Ï±ÊÂ³Åª¥ê¥À¥¤¥ì¥¯¥È¤ò»Ø¤·¤Æ¤¤¤Ş¤¹¡£¿·¤¿¤Ê¾ì½ê¤Ë¹¹¿·¤·¤Ş¤¹..."
-
-#: setup.c:66
-msgid "Creating new config \"browser\"..."
-msgstr "¿·¤·¤¤ÀßÄê \"browser\" ¤òºîÀ®¤·¤Æ¤¤¤Ş¤¹..."
-
-#: setup.c:69
-msgid "Create initial configfile \"config\""
-msgstr "½é´üÀßÄê¥Õ¥¡¥¤¥ë \"config\" ¤òºîÀ®¤·¤Ş¤¹"
-
-#: setup.c:576
-msgid "Creating config directory ~/.snownews/cache/"
-msgstr "½é´üÀßÄê¥Ç¥£¥ì¥¯¥È¥ê ~/.snownews/cache/ ¤òºîÀ®¤·¤Æ¤¤¤Ş¤¹"
-
-#: setup.c:590
-msgid "Reading configuration settings..."
-msgstr "½é´üÀßÄê¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹ş¤ó¤Ç¤¤¤Ş¤¹..."
-
-#: setup.c:602
-msgid "Creating new configfile."
-msgstr "¿·¤·¤¤½é´üÀßÄê¥Õ¥¡¥¤¥ë¤òºîÀ®¤·¤Æ¤¤¤Ş¤¹¡£"
-
-#: setup.c:605
-msgid "Create initial configfile \"urls\""
-msgstr "½é´üÀßÄê¥Õ¥¡¥¤¥ë \"urls\" ¤òºîÀ®¤·¤Ş¤¹"
-
-#: ui-support.c:177
+#: uiutil.c:91
 msgid "Sorting, please wait..."
-msgstr "¥½¡¼¥È¤·¤Æ¤¤¤Ş¤¹¡£¤·¤Ğ¤é¤¯¤ªÂÔ¤Á¤¯¤À¤µ¤¤..."
+msgstr "ã‚½ãƒ¼ãƒˆã—ã¦ã„ã¾ã™ã€‚ã—ã°ã‚‰ããŠå¾…ã¡ãã ã•ã„..."
 
-#: ui-support.c:254
+#: uiutil.c:160
 msgid "Invalid URL passed. Possible shell exploit attempted!"
-msgstr "Ìµ¸ú¤Ê URL ¤¬¥Á¥§¥Ã¥¯¤ò¤¹¤êÈ´¤±¤Ş¤·¤¿¡£shell exploit ¤¬»î¤ß¤é¤ì¤¿²ÄÇ½À­¤¬¤¢¤ê¤Ş¤¹¡ª"
+msgstr ""
+"ç„¡åŠ¹ãª URL ãŒãƒã‚§ãƒƒã‚¯ã‚’ã™ã‚ŠæŠœã‘ã¾ã—ãŸã€‚shell exploit ãŒè©¦ã¿ã‚‰ã‚ŒãŸå¯èƒ½æ€§ãŒã‚ã‚Š"
+"ã¾ã™ï¼"
 
-#: ui-support.c:259 ui-support.c:261
+#: uiutil.c:169
 #, c-format
 msgid "Executing %s"
-msgstr "%s ¤ò¼Â¹Ô¤·¤Æ¤¤¤Ş¤¹"
+msgstr "%s ã‚’å®Ÿè¡Œã—ã¦ã„ã¾ã™"
 
-#: ui-support.c:339
+#: uiutil.c:220
 msgid "(New headlines)"
-msgstr "(¿·µ¬¥Ø¥Ã¥É¥é¥¤¥ó)"
+msgstr "(æ–°è¦ãƒ˜ãƒƒãƒ‰ãƒ©ã‚¤ãƒ³)"
 
-#: updatecheck.c:93
+#~ msgid "Merry Christmas from the Snownews developers."
+#~ msgstr "Snownews é–‹ç™ºè€…ã‚ˆã‚Šãƒ¡ãƒªãƒ¼ã‚¯ãƒªã‚¹ãƒã‚¹ã€‚"
+
+#~ msgid "Not yet posted: "
+#~ msgstr "ã¾ã æŠ•ç¨¿ã•ã‚Œã¦ã„ã¾ã›ã‚“: "
+
 #, c-format
-msgid "A new version %s of Snownews is available.\n"
-msgstr "Snownews ¤Î¿·¤·¤¤¥Ğ¡¼¥¸¥ç¥ó %s ¤¬ÍøÍÑ¤Ç¤­¤Ş¤¹¡£\n"
+#~ msgid "Cookie for %s has expired!"
+#~ msgstr "ã‚¯ãƒƒã‚­ãƒ¼ %s ã¯æœ‰åŠ¹æœŸé™ãŒçµ‚äº†ã—ã¦ã„ã¾ã™ï¼"
 
-#: updatecheck.c:94
-msgid ""
-"If you want to download it, go to http://snownews.kcore.de/downloading/\n"
-"\n"
-msgstr "msgstr \"¤â¤·¤³¤ì¤ò¥À¥¦¥ó¥í¡¼¥É¤·¤¿¤¤¤Ê¤é¡¢http://snownews.kcore.de/downloading/ ¤òË¬¤ì¤Æ¤¯¤À¤µ¤¤\n\n"
+#, c-format
+#~ msgid "Last updated: %s"
+#~ msgstr "æœ€çµ‚æ›´æ–°: %s"
 
-#: updatecheck.c:95
-msgid ""
-"To disable the auto version check see the manpage.\n"
-"\n"
-msgstr "¼«Æ°¥Ğ¡¼¥¸¥ç¥ó¥Á¥§¥Ã¥¯¤òÌµ¸ú¤Ë¤·¤¿¤±¤ì¤Ğ¡¢¥Ş¥Ë¥å¥¢¥ë¤òÆÉ¤ó¤Ç¤¯¤À¤µ¤¤\n\n"
+#, c-format
+#~ msgid "In disk cache: %lld bytes"
+#~ msgstr "ãƒ‡ã‚£ã‚¹ã‚¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥: %lld ãƒã‚¤ãƒˆ"
+
+#, c-format
+#~ msgid "Last webserver status: %d"
+#~ msgstr "æœ€å¾Œã«ç¢ºèªã—ãŸæ™‚ã®ã‚¦ã‚§ãƒ–ã‚µãƒ¼ãƒã®çŠ¶æ…‹: %d"
+
+#, c-format
+#~ msgid "Last webserver status: (%s) %d"
+#~ msgstr "æœ€å¾Œã«ç¢ºèªã—ãŸæ™‚ã®ã‚¦ã‚§ãƒ–ã‚µãƒ¼ãƒã®çŠ¶æ…‹: (%s) %d"
+
+#~ msgid "Toggle AND/OR filtering"
+#~ msgstr "AND/OR ãƒ•ã‚£ãƒ«ã‚¿ã‚’ãƒˆã‚°ãƒ«ã—ã¾ã™"
+
+#~ msgid "Mark item unread"
+#~ msgstr "ãƒãƒ¼ã‚¯ã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’æœªèª­ã«ã—ã¾ã™"
+
+#~ msgid "Scroll text"
+#~ msgstr "ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã¾ã™"
+
+#, c-format
+#~ msgid "Could not write temp file for filter: %s"
+#~ msgstr "ãƒ•ã‚£ãƒ«ã‚¿ã®ãŸã‚ã®ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã¿ã§ãã¾ã›ã‚“: %s"
+
+#~ msgid "-> No link"
+#~ msgstr "-> ãƒªãƒ³ã‚¯ãŒã‚ã‚Šã¾ã›ã‚“"
+
+#~ msgid "new"
+#~ msgstr "æœªèª­"
+
+#, c-format
+#~ msgid "%3d new"
+#~ msgid_plural "%3d new"
+#~ msgstr[0] "%3d æœªèª­"
+#~ msgstr[1] "%3d æœªèª­"
+
+#, c-format
+#~ msgid "%s: Invalid URL!"
+#~ msgstr "%s: ç„¡åŠ¹ãª URL ã§ã™ï¼"
+
+#, c-format
+#~ msgid "%s: Couldn't create network socket!"
+#~ msgstr "%s: ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚½ã‚±ãƒƒãƒˆã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
+
+#, c-format
+#~ msgid "%s: Can't resolve host!"
+#~ msgstr "%s: ãƒ›ã‚¹ãƒˆã®åå‰è§£æ±ºãŒã§ãã¾ã›ã‚“ï¼"
+
+#, c-format
+#~ msgid "%s: Connection refused!"
+#~ msgstr "%s: æ¥ç¶šãŒæ‹’å¦ã•ã‚Œã¾ã—ãŸï¼"
+
+#, c-format
+#~ msgid "%s: Couldn't connect to server: %s"
+#~ msgstr "%s: ã‚µãƒ¼ãƒã«æ¥ç¶šã§ãã¾ã›ã‚“ã§ã—ãŸ: %s"
+
+#, c-format
+#~ msgid "%s: Connection timed out."
+#~ msgstr "%s: æ¥ç¶šãŒã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ã¾ã—ãŸã€‚"
+
+#, c-format
+#~ msgid "%s: Too many HTTP redirects encountered! Giving up."
+#~ msgstr "%s: HTTP ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå›æ•°ãŒé™ç•Œã§ã™ã€‚ã‚ãã‚‰ã‚ã¾ã™ã€‚"
+
+#, c-format
+#~ msgid "%s: Server sent an invalid redirect!"
+#~ msgstr "%s: ã‚µãƒ¼ãƒã¯ç„¡åŠ¹ãªãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚’é€ã£ã¦ãã¾ã—ãŸï¼"
+
+#, c-format
+#~ msgid "%s: This feed no longer exists. Please unsubscribe!"
+#~ msgstr "%s: ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ã¯ã‚‚ã¯ã‚„å­˜åœ¨ã—ã¾ã›ã‚“ã€‚è¬›èª­ã‚’ã‚„ã‚ã¦ãã ã•ã„ï¼"
+
+#, c-format
+#~ msgid "%s: Could not download feed: %s"
+#~ msgstr "%s: ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã§ãã¾ã›ã‚“ã§ã—ãŸ: %s"
+
+#, c-format
+#~ msgid "%s: Error in server reply."
+#~ msgstr "%s: ã‚µãƒ¼ãƒã¯ã‚¨ãƒ©ãƒ¼ã‚’è¿”ã—ã¾ã—ãŸã€‚"
+
+#, c-format
+#~ msgid "%s: Authentication failed!"
+#~ msgstr "%s: èªè¨¼ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
+
+#, c-format
+#~ msgid "%s: URL does not contain authentication information!"
+#~ msgstr "%s: URL ã¯èªè¨¼ã«é–¢ã™ã‚‹æƒ…å ±ã‚’å«ã‚“ã§ã„ã¾ã›ã‚“ï¼"
+
+#, c-format
+#~ msgid "%s: Could not generate authentication information!"
+#~ msgstr "%s: èªè¨¼ã«é–¢ã™ã‚‹æƒ…å ±ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
+
+#, c-format
+#~ msgid "%s: Unsupported authentication method requested by server!"
+#~ msgstr "%s: ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ãªã„èªè¨¼æ–¹æ³•ã‚’ã‚µãƒ¼ãƒã‹ã‚‰è¦æ±‚ã•ã‚Œã¾ã—ãŸï¼"
+
+#, c-format
+#~ msgid "%s: Error decompressing server reply!"
+#~ msgstr "%s: ã‚µãƒ¼ãƒã‹ã‚‰ã®è¿”ã£ã¦ããŸãƒ‡ãƒ¼ã‚¿ã‚’å±•é–‹ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ï¼"
+
+#~ msgid "Save settings (urls)"
+#~ msgstr "è¨­å®š (urls) ã‚’ä¿å­˜ã—ã¾ã™"
+
+#~ msgid "Writing cache file"
+#~ msgstr "ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãè¾¼ã‚“ã§ã„ã¾ã™"
+
+#~ msgid ""
+#~ "Bye.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "ã•ã‚ˆã†ãªã‚‰ã€‚\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Aborting program execution!\n"
+#~ "An internal error occured. Snownews has quit, no changes has been saved!\n"
+#~ msgstr ""
+#~ "ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å®Ÿè¡Œã‚’ä¸­æ­¢ã—ã¾ã—ãŸï¼\n"
+#~ "å†…éƒ¨ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚Snownews ã¯çµ‚äº†ã—ã¾ã—ãŸã€‚å¤‰æ›´ç‚¹ã¯ã‚»ãƒ¼ãƒ–ã•ã‚Œã¾ã›"
+#~ "ã‚“ã§ã—ãŸï¼\n"
+
+#~ msgid ""
+#~ "This shouldn't happen, please submit a bugreport to kiza@kcore.de, tell "
+#~ "me what you where doing and include the output below in your mail.\n"
+#~ msgstr ""
+#~ "ã“ã‚Œã¯èµ·ã“ã£ã¦ã¯ã„ã‘ãªã„ã“ã¨ã§ã™ã€‚ãƒã‚°ãƒ¬ãƒãƒ¼ãƒˆã‚’ kiza@kcore.de ã¾ã§é€ã£ã¦"
+#~ "ãã ã•ã„ã€‚ã©ã®ã‚ˆã†ãªæ“ä½œã‚’ã—ãŸã‹ã€ãã®ã¨ãã®å‡ºåŠ›ã‚’å«ã‚ã¦ãƒ¡ãƒ¼ãƒ«ã§æ•™ãˆã¦ãã "
+#~ "ã•ã„ã€‚\n"
+
+#, c-format
+#~ msgid ""
+#~ "Snownews version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Snownews ãƒãƒ¼ã‚¸ãƒ§ãƒ³ %s\n"
+#~ "\n"
+
+#~ msgid "\t--update|-u\tAutomatically update every feed.\n"
+#~ msgstr "\t--update|-u\tãƒ•ã‚£ãƒ¼ãƒ‰ã”ã¨ã«è‡ªå‹•çš„ã«ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã—ã¾ã™ã€‚\n"
+
+#~ msgid "\t--help|-h\tPrint this help message.\n"
+#~ msgstr "\t--help|-h\tã“ã®ãƒ˜ãƒ«ãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚\n"
+
+#~ msgid "\t--version|-V\tPrint version number and exit.\n"
+#~ msgstr "\t--version|-V\tãƒãƒ¼ã‚¸ãƒ§ãƒ³ãƒŠãƒ³ãƒãƒ¼ã‚’è¡¨ç¤ºã—ã¦çµ‚äº†ã—ã¾ã™ã€‚\n"
+
+#~ msgid "\t--disable-versioncheck (obsoleted)\n"
+#~ msgstr "\t--disable-versioncheck (ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ã•ã‚Œã¦ã„ã¾ã›ã‚“)\n"
+
+#, c-format
+#~ msgid "Downloading \"%s\""
+#~ msgstr "\"%s\" ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ã„ã¾ã™"
+
+#, c-format
+#~ msgid "Downloading \"http://%s%s\""
+#~ msgstr "\"http://%s%s\" ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ã„ã¾ã™"
+
+#~ msgid "URL points to permanent redirect, updating with new location..."
+#~ msgstr "URL ã¯æ°¸ç¶šçš„ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚’æŒ‡ã—ã¦ã„ã¾ã™ã€‚æ–°ãŸãªå ´æ‰€ã«æ›´æ–°ã—ã¾ã™..."
+
+#~ msgid "Creating new config \"browser\"..."
+#~ msgstr "æ–°ã—ã„è¨­å®š \"browser\" ã‚’ä½œæˆã—ã¦ã„ã¾ã™..."
+
+#~ msgid "Create initial configfile \"config\""
+#~ msgstr "åˆæœŸè¨­å®šãƒ•ã‚¡ã‚¤ãƒ« \"config\" ã‚’ä½œæˆã—ã¾ã™"
+
+#~ msgid "Creating config directory ~/.snownews/cache/"
+#~ msgstr "åˆæœŸè¨­å®šãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª ~/.snownews/cache/ ã‚’ä½œæˆã—ã¦ã„ã¾ã™"
+
+#~ msgid "Creating new configfile."
+#~ msgstr "æ–°ã—ã„åˆæœŸè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¦ã„ã¾ã™ã€‚"
+
+#~ msgid "Create initial configfile \"urls\""
+#~ msgstr "åˆæœŸè¨­å®šãƒ•ã‚¡ã‚¤ãƒ« \"urls\" ã‚’ä½œæˆã—ã¾ã™"
+
+#, c-format
+#~ msgid "A new version %s of Snownews is available.\n"
+#~ msgstr "Snownews ã®æ–°ã—ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ %s ãŒåˆ©ç”¨ã§ãã¾ã™ã€‚\n"
+
+#~ msgid ""
+#~ "If you want to download it, go to http://snownews.kcore.de/downloading/\n"
+#~ "\n"
+#~ msgstr ""
+#~ "msgstr \"ã‚‚ã—ã“ã‚Œã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸã„ãªã‚‰ã€http://snownews.kcore.de/"
+#~ "downloading/ ã‚’è¨ªã‚Œã¦ãã ã•ã„\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "To disable the auto version check see the manpage.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "è‡ªå‹•ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãƒã‚§ãƒƒã‚¯ã‚’ç„¡åŠ¹ã«ã—ãŸã‘ã‚Œã°ã€ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã‚’èª­ã‚“ã§ãã ã•ã„\n"
+#~ "\n"
