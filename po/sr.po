@@ -7,37 +7,38 @@ msgstr ""
 "Project-Id-Version: snownews v1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-25 12:47-0400\n"
-"PO-Revision-Date: 2021-07-21 10:07+0200\n"
+"PO-Revision-Date: 2021-10-25 22:47+0200\n"
 "Last-Translator: Страхиња Радић <contact@strahinja.org>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: poe v1.01\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: poe 1.3.6-1\n"
 
 #: about.c:84
 #, c-format
 msgid "Move: cursor or %c/%c; shoot: space; quit: %c"
-msgstr ""
+msgstr "Померање: курсор или %c/%c; пуцање: размак; излаз: %c"
 
 #: about.c:94
 msgid "Santa Hunta!"
-msgstr ""
+msgstr "Санта Хунта!"
 
 #: about.c:97
 #, c-format
 msgid "Score: %d"
-msgstr ""
+msgstr "Резултат: %d"
 
 #: about.c:101
 #, c-format
 msgid "Level: %d"
-msgstr ""
+msgstr "Ниво: %d"
 
 #: about.c:243
 msgid "Final score:"
-msgstr ""
+msgstr "Коначни резултат"
 
 #: about.c:346
 msgid "Need at least 80 COLS terminal, sorry!"
@@ -67,31 +68,31 @@ msgstr "Преводилачки тим"
 #: conv.c:318
 #, c-format
 msgid "today"
-msgstr ""
+msgstr "данас"
 
 #: conv.c:320
 #, c-format
 msgid "yesterday"
-msgstr ""
+msgstr "јуче"
 
 #: conv.c:322
 #, c-format
 msgid "%d days ago"
-msgstr ""
+msgstr "пре %d дана"
 
 #: conv.c:324
 #, c-format
 msgid "a week ago"
-msgstr ""
+msgstr "пре недељу дана"
 
 #: conv.c:326
 #, c-format
 msgid "on %x"
-msgstr ""
+msgstr "дана %x"
 
 #: conv.c:333
 msgid "Posted "
-msgstr ""
+msgstr "Послано"
 
 #: dialog.c:57 dialog.c:59
 #, c-format
@@ -108,11 +109,8 @@ msgid "Only %s format strings allowed for default browser!"
 msgstr "Само су форматне ниске %s дозвољене за подразумевани читач!"
 
 #: dialog.c:83 uiutil.c:156
-msgid ""
-"Unsafe browser string (contains quotes)! See snownews.kcore.de/faq#toc2.4"
-msgstr ""
-"Небезбедна ниска читача (садржи наводнике)! Видите snownews.kcore.de/"
-"faq#toc2.4"
+msgid "Unsafe browser string (contains quotes)! See snownews.kcore.de/faq#toc2.4"
+msgstr "Небезбедна ниска читача (садржи наводнике)! Видите snownews.kcore.de/faq#toc2.4"
 
 #: dialog.c:98
 msgid "Enter new name. Blank line to abort. '-' to reset."
@@ -127,15 +125,12 @@ msgid "Enter URL of the feed you want to add. Blank line to abort."
 msgstr "Унесите УРЛ фида који желите да додате. Празан ред прекида."
 
 #: dialog.c:198
-msgid ""
-"The feed could not be parsed. Do you need a filter script for this feed? (y/"
-"n)"
-msgstr ""
-"Фид се не може рашчланити. Желите ли филтарски скрипт за овај фид? (y/n)"
+msgid "The feed could not be parsed. Do you need a filter script for this feed? (y/n)"
+msgstr "Фид се не може рашчланити. Желите ли филтарски скрипт за овај фид? (y/n)"
 
 #: dialog.c:238
 msgid "Last updated: "
-msgstr ""
+msgstr "Последња измена:"
 
 #: dialog.c:241
 msgid "No modification date."
@@ -148,7 +143,7 @@ msgstr "Није у кешу на диску."
 #: dialog.c:256
 #, c-format
 msgid "In disk cache: %jd bytes"
-msgstr ""
+msgstr "У кешу на диску: %jd бајтова"
 
 #: dialog.c:261
 msgid "Categories:"
@@ -160,7 +155,7 @@ msgstr "ниједна"
 
 #: dialog.c:274
 msgid "Download failed: "
-msgstr ""
+msgstr "Преузимање неуспешно:"
 
 #: dialog.c:277
 msgid "Feed uses authentication."
@@ -192,47 +187,47 @@ msgstr "tab:"
 
 #: dialog.c:338
 msgid "Add RSS feed..."
-msgstr "Додај RSS фид..."
+msgstr "Додавање RSS фида..."
 
 #: dialog.c:339
 msgid "Delete highlighted RSS feed..."
-msgstr "Обриши означени RSS фид..."
+msgstr "Брисање означеног RSS фида..."
 
 #: dialog.c:340
 msgid "Rename feed..."
-msgstr "Преименуј фид..."
+msgstr "Преименовање фида..."
 
 #: dialog.c:341
 msgid "Reload all feeds"
-msgstr "Поново учитај све фидове"
+msgstr "Поновно учитавање свих фидова"
 
 #: dialog.c:342 dialog.c:388
 msgid "Reload this feed"
-msgstr "Поново учитај овај фид"
+msgstr "Поновно учитавање овог фида"
 
 #: dialog.c:343 dialog.c:392
 msgid "Mark all read"
-msgstr "Означи све прочитаним"
+msgstr "Означавање свега прочитаним"
 
 #: dialog.c:344
 msgid "Change default browser..."
-msgstr "Промени подразумевани читач..."
+msgstr "Промена подразумеваног читача..."
 
 #: dialog.c:345
 msgid "Move item up, down"
-msgstr "Помери ставку горе, доле"
+msgstr "Померање ставке горе, доле"
 
 #: dialog.c:346
 msgid "Sort feed list alphabetically"
-msgstr "Сортирај листу фидова алфабетски"
+msgstr "Сортирање листе фидова алфабетски"
 
 #: dialog.c:347
 msgid "Categorize feed..."
-msgstr "Разврстај фид..."
+msgstr "Разврставање фида..."
 
 #: dialog.c:348
 msgid "Apply filter..."
-msgstr "Примени филтер..."
+msgstr "Примена филтера..."
 
 #: dialog.c:349
 msgid "Only current category"
@@ -244,11 +239,11 @@ msgstr "Уклони филтер"
 
 #: dialog.c:351
 msgid "Show new headlines"
-msgstr "Прикажи нове наслове"
+msgstr "Приказ нових наслова"
 
 #: dialog.c:352
 msgid "Add conversion filter..."
-msgstr "Додај филтер за конверзију..."
+msgstr "Додавање филтера за конверзију..."
 
 #: dialog.c:353 dialog.c:395
 msgid "Type Ahead Find"
@@ -260,7 +255,7 @@ msgstr "О програму"
 
 #: dialog.c:355
 msgid "Quit program"
-msgstr "Заврши рад у програму"
+msgstr "Завршетак рада у програму"
 
 #: dialog.c:358 dialog.c:399 dialog.c:423
 msgid "Press the any(tm) key to exit help screen."
@@ -268,11 +263,11 @@ msgstr "Притисните any(tm) тастер (било који) за из�
 
 #: dialog.c:371
 msgid ", up:"
-msgstr ""
+msgstr ", горе:"
 
 #: dialog.c:373
 msgid ", down:"
-msgstr ""
+msgstr ", доле:"
 
 #: dialog.c:374
 msgid "enter:"
@@ -288,27 +283,27 @@ msgstr "Следећа ставка"
 
 #: dialog.c:387
 msgid "View item"
-msgstr "Прикажи ставку"
+msgstr "Приказ ставке"
 
 #: dialog.c:389
 msgid "Force reload this feed"
-msgstr ""
+msgstr "Приморано учитавање овог фида"
 
 #: dialog.c:390
 msgid "Open homepage"
-msgstr "Отвори почетну страницу"
+msgstr "Отварање почетне странице"
 
 #: dialog.c:391 dialog.c:419
 msgid "Open link"
-msgstr "Отвори везу"
+msgstr "Отварање везе"
 
 #: dialog.c:393
 msgid "Toggle item read status"
-msgstr ""
+msgstr "Смена прочитаности ставке"
 
 #: dialog.c:394
 msgid "Show feed info..."
-msgstr "Прикажи податке о фиду..."
+msgstr "Приказ података о фиду..."
 
 #: dialog.c:396
 msgid "Return to main menu"
@@ -316,11 +311,11 @@ msgstr "Повратак у главни мени"
 
 #: dialog.c:415
 msgid ", enter:"
-msgstr ""
+msgstr ", enter:"
 
 #: dialog.c:420
 msgid "Return to overview"
-msgstr "Врати се у преглед"
+msgstr "Повратак у преглед"
 
 #: dialog.c:450
 #, c-format
@@ -333,12 +328,8 @@ msgstr "Ниједна категорија није задата. Изабер�
 
 #: dialog.c:464 dialog.c:498
 #, c-format
-msgid ""
-"Select category number to add, press 'A' to add a new category or '%c' to "
-"quit."
-msgstr ""
-"Изаберите број категорије за додавање, притисните „A“ да додате нову или "
-"„%c“ за излаз."
+msgid "Select category number to add, press 'A' to add a new category or '%c' to quit."
+msgstr "Изаберите број категорије за додавање, притисните „A“ да додате нову или „%c“ за излаз."
 
 #: dialog.c:468
 msgid "Categories defined for this feed:"
@@ -346,12 +337,8 @@ msgstr "Категорије које су задате за овај фид:"
 
 #: dialog.c:475
 #, c-format
-msgid ""
-"Select a category number to delete, press 'A' to add a new one or '%c' to "
-"quit."
-msgstr ""
-"Изаберите број категорије за брисање, притисните „A“ да додате нову или „%c“ "
-"за излаз."
+msgid "Select a category number to delete, press 'A' to add a new one or '%c' to quit."
+msgstr "Изаберите број категорије за брисање, притисните „A“ да додате нову или „%c“ за излаз."
 
 #: dialog.c:491
 msgid "Select a new category or add a new one:"
@@ -371,9 +358,7 @@ msgstr "Изаберите филтер"
 
 #: dialog.c:566
 msgid "Select a category number or any other key to reset filters."
-msgstr ""
-"Изаберите број категорије или било који други тастер за поновно постављање "
-"филтера."
+msgstr "Изаберите број категорије или било који други тастер за поновно постављање филтера."
 
 #: dialog.c:594
 msgid "Enter script to pipe feed through."
@@ -409,7 +394,7 @@ msgstr "Учитавање „%s“"
 #: main.c:113
 #, c-format
 msgid "Unable to write PID file %s!"
-msgstr ""
+msgstr "Не може се уписати PID датотека %s!"
 
 #: main.c:136
 #, c-format
@@ -417,6 +402,8 @@ msgid ""
 "Snownews seems to be already running with process ID %d.\n"
 "A pid file exists at \"%s\".\n"
 msgstr ""
+"Snownews је изгледа већ покренут са ID-јем процеса %d.\n"
+"pid датотека постоји у „%s“.\n"
 
 #: main.c:140
 #, c-format
@@ -426,6 +413,10 @@ msgid ""
 "Delete that file and start it again.\n"
 "Continue anyway? (y/n) "
 msgstr ""
+"pid датотека постоји у „%s“,\n"
+"али изгледа да snownews није покренут.\n"
+"Обришите ту датотеку и поново га покрените.\n"
+"Ипак наставити? (y/n) "
 
 #: main.c:211
 #, c-format
@@ -434,6 +425,9 @@ msgid ""
 "snownews quit without saving changes due to internal error!\n"
 "Please submit a bugreport at https://github.com/msharov/snownews/issues\n"
 msgstr ""
+"Прекид извршавања програма!\n"
+"snownews се завршио без чувања измена због интерне грешке!\n"
+"Пошаљите пријаву грешке на https://github.com/msharov/snownews/issues\n"
 
 #: main.c:215
 #, c-format
@@ -442,6 +436,9 @@ msgid ""
 "Error: %s\n"
 "\n"
 msgstr ""
+"Приликом извршавања: %s\n"
+"Грешка: %s\n"
+"\n"
 
 #: main.c:261
 #, c-format
@@ -453,15 +450,21 @@ msgid ""
 "  -c, --cursor-on\tForce cursor always visible.\n"
 "  -u, --update\t\tAutomatically update every feed.\n"
 msgstr ""
+"Употреба: snownews [-chuV]\n"
+"\n"
+"  -h, --help\t\tШтампа ову поруку помоћи.\n"
+"  -V, --version\t\tШтампа број верзије и излази.\n"
+"  -c, --cursor-on\tПриморава сталну видљивост курсора.\n"
+"  -u, --update\t\tАутоматски ажурира сваки фид.\n"
 
 #: main.c:316
 #, c-format
 msgid "Unknown option \"%s\"\n"
-msgstr ""
+msgstr "Непозната опција „%s“\n"
 
 #: netio.c:121
 msgid "already up to date"
-msgstr ""
+msgstr "већ ажурно"
 
 #: parse.c:201 parse.c:313 parse.c:455 ui.c:224 ui.c:302 ui.c:305
 msgid "No title"
@@ -469,16 +472,15 @@ msgstr "Без наслова"
 
 #: setup.c:37
 msgid "configuration dir path is too long"
-msgstr ""
+msgstr "путања конфигурационог директоријума је предугачка"
 
 #: setup.c:51
 msgid "cache dir path is too long"
-msgstr ""
+msgstr "путања директоријума кеша је предугачка"
 
 #: setup.c:98
-#, fuzzy
 msgid "Save settings (browser)"
-msgstr "Сачувај подешавања (browser)"
+msgstr "Чување подешавања (browser)"
 
 #: setup.c:456
 msgid "Reading configuration settings..."
@@ -490,11 +492,8 @@ msgstr "Није доступан опис."
 
 #: ui.c:123
 #, c-format
-msgid ""
-"Press '%c' or Enter to return to previous screen. Hit '%c' for help screen."
-msgstr ""
-"Притисните „%c“ или Enter за повратак на претходни екран. Притисните „%c“ за "
-"екран помоћи."
+msgid "Press '%c' or Enter to return to previous screen. Hit '%c' for help screen."
+msgstr "Притисните „%c“ или Enter за повратак на претходни екран. Притисните „%c“ за екран помоћи."
 
 #: ui.c:332
 #, c-format
@@ -510,8 +509,9 @@ msgstr "Деактивирајте филтар категорија пре не
 #, c-format
 msgid "%3u new"
 msgid_plural "%3u new"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%3u нов"
+msgstr[1] "%3u нова"
+msgstr[2] "%3u нових"
 
 #: ui.c:744
 #, c-format
@@ -521,7 +521,7 @@ msgstr "Притисните „%c“ за прозор помоћи."
 #: ui.c:746
 #, c-format
 msgid "Press '%c' for help window. (Press '%c' to play Santa Hunta!)"
-msgstr ""
+msgstr "Притисните ‘%c’ за прозор помоћи. (Притисните ‘%c’ да бисте играли Санта Хунта!)"
 
 #: ui.c:798
 msgid "Successfully added new item..."
@@ -562,9 +562,9 @@ msgstr "(Нови наслови)"
 #~ msgid "Version"
 #~ msgstr "Верзија"
 
-#, c-format
 #~ msgid "ERROR: zlib_uncompress: %d %s\n"
 #~ msgstr "ГРЕШКА: zlib_uncompress: %d %s\n"
+#, c-format
 
 #~ msgid "ERROR: No output during decompression"
 #~ msgstr "ГРЕШКА: Није настао излаз током декомпресије"
@@ -575,36 +575,36 @@ msgstr "(Нови наслови)"
 #~ msgid "ERROR: Compression method is not deflate"
 #~ msgstr "ГРЕШКА: Метод компресије није deflate"
 
-#, c-format
 #~ msgid "ERROR: Unsupported flags %d\n"
 #~ msgstr "ГРЕШКА: Неподржане заставице %d\n"
-
 #, c-format
+
 #~ msgid "Cookie for %s has expired!"
 #~ msgstr "Колачић за %s је истекао!"
-
 #, c-format
+
 #~ msgid "Last updated: %s"
 #~ msgstr "Последње ажурирање: %s"
-
 #, c-format
+
 #~ msgid "In disk cache: %lld bytes"
 #~ msgstr "У кешу на диску: %lld бајтова"
-
 #, c-format
+
 #~ msgid "Last webserver status: %d"
 #~ msgstr "Последњи статус веб сервера: %d"
+#, c-format
 
 #~ msgid "Toggle AND/OR filtering"
 #~ msgstr "Смени И/ИЛИ филтрирање"
 
-#, c-format
 #~ msgid "%c, up:"
 #~ msgstr "%c, горе:"
-
 #, c-format
+
 #~ msgid "%c, down:"
 #~ msgstr "%c, доле:"
+#, c-format
 
 #~ msgid "Mark item unread"
 #~ msgstr "Означи ставку непрочитаном"
@@ -612,16 +612,16 @@ msgstr "(Нови наслови)"
 #~ msgid "cursor:"
 #~ msgstr "курсор:"
 
-#, c-format
 #~ msgid "%c, enter:"
 #~ msgstr "%c, enter:"
+#, c-format
 
 #~ msgid "Scroll text"
 #~ msgstr "Скролуј текст"
 
-#, c-format
 #~ msgid "Could not write temp file for filter: %s"
 #~ msgstr "Неуспешно уписивање у привремену датотеку за филтер: %s"
+#, c-format
 
 #~ msgid "-> No link"
 #~ msgstr "-> Недостаје веза"
@@ -629,114 +629,113 @@ msgstr "(Нови наслови)"
 #~ msgid "new"
 #~ msgstr "ново"
 
-#, c-format
 #~ msgid "%3d new"
 #~ msgstr "%3d нових"
-
 #, c-format
+
 #~ msgid "Bad request"
 #~ msgstr "Лош захтев"
-
 #, c-format
+
 #~ msgid "Payment required"
 #~ msgstr "Захтева се плаћање"
-
 #, c-format
+
 #~ msgid "Access denied"
 #~ msgstr "Приступ одбијен"
-
 #, c-format
+
 #~ msgid "Internal server error"
 #~ msgstr "Унутрашња грешка сервера"
-
 #, c-format
+
 #~ msgid "Not implemented"
 #~ msgstr "Није имплементирано"
-
 #, c-format
+
 #~ msgid "Service unavailable"
 #~ msgstr "Сервис недоступан"
-
 #, c-format
+
 #~ msgid "%s: Invalid URL!"
 #~ msgstr "%s: Неисправан УРЛ!"
-
 #, c-format
+
 #~ msgid "%s: Couldn't create network socket!"
 #~ msgstr "%s: Неуспешно креирање мрежне утичнице!"
-
 #, c-format
+
 #~ msgid "%s: Can't resolve host!"
 #~ msgstr "%s: Не може се разрешити хост!"
-
 #, c-format
+
 #~ msgid "%s: Connection refused!"
 #~ msgstr "%s: Повезивање је одбијено!"
-
 #, c-format
+
 #~ msgid "%s: Couldn't connect to server: %s"
 #~ msgstr "%s: Неуспешно повезивање са сервером: %s"
-
 #, c-format
+
 #~ msgid "%s: Connection timed out."
 #~ msgstr "%s: Повезивању је истекло време."
-
 #, c-format
+
 #~ msgid "%s: Too many HTTP redirects encountered! Giving up."
 #~ msgstr "%s: Превише HTTP преусмеравања! Одустајем."
-
 #, c-format
+
 #~ msgid "%s: Server sent an invalid redirect!"
 #~ msgstr "%s: Сервер је послао неисправно преусмеравање!"
-
 #, c-format
+
 #~ msgid "%s: This feed no longer exists. Please unsubscribe!"
 #~ msgstr "%s: Овај фид више не постоји. Отпретплатите се!"
-
 #, c-format
+
 #~ msgid "%s: Could not download feed: %s"
 #~ msgstr "%s: Неуспешно преузимање фида: %s"
-
 #, c-format
+
 #~ msgid "%s: Error in server reply."
 #~ msgstr "%s: Грешка у одговору сервера."
-
 #, c-format
+
 #~ msgid "%s: Authentication failed!"
 #~ msgstr "%s: Неуспешна аутентификација!"
-
 #, c-format
+
 #~ msgid "%s: URL does not contain authentication information!"
 #~ msgstr "%s: УРЛ не садржи податке о аутентификацији!"
-
 #, c-format
+
 #~ msgid "%s: Could not generate authentication information!"
 #~ msgstr "%s: Неуспешно генерисање података о аутентификацији!"
-
 #, c-format
+
 #~ msgid "%s: Unsupported authentication method requested by server!"
 #~ msgstr "%s: Сервер је захтевао неподржани метод аутентификације!"
-
 #, c-format
+
 #~ msgid "%s: Error decompressing server reply!"
 #~ msgstr "%s: Грешка приликом декомпресије одговора сервера!"
+#, c-format
 
-#, fuzzy
 #~ msgid "Save settings (urls)"
 #~ msgstr "Сачувај подешавања (urls)"
+#, fuzzy
 
 #~ msgid "Writing cache file"
 #~ msgstr "Уписивање датотеке кеша"
 
-#, c-format
 #~ msgid ""
 #~ "Bye.\n"
 #~ "\n"
 #~ msgstr ""
 #~ "Здраво.\n"
 #~ "\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "Aborting program execution!\n"
 #~ "An internal error occured. Snownews has quit, no changes has been saved!\n"
@@ -744,78 +743,79 @@ msgstr "(Нови наслови)"
 #~ "Прекид извршавања програма!\n"
 #~ "Дошло је до унутрашње грешке. Snownews је завршио са радом, ниједна "
 #~ "измена није сачувана!\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "This shouldn't happen, please submit a bugreport to kiza@kcore.de, tell "
 #~ "me what you where doing and include the output below in your mail.\n"
 #~ msgstr ""
 #~ "Ово не би смело да се догоди, пошаљите пријаву грешке на kiza@kcore.de, "
 #~ "напишите шта сте радили и додајте следећи излаз у вашем мејлу.\n"
-
 #, c-format
+
 #~ msgid "While executing: %s\n"
 #~ msgstr "При извршавању: %s\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "Error as reported by the system: %s\n"
 #~ "\n"
 #~ msgstr ""
 #~ "Грешка коју је пријавио систем: %s\n"
 #~ "\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "Snownews version %s\n"
 #~ "\n"
 #~ msgstr ""
 #~ "Верзија snownews-а %s\n"
 #~ "\n"
-
 #, c-format
+
 #~ msgid "The option \"--disable-versioncheck\" has been obsoleted.\n"
 #~ msgstr "Опција „--disable-versioncheck“ је застарела.\n"
-
 #, c-format
+
 #~ msgid "Please see the manpage for details.\n"
 #~ msgstr "Погледајте man страницу за више детаља.\n"
-
 #, c-format
+
 #~ msgid "(To deactivate check, put -1 into ~/.snownews/updatecheck)\n"
 #~ msgstr "(За деактивирање провере, ставите -1 у ~/.snownews/updatecheck)\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "usage: snownews [-huV] [--help|--update|--version]\n"
 #~ "\n"
 #~ msgstr ""
 #~ "употреба: snownews [-huV] [--help|--update|--version]\n"
 #~ "\n"
-
 #, c-format
+
 #~ msgid "\t--update|-u\tAutomatically update every feed.\n"
 #~ msgstr "\t--update|-u\tАутоматско ажурирање сваког фида.\n"
-
 #, c-format
+
 #~ msgid "\t--help|-h\tPrint this help message.\n"
 #~ msgstr "\t--help|-h\tИсписивање ове поруке помоћи.\n"
-
 #, c-format
+
 #~ msgid "\t--version|-V\tPrint version number and exit.\n"
 #~ msgstr "\t--version|-V\tИсписивање броја верзије и излаз.\n"
-
 #, c-format
+
 #~ msgid "\t--disable-versioncheck (obsoleted)\n"
 #~ msgstr "\t--disable-versioncheck (застарело)\n"
-
 #, c-format
+
 #~ msgid "Downloading \"%s\""
 #~ msgstr "Преузимање „%s“"
-
 #, c-format
+
 #~ msgid "Downloading \"http://%s%s\""
 #~ msgstr "Преузимање „http://%s%s“"
+#, c-format
 
 #~ msgid "URL points to permanent redirect, updating with new location..."
 #~ msgstr "УРЛ упућује на трајну редирекцију, ажурирам новом локацијом..."
@@ -847,11 +847,10 @@ msgstr "(Нови наслови)"
 #~ msgid "Create initial configfile \"urls\""
 #~ msgstr "Креирање почетне датотеке са подешавањима „urls“"
 
-#, c-format
 #~ msgid "A new version %s of Snownews is available.\n"
 #~ msgstr "Доступна је нова верзија %s Snownews-а.\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "If you want to download it, go to http://snownews.kcore.de/downloading/\n"
 #~ "\n"
@@ -859,20 +858,22 @@ msgstr "(Нови наслови)"
 #~ "Ако желите да је преузмете, идите на http://snownews.kcore.de/"
 #~ "downloading/\n"
 #~ "\n"
-
 #, c-format
+
 #~ msgid ""
 #~ "To disable the auto version check see the manpage.\n"
 #~ "\n"
 #~ msgstr ""
 #~ "Да бисте онемогућили аутоматску проверу верзије погледајте man страницу.\n"
 #~ "\n"
-
 #, c-format
+
 #~ msgid "http://snownews.kcore.de/download/snownews-%s.tar.gz (.sign)\n"
 #~ msgstr "http://snownews.kcore.de/download/snownews-%s.tar.gz (.sign)\n"
-
 #, c-format
+
 #~ msgid "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"
 #~ msgstr ""
 #~ "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"
+#, c-format
+
