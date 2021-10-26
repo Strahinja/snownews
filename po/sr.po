@@ -92,7 +92,7 @@ msgstr "дана %x"
 
 #: conv.c:333
 msgid "Posted "
-msgstr "Послано"
+msgstr "Послано "
 
 #: dialog.c:57 dialog.c:59
 #, c-format
@@ -130,7 +130,7 @@ msgstr "Фид се не може рашчланити. Желите ли фил
 
 #: dialog.c:238
 msgid "Last updated: "
-msgstr "Последња измена:"
+msgstr "Последња измена: "
 
 #: dialog.c:241
 msgid "No modification date."
@@ -155,7 +155,7 @@ msgstr "ниједна"
 
 #: dialog.c:274
 msgid "Download failed: "
-msgstr "Преузимање неуспешно:"
+msgstr "Преузимање неуспешно: "
 
 #: dialog.c:277
 msgid "Feed uses authentication."
@@ -876,4 +876,3 @@ msgstr "(Нови наслови)"
 #~ msgstr ""
 #~ "http://snownews.kcore.de/download/snownews-%s.i386.tar.bz2 (.sign)\n"
 #, c-format
-
