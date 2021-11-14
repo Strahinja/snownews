@@ -86,16 +86,6 @@ set enabled to "1". To set a color, use the color key value that is
 listed in the comment in that file. You can disable usage for single
 items by using the value "-1".
 
-### HTML transformation
-
-Snownews will try to convert HTML content into plain text before
-displaying the text. Tags will be stripped alltogether and some
-common HTML entities will be translated. By default only the five
-entities defined in XML (<>&"') plus a default setting included will be
-translated. You can influence this behaviour with the definition file
-`~/.config/snownews/html_entities`. See the comments on top of the file
-for further details.
-
 ### HTTP authentication
 
 To subscribe to a feed that requires authentication, use URL format
